@@ -10,8 +10,8 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->unsignedTinyInteger('evaluation');
             $table->text('comment');
             $table->timestamps();

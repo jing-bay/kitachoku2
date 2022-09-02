@@ -11,7 +11,7 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('shop_admin_id')->constrained();
+            $table->foreignId('shop_admin_id')->constrained()->cascadeOnDelete();
             $table->foreignId('area_id')->constrained();
             $table->char('postal_code', 7);
             $table->string('address');
@@ -26,6 +26,7 @@ class CreateShopsTable extends Migration
             $table->string('twitter_url')->nullable();
             $table->timestamps();
         });
+        
     }
     
     public function down()

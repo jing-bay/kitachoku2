@@ -9,8 +9,8 @@ class Tag extends Model
 {
     protected $fillable = ['name'];
 
-    public function shopsTags()
-    {
-        return $this->hasMany(ShopsTag::class);
+    public function shops()
+    { 
+        return $this->belongsToMany(Shop::class)->withTimestamps();
     }
 }

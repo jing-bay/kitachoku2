@@ -11,7 +11,7 @@ class Reservation extends Model
 
     public function coupon()
     {
-        return $this->belongTo(Coupon::class);
+        return $this->belongTo(Coupon::class)->withTrashed();
     }
 
     public function user()

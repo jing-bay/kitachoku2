@@ -43,8 +43,8 @@ Route::middleware(['auth'])->group(function (){
     Route::post('/reservation/update/{reservation_id}', [ReservationController::class, 'update']);
     Route::post('/reservation/destroy/{reservation_id}', [ReservationController::class, 'destroy']);
     Route::get('/reservation-cancel', [ReservationController::class, 'cancel']);
-    Route::get('/settings-user', [SearchFavoriteController::class, 'search']);
-    Route::get('/search/favorite', [SearchVisitedController::class, 'search']);
+    Route::get('/search/favorite', [SearchFavoriteController::class, 'search']);
+    Route::get('/search/visited', [SearchVisitedController::class, 'search']);
 });
 
 Route::middleware(['auth:shopadmin'])->group(function (){

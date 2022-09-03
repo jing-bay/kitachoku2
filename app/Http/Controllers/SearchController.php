@@ -44,7 +44,7 @@ class SearchController extends Controller
                 ->orWhere('address','like', '%'.$search_keyword.'%');
         }
 
-        $shops = $query->get();
+        $shops = $query->paginate(12);
 
         $tags = Tag::all();
         $areas = Area::all();

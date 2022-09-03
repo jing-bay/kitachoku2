@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
 use App\Models\Reservation;
 use App\Models\Favorite;
 use App\Models\Evaluation;
@@ -18,7 +19,8 @@ class MypageController extends Controller
         $favorites = Favorite::where('user_id', $id)->get();
         $visited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '<', $today)->orderBy('id', 'asc')->get();
         $evaluations = Evalution::where('user_id', $id)->get();
+        $areas = Area::all();
 
-        return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations'));
+        return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations', 'areas'));
     }
 }

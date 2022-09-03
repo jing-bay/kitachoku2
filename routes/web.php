@@ -19,6 +19,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\SearchReservationController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\SearchFavoriteController;
+use App\Http\Controllers\SearchVisitedController;
 
 Route::get('/', [SearchController::class, 'index']);
 Route::get('/search', [SearchController::class, 'search']);
@@ -41,7 +43,8 @@ Route::middleware(['auth'])->group(function (){
     Route::post('/reservation/update/{reservation_id}', [ReservationController::class, 'update']);
     Route::post('/reservation/destroy/{reservation_id}', [ReservationController::class, 'destroy']);
     Route::get('/reservation-cancel', [ReservationController::class, 'cancel']);
-    Route::get('/settings-user', [SettingsUserController::class, 'index']);
+    Route::get('/settings-user', [SearchFavoriteController::class, 'search']);
+    Route::get('/search/favorite', [SearchVisitedController::class, 'search']);
 });
 
 Route::middleware(['auth:shopadmin'])->group(function (){

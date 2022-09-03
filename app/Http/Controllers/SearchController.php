@@ -59,6 +59,5 @@ class SearchController extends Controller
         $evaluations = Evaluation::where('shop_id', $shop_id)->get();
 
         return view('detail', compact('shop', 'coupons', 'evaluations'));
-
     }
 }

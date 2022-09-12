@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Tag;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShopRequest;
 
@@ -23,6 +24,9 @@ class ShopController extends Controller
         $form = $request->all();
         $shop = Shop::create($form);
         $shop->tags()->attach($form->tags);
+
+        $shop_img = Image::make($request->file('shop_img'));
+        $shop_jpg = $shop_img->encode('jpg');
         
         return redirect('/shop/done');
     }

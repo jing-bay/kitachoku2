@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Notice;
 use App\Models\Shop;
 use App\Models\Coupon;
 use App\Models\Evaluation;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -29,27 +31,41 @@ class SearchController extends Controller
         $search_area = $request->search_area;
         $search_keyword = $request->search_keyword;
 
-        if(is_array($search_tag)){
-            $query->whereHas('tags', function($q) use($search_tag){
+        if(is_array($search_tag)) {
+            $query->whereHas('tags', function($q) use($search_tag) {
                 $q->whereIn('tags.id', $search_tag);
             });
-        };
-
-        if(!empty($search_area)){
-            $query->where('area_id', $search_area);
-        };
-
-        if(!empty($search_keyword)){
-            $query->where('name', 'like', '%'.$search_keyword.'%')
-                ->orWhere('address','like', '%'.$search_keyword.'%');
         }
 
-        $shops = $query->paginate(12);
+        if(!empty($search_area)) {
+            $query->where('area_id', $search_area);
+        }
+
+        if(!empty($search_keyword)) {
+            $query->where('name', 'like binary', '%'.$search_keyword.'%')
+                ->orWhere('address','like binary', '%'.$search_keyword.'%');
+        }
+
+        $shops = $query->paginate(12)->withQueryString();
 
         $tags = Tag::all();
         $areas = Area::all();
+        $id = Auth::id();
+        $favorites = Favorite::where('user_id', $id);
+    
+        if(is_array($search_tag)) {
+            $search_t = Tag::whereIn('id', $search_tag)->get();
+        } else {
+            $search_t = NULL;
+        }
 
-        return view('search', compact('shops', 'tags', 'areas'));
+        if(!empty($search_area)){
+            $s_a = Area::find($search_area);
+        } else {
+            $s_a = NULL;
+        }
+
+        return view('search', compact('shops', 'tags', 'areas', 'search_tag', 'search_area', 'search_keyword', 'search_t', 's_a', 'favorites'));
     }
 
     public function show($shop_id)
@@ -57,7 +73,9 @@ class SearchController extends Controller
         $shop = Shop::find($shop_id)->first();
         $coupons = Coupon::where('shop_id', $shop_id)->get();
         $evaluations = Evaluation::where('shop_id', $shop_id)->get();
+        $id = Auth::id();
+        $favorites = Favorite::where('user_id', $id);
 
-        return view('detail', compact('shop', 'coupons', 'evaluations'));
+        return view('detail', compact('shop', 'coupons', 'evaluations', 'favorites'));
     }
 }

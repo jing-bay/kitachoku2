@@ -28,7 +28,7 @@ class SearchShopAdminController extends Controller
             $search_shops = Shop::where('name', $search_shop)->get();
             $shop_admin_id_array = $search_shops->pluck('shop_admin_id');
 
-            $query->find($shop_admin_id_array);
+            $query->whereIn('id', $shop_admin_id_array);
         }
 
         if(!empty($search_email)){

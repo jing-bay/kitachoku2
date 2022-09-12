@@ -70,7 +70,7 @@ class SearchController extends Controller
 
     public function show($shop_id)
     {
-        $shop = Shop::find($shop_id)->first();
+        $shop = Shop::find($shop_id);
         $coupons = Coupon::where('shop_id', $shop_id)->get();
         $evaluations = Evaluation::where('shop_id', $shop_id)->get();
         $id = Auth::id();

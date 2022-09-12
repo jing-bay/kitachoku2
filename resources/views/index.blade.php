@@ -47,10 +47,12 @@
 </div>
 <div class="notice">
   <p class="notice__ttl">新着情報</p>
+  @foreach($notices as $notice)
   <div class="notice__contents">
-    <div class="notice__date">2022/10/01</div>
-    <div class="notice__txt">キタチョクがオープンしました</div>
+    <div class="notice__date">{{ $notice->created_at }}</div>
+    <div class="notice__txt">{{ $notice->content}}</div>
   </div>
+  @endforeach
 </div>
 <div class="concept" id="concept">
   <div class="concept__inner">

@@ -47,7 +47,7 @@
     @foreach ($shops as $shop)
     <div class="result__shop">
       <div class="result__shop-img">
-        <img src="{{ asset('images/4829554_s.jpg') }}">
+        <img src="{{ asset('images/4829554_s.jpg') }}" alt="店舗画像">
       </div>
       <div class="result__shop-inner">
         <h1 class="result__shop-ttl">

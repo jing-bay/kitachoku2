@@ -79,5 +79,6 @@
   </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="{{ asset('js/main.js') }}"></script>
+  @yield('add-js')
 </body>
 </html>

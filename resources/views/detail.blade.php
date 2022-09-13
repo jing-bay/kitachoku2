@@ -24,13 +24,15 @@
       </form>
     </div>
   </div>
-  <div class="detail__shop-info">
+  <div class="detail__shop-top">
     <div class="detail__shop-img">
       <img src="{{ asset('images/4829554_s.jpg') }}" alt="店舗画像">
     </div>
     <div class="detail__shop-txt">
       {{ $shop->overview }}
     </div>
+  </div>
+  <div class="detail__shop-info">
     <ul class="detail__shop-table">
       <li class="detail__shop-item">エリア：{{ $shop->area->name }}</li>
       <li class="detail__shop-item">電話番号：{{ $shop->tel_number }}</li>
@@ -57,26 +59,59 @@
       <div class="detail__review-content">
         @foreach($evaluations as $evaluation)
         <div class="detail__review-item">
-          <div class="detail__review-left">
-            <p class="detail__review-user">{{ $evaluation->user->name }}</p>
-            <p class="detail__review-star">{{ $evaluation->evaluation }}</p>
-            <p class="detail__visited-date">{{ $evaluation->user->name }}</p>
-            <p class="detail__review-date"></p>
+          <div class="detail__review-content-top">
+            <div class="detail__review-left">
+              <p class="detail__review-user">{{ $evaluation->user->name }}</p>
+              <p class="detail__review-star">{{ $evaluation->evaluation }}</p>
+              <p class="detail__visited-date">{{ $evaluation->user->name }}</p>
+            </div>
+            <div class="detail__review-comment">
+              {{ $evaluation->comment }}
+            </div>
+            <p class="detail__review-date">{{ $evaluation->created_at }}</p>
           </div>
-          @endforeach
-          <div class="detail__review-right">
         </div>
+        @endforeach
       </div>
     </div>
     <div class="detail__coupon">
-      <div class="detail__coupon-ttl"></div>
-      <div class="detail__coupon-content">
+      <div class="detail__coupon-ttl">来店予約クーポン</div>
+      <form class="detail__coupon-content" method="post" action="/reservation">
         <table class="detail__coupon-table">
+          <tr>
+            <td class="detail__table-ttl">クーポン名</td>
+            <td>
+              <select name="coupon_id" class="detail__coupon-select">
+                @foreach($coupons as $coupon)
+                <option value="{{ $coupon->id }}">{{ $coupon->name }}</option>
+                @endforeach
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="detail__table-ttl">来店日</td>
+            <td class="detail__reservation-date"><input type="date" name="reservation_date" id="tomorrow"></td>
+          </tr>
+          <tr>
+            <td class="detail__table-ttl">来店時間</td>
+            <td>
+              <select name="reservation_time" class="detail__reservation-time">
+                  @for ($i = 8; $i <= 20; $i++) 
+                  <option value="{{ substr('0'.$i, -2) }}:00">{{ substr('0'.$i, -2) }}:00</option>
+                  <option value="{{ substr('0'.$i, -2) }}:30">{{ substr('0'.$i, -2) }}:30</option>
+                  @endfor
+              </select>
+            </td>
+          </tr>
         </table>
         <div class="detail__reservation-btn">
+          <button type="submit" class="detail__btn">予約</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
+@endsection
+@section ('add-js')
+<script src="{{ asset('js/reservation.js') }}"></script>
 @endsection

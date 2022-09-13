@@ -109,7 +109,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #f4f2e9;
-    animation: slideIn 1s ease 1 normal backwards;
+    animation: slideIn 0.5s ease 1 normal backwards;
     padding-top: 200px;
   }
 
@@ -187,6 +187,7 @@ body {
 .footer {
   background-color: #3d3200;
   color: #ffffff;
+  width: 100%;
 }
 
 .footer__content {
@@ -205,8 +206,8 @@ body {
 
 @media screen and (max-width:768px) {
   .footer__content {
-      padding: 20px 50px;
-    }
+    padding: 20px 50px;
+  }
 
   .footer__txt {
     padding-bottom: 20px;
@@ -810,22 +811,24 @@ body {
 .detail {
   width: 70%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
 .detail__back-btn {
-  font-size: clamp(14px, 3vw, 18px);
-  padding-bottom: 50px;
+  font-size: clamp(12px, 3vw, 18px);
+  padding-bottom: 30px;
 }
 
 .detail__top {
   display: flex;
   align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  width: 100%;
+  border-bottom: 5px solid #87c957;
 }
 
 .detail__shop-name {
-  font-size: clamp(16px, 3vw, 24px);
+  font-size: clamp(18px, 3vw, 24px);
 }
 
 .detail__fav--btn {
@@ -835,13 +838,14 @@ body {
   margin-left: 10px;
 }
 
-.detail__shop-info {
-  background-color: #ffffff;
+.detail__shop-top {
+  display: flex;
+  padding: 30px 0px;
 }
 
 .detail__shop-img {
-  width: 100%;
-  background-color: #ffffff;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .detail__shop-img img{
@@ -850,15 +854,19 @@ body {
   height: auto;
   object-fit: cover;
   display: block;
-  margin: 0 auto;
-  padding: 30px;
 }
 
 .detail__shop-txt {
-  width: 90%;
-  border-bottom: 1px solid #000000;
+  width: 50%;
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding-left: 40px;
+  font-size: clamp(12px, 1.5vw, 16px);
+  line-height: 150%;
+}
+
+.detail__shop-info {
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
 .detail__shop-table {
@@ -867,6 +875,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  font-size: clamp(12px, 1.5vw, 16px);
+  padding-top: 30px;
 }
 
 .detail__shop-item {
@@ -876,10 +886,10 @@ body {
 }
 
 .detail__address {
-  background-color: #ffffff;
   width: 90%;
-  margin: 0 auto;
   padding: 20px;
+  margin: 0 auto;
+  font-size: clamp(12px, 1.5vw, 16px);
 }
 
 .detail__map {
@@ -889,31 +899,209 @@ body {
 .detail__map iframe {
   width: 100%;
   height: 300px;
+  margin: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .detail__middle {
   display: flex;
-  padding-top: 30px;
+  padding: 30px 0px 30px;
 }
 
-.detail__sns {
-  width: 70%;
+.detail__review {
+  width: 50%;
+  padding-right: 20px;
 }
 
-.detail__sns-ttl {
-  font-size: clamp(16px, 3vw, 24px);
+.detail__review-top {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 20px;
 }
 
-.detail__sns-content {
+.detail__review-ttl {
+  font-size: clamp(16px, 1.5vw, 24px);
+}
+
+.detail__review-top-txt {
+  padding-left: 30px;
+  font-size: clamp(12px, 1.5vw, 18px);
+}
+
+.detail__review-content {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  height: 230px;
+  overflow: scroll;
+}
+
+.detail__review-item {
+  width: 90%;
+  border-bottom: 1px solid #000000;
+}
+
+.detail__review-content-top {
   display: flex;
 }
 
-.detail__facebook {
-  
+.detail__coupon {
+  width: 50%;
 }
 
+.detail__coupon-ttl {
+  font-size: clamp(16px, 1.5vw, 24px);
+  padding-bottom: 20px;
+}
 
+.detail__coupon-content {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  height: 230px;
+  overflow: scroll;
+}
 
+.detail__coupon-table {
+  width: 90%;
+  margin: 10px auto;
+}
 
+.detail__coupon-table tr:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
 
+.detail__coupon-table td {
+  padding: 15px 0px;
+}
 
+.detail__table-ttl {
+  width: 30%;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.detail__coupon-select {
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.detail__coupon-select select {
+  overflow-wrap: break-word;
+}
+
+.detail__reservation-date input {
+  cursor: pointer;
+  border: none;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.detail__reservation-time {
+  border: none;
+  cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.detail__reservation-btn {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 100px;
+  min-width: 70px;
+  width: 20%;
+}
+
+.detail__btn {
+  width: 100%;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+@media screen and (max-width:768px) {
+  .detail {
+    width: 85%;
+  }
+
+  .detail__shop-top {
+    display: inherit;
+
+  }
+
+  .detail__shop-img {
+    width: 90%;
+  }
+
+  .detail__shop-txt {
+    width: 100%;
+    padding: 10px 0px 0px;
+    font-size: clamp(12px, 3vw, 14px);
+  }
+
+  .detail__shop-table {
+    display: inherit;
+    padding-top: 15px;
+    font-size: clamp(12px, 3vw, 14px);
+  }
+
+  .detail__shop-item {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .detail__address {
+    padding: 15px;
+    font-size: clamp(12px, 3vw, 14px);
+  }
+
+  .detail__middle {
+    display: inherit;
+    padding: 0px;
+  }
+
+  .detail__review {
+    width: 100%;
+    padding-right: 0px;
+    padding-top: 20px;
+  }
+
+  .detail__review-ttl {
+    font-size: clamp(16px, 3vw, 20px);
+  }
+
+  .detail__coupon {
+    width: 100%;
+    padding: 20px 0px 20px;
+  }
+
+  .detail__coupon-ttl {
+    font-size: clamp(16px, 3vw, 20px);
+  }
+
+  .detail__table-ttl {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .detail__coupon-select {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .detail__reservation-date input {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .detail__reservation-time {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+}

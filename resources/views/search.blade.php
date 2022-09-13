@@ -85,3 +85,6 @@
   <p class="result__paginate-txt">{{ $shops->total() }}件中{{ $shops->firstItem() }}〜{{ $shops->lastItem() }} 件を表示</p>
 </div>
 @endsection
+@section ('add-js')
+<script src="{{ asset('js/search.js') }}"></script>
+@endsection

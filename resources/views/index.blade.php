@@ -11,6 +11,7 @@
       <input type="radio" name="search-tab" id="tab3" onclick="formSwitch()"><label for="tab3" class="search__tab-text">キーワード検索</label></input>
     </div>
     <form action="/search" method="get" id="tagForm" class="search__contents">
+      @csrf
       <ul class="search__tags" id="searchTag">
         @foreach($tags as $tag)
         <li class="search__tag">
@@ -24,6 +25,7 @@
       </div>
     </form>
     <form action="/search" method="get" id="areaForm" class="search__contents">
+      @csrf
       <div class="search__areas">
         <select name="search_area" class="search__area">
           @foreach($areas as $area)
@@ -36,6 +38,7 @@
       </div>
     </form>
     <form action="/search" method="get" id="keywordForm" class="search__contents">
+      @csrf
       <div class="search__keyword">
         <input type="text" name="search_keyword" placeholder="店舗名・住所キーワード検索" class="search__keyword-input">
       </div>

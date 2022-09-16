@@ -3,6 +3,7 @@
 
 <div class="result">
   <form action="/search" method="get" class="result__search">
+    @csrf
     <div class="result__searchtab--tag">
       <div class="result__tag-first" id="tagList">
         タグを選択
@@ -65,15 +66,16 @@
             @foreach ($favorites as $favorite)
             @if ($favorite->shop_id == $shop->id)
             <form action="/favorite/destroy/{{ $favorite->id }}" method="post">
+              @csrf
               <input type="image" src="{{ asset('images/fav.jpg') }}" class="result__fav--btn">
             @endif
             @endforeach
             @else
             <form action="/favorite" method="post">
+              @csrf
               <input type="hidden" value="{{ $shop->id }}" name="shop_id">
               <input type="image" src="{{ asset('images/unfav.jpg') }}" class="result__fav--btn">
             @endif    
-            @csrf
             </form>
           </div>
         </div>

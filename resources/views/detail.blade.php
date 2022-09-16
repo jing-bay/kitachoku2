@@ -12,15 +12,16 @@
       @foreach ($favorites as $favorite)
       @if ($favorite->shop_id == $shop->id)
       <form action="/favorite/destroy/{{ $favorite->id }}" method="post">
+        @csrf
         <input type="image" src="{{ asset('images/fav.jpg') }}" class="detail__fav--btn">
       @endif
       @endforeach
       @else
       <form action="/favorite" method="post">
+        @csrf
         <input type="hidden" value="{{ $shop->id }}" name="shop_id">
         <input type="image" src="{{ asset('images/unfav.jpg') }}" class="detail__fav--btn">
-      @endif    
-      @csrf
+        @endif
       </form>
     </div>
   </div>
@@ -77,6 +78,7 @@
     <div class="detail__coupon">
       <div class="detail__coupon-ttl">来店予約クーポン</div>
       <form class="detail__coupon-content" method="post" action="/reservation">
+        @csrf
         <table class="detail__coupon-table">
           <tr>
             <td class="detail__table-ttl">クーポン名</td>

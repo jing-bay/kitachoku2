@@ -1,59 +1,53 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends ('layouts.default')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@section ('content')
+<div class="register">
+    <p class="register__ttl">会員登録</p>
+    <form action="/register" method="post">
+        @csrf
+        <div class="register__content">
+            <table class="register__inner">
+                <tr>
+                    <td class="register__content-ttl">名前</td>
+                    <td class="register__content-item">
+                        @error('name')
+                        <p class="register__content-error">{{ $message }}</p>
+                        @enderror
+                        <input type="text" name="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="register__content-ttl">ニックネーム</td>
+                    <td class="register__content-item">
+                        @error('nickname')
+                        <p class="register__content-error">{{ $message }}</p>
+                        @enderror
+                        <input type="text" name="nickname">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="register__content-ttl">メールアドレス</td>
+                    <td class="register__content-item">
+                        @error('email')
+                        <p class="register__content-error">{{ $message }}</p>
+                        @enderror
+                        <input type="text" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="register__content-ttl">パスワード</td>
+                    <td class="register__content-item">
+                        @error('password')
+                        <p class="register__content-error">{{ $message }}</p>
+                        @enderror
+                        <input type="password" name="password">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="register__btn">
+            <button class="register__btn-form" type="submit">登録する</button>
+        </div>
+    </form>
+</div>
+@endsection

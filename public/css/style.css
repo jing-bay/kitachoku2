@@ -23,6 +23,9 @@ input {
 
 body {
   background-color: #f4f2e9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /*ヘッダー*/
@@ -188,10 +191,13 @@ body {
   background-color: #3d3200;
   color: #ffffff;
   width: 100%;
+  margin-top: auto;
 }
 
 .footer__content {
-  padding: 30px 150px;
+  padding: 30px 0px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .footer__txt {
@@ -206,7 +212,7 @@ body {
 
 @media screen and (max-width:768px) {
   .footer__content {
-    padding: 20px 50px;
+    width: 90%;
   }
 
   .footer__txt {
@@ -1104,4 +1110,94 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .detail__reservation-time {
     font-size: clamp(12px, 3vw, 16px);
   }
+}
+
+/*会員登録ページ*/
+.register {
+  width: 60%;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+
+.register__ttl {
+  font-size: clamp(18px, 3vw, 24px);
+  padding-bottom: 30px;
+}
+
+.register__content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px 0px;
+}
+
+.register__inner {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.register__inner td{
+  padding: 10px 0px 10px;
+}
+
+.register__content-ttl {
+  width: 30%;
+  padding-right: 10px;
+  font-size: clamp(12px, 2vw, 18px);
+  vertical-align: middle;
+}
+
+.register__content-item {
+  width: 70%;
+}
+
+.register__content-item input {
+  width: 100%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #000000;
+  font-size: clamp(12px, 2vw, 18px);
+}
+
+.register__btn {
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.register__btn-form {
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.register__content-error {
+  font-size: clamp(10px, 2vw, 14px);
+  color: #ff0000;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width:768px) {
+  .register {
+    width: 90%;
+  }
+
+  .register__content-ttl {
+    width: 35%;
+  }
+
+  .register__content-item {
+    width: 65%;
+  }
+
+.register__ttl {
+  padding-bottom: 20px;
+}
 }

@@ -24,7 +24,7 @@
         <div class="header__menu--right">
           <a href="/mypage">マイページ</a>
         </div>
-        <form action="/logout" method="POST" class="header__menu--right">
+        <form action="/logout" method="post" class="header__menu--right">
           @csrf
           <button type="submit">ログアウト</button>
         </form>
@@ -48,7 +48,7 @@
           @auth
           <li class="header__ham-item"><a href="/mypage">マイページ</a></li>
           <li class="header__ham-item">
-            <form action="/logout" method="POST">
+            <form action="/logout" method="post">
               @csrf
               <button type="submit">ログアウト</button>
             </form>

@@ -29,7 +29,7 @@ Route::get('/user/destroy/withdraw', [UserController::class, 'show']);
 Route::get('/shopadmin/destroy/withdraw', [ShopAdminController::class, 'show']);
 Route::get('/admin/destroy/withdraw', [AdminController::class, 'show']);
 
-Route::middleware(['auth'])->group(function (){
+Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/mypage', [MypageController::class, 'index']);
     Route::post('/favorite', [FavoriteController::class, 'store']);
     Route::post('/favorite/destroy/{favorite_id}', [FavoriteController::class, 'destroy']);
@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/search/visited', [SearchVisitedController::class, 'search']);
 });
 
-Route::middleware(['auth:shopadmin'])->group(function (){
+Route::middleware(['auth:shopadmin', 'verified'])->group(function (){
     Route::get('/settings-shopadmin', [SettingsShopAdminController::class, 'index']);
     Route::get('/shop/create', [ShopController::class, 'create']);
     Route::post('/shop', [ShopController::class, 'store']);
@@ -57,7 +57,7 @@ Route::middleware(['auth:shopadmin'])->group(function (){
     Route::get('/reservation/search', [SearchReservationController::class, 'search']);
 });
 
-Route::middleware(['auth:admin'])->group(function (){
+Route::middleware(['auth:admin', 'verified'])->group(function (){
     Route::get('/settings-admin', [SettingsAdminController::class, 'index']);
     Route::post('/admin/update', [AdminController::class, 'update']);
     Route::post('/admin/destroy', [AdminController::class, 'destroy']);
@@ -68,7 +68,7 @@ Route::middleware(['auth:admin'])->group(function (){
     Route::post('/notice/destroy/{notice_id}', [NoticeController::class, 'destroy']);
 });
 
-Route::middleware(['auth:shopadmin', 'auth:admin'])->group(function (){
+Route::middleware(['auth:shopadmin', 'auth:admin', 'verified'])->group(function (){
     Route::post('/shopadmin/update', [ShopAdminController::class, 'update']);
     Route::post('/shopadmin/destroy', [ShopAdminController::class, 'destroy']);
     Route::get('/shop/edit/{shop_id}', [ShopController::class, 'edit']);
@@ -77,7 +77,7 @@ Route::middleware(['auth:shopadmin', 'auth:admin'])->group(function (){
     Route::post('/shop/destroy/{shop_id}', [ShopController::class, 'destroy']);
 });
 
-Route::middleware(['auth', 'auth:admin'])->group(function (){
+Route::middleware(['auth', 'auth:admin', 'verified'])->group(function (){
     Route::post('/user/update', [UserController::class, 'update']);
     Route::post('/user/destroy', [UserController::class, 'destroy']);
 });
@@ -88,6 +88,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
     require __DIR__.'/admin.php';
 });
 
-Route::prefix('shop-admin')->name('shop-admin.')->group(function(){
+Route::prefix('shop-admin')->name('shopadmin.')->group(function(){
     require __DIR__.'/shopadmin.php';
 });

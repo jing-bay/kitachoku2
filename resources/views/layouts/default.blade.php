@@ -26,7 +26,7 @@
         </div>
         <form action="/logout" method="post" class="header__menu--right">
           @csrf
-          <button type="submit">ログアウト</button>
+          <button type="submit" class="header__menu-logout">ログアウト</button>
         </form>
         @endauth
         @guest
@@ -50,7 +50,7 @@
           <li class="header__ham-item">
             <form action="/logout" method="post">
               @csrf
-              <button type="submit">ログアウト</button>
+              <button type="submit" class="header__menu-logout">ログアウト</button>
             </form>
           </li>
           @endauth

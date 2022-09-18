@@ -51,7 +51,7 @@ class SearchController extends Controller
         $tags = Tag::all();
         $areas = Area::all();
         $id = Auth::id();
-        $favorites = Favorite::where('user_id', $id);
+        $favorites = Favorite::where('user_id', $id)->get();
     
         if(is_array($search_tag)) {
             $search_t = Tag::whereIn('id', $search_tag)->get();
@@ -74,7 +74,7 @@ class SearchController extends Controller
         $coupons = Coupon::where('shop_id', $shop_id)->get();
         $evaluations = Evaluation::where('shop_id', $shop_id)->get();
         $id = Auth::id();
-        $favorites = Favorite::where('user_id', $id);
+        $favorites = Favorite::where('user_id', $id)->get();
 
         return view('detail', compact('shop', 'coupons', 'evaluations', 'favorites'));
     }

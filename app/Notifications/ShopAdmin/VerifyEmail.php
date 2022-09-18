@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Auth\Notifications;
+namespace App\Notifications\ShopAdmin;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -81,7 +81,7 @@ class VerifyEmail extends Notification
         }
 
         return URL::temporarySignedRoute(
-            'verification.verify',
+            'shopadmin.verification.verify',
             Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
             [
                 'id' => $notifiable->getKey(),
@@ -112,4 +112,3 @@ class VerifyEmail extends Notification
         static::$toMailCallback = $callback;
     }
 }
-

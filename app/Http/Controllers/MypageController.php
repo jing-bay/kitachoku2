@@ -18,7 +18,7 @@ class MypageController extends Controller
         $unvisited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '>=', $today)->orderBy('id', 'asc')->get();
         $favorites = Favorite::where('user_id', $id)->get();
         $visited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '<', $today)->orderBy('id', 'asc')->get();
-        $evaluations = Evalution::where('user_id', $id)->get();
+        $evaluations = Evaluation::where('user_id', $id)->get();
         $areas = Area::all();
 
         return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations', 'areas'));

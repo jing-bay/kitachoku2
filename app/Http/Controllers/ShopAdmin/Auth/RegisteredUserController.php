@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ShopAdminRegisterRequest;
 
 class RegisteredUserController extends Controller
 {
@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
         return view('shopadmin.auth.register');
     }
 
-    public function store(RegisterRequest $request)
+    public function store(ShopAdminRegisterRequest $request)
     {
         $user = ShopAdmin::create([
             'name' => $request->name,

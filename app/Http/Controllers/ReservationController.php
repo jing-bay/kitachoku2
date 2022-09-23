@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
     public function store(ReservationRequest $request)
     {
-        $form = $request->all();
-        Reservation::create($form);
+        Reservation::create([
+            'user_id' => Auth::id(),
+            'reservation_date' => $request->reservation_date,
+            'reservation_time' => $request->reservation_time,
+            'coupon_id' => $request->coupon_id,
+        ]);
 
-        return redirect('/resavation-thanks');
+        return redirect('/reservation-thanks');
     }
 
     public function show()
@@ -24,14 +29,15 @@ class ReservationController extends Controller
     public function update($reservation_id, ReservationRequest $request)
     {
         $form = $request->all();
+        unset($form['_token']);
         Reservation::find($reservation_id)->update($form);
 
-        return redirect('/resavation-thanks');
+        return redirect('/reservation-thanks');
     }
 
     public function destroy($reservation_id)
     {
-        Reservation::find($reservation_id)->delete($form);
+        Reservation::find($reservation_id)->delete();
 
         return redirect('/reservation-cancel');
     }

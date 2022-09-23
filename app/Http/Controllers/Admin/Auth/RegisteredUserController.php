@@ -29,18 +29,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        Auth::guard('admin')->login($user);
 
         return redirect('/admin/send-thanks');
-    }
-
-    public function showSend()
-    {
-        return view('send_thanks_admin');
-    }
-
-    public function showThanks()
-    {
-        return view('register_thanks_admin');
     }
 }

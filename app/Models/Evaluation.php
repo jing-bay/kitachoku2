@@ -7,15 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-    protected $fillable = ['shop_id', 'user_id', 'evaluation', 'comment'];
+    protected $fillable = ['reservation_id', 'evaluation', 'comment'];
 
-    public function shop()
+    public function reservation()
     {
-        return $this->belongsTo(Shop::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Reservation::class);
     }
 }

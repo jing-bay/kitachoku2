@@ -37,8 +37,6 @@ Route::middleware('guest:shopadmin')->group(function () {
 Route::middleware('auth:shopadmin')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
-                
-    Route::get('/shop-admin/send-thanks', [RegisteredUserController::class, 'showSend']);
 
     Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
                 ->middleware(['signed', 'throttle:6,1'])
@@ -52,8 +50,6 @@ Route::middleware('auth:shopadmin')->group(function () {
                 ->name('password.confirm');
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
-
-    Route::get('/shop-admin/register-thanks', [RegisteredUserController::class, 'showThanks']);
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');

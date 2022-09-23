@@ -20,8 +20,11 @@ class EvaluationController extends Controller
 
     public function store(EvaluationRequest $request)
     {
-        $form = $request->all();
-        Evaluation::create($form);
+        Evaluation::create([
+            'reservation_id' => $request->reservation,
+            'evaluation' => $request->evaluation,
+            'comment' => $request->comment,
+        ]);
 
         return redirect('/mypage');
     }

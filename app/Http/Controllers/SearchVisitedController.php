@@ -16,23 +16,24 @@ class SearchVisitedController extends Controller
     public function search(Request $request)
     {
         $id = Auth::id();
-        $query = Reservation::where('user_id', $id)->where('reservation_date', '<', $today)->orderBy('id', 'asc');
+        $today = date("Y-m-d");
+        $query = Reservation::where('user_id', $id)->where('reservation_date', '<=', $today)->orderBy('id', 'asc');
 
-        $search_name = $request->search_name;
-        $search_area = $request->search_area;
+        $search_name2 = $request->search_name2;
+        $search_area2 = $request->search_area2;
         $search_from_date = $request->search_from_date;
         $search_to_date = $request->search_to_date;
 
-        if(!empty($search_name)){
-            $search_name_id = Shop::where('name', $search_name)->pluck('id')->toArray();
+        if(!empty($search_name2)){
+            $search_name_id = Shop::where('name', 'likebinary', '%'.$search_name2.'%')->pluck('id')->toArray();
             $search_name_coupon_id = Coupon::whereIn('shop_id', $search_name_id)->pluck('id')->toArray();
             $query->whereIn('coupon_id', $search_name_coupon_id);
         }
 
-        if(!empty($search_area)){
-            $search_area_id = Shop::where('area_id', $search_area)->pluck('id')->toArray();
+        if(!empty($search_area2)){
+            $search_area_id = Shop::where('area_id', $search_area2)->pluck('id')->toArray();
             $search_area_coupon_id = Coupon::whereIn('shop_id', $search_area_id)->pluck('id')->toArray();
-            $query->whereIn('coupon_id', $search_name_coupon_id);
+            $query->whereIn('coupon_id', $search_area_coupon_id);
         }
 
         if(!empty($search_from_date)){
@@ -47,12 +48,12 @@ class SearchVisitedController extends Controller
 
         $user = Auth::user();
         $id = Auth::id();
-        $today = date("Y-m-d");
-        $unvisited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '>=', $today)->orderBy('id', 'asc')->get();
+        $unvisited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '>', $today)->orderBy('id', 'asc')->get();
         $favorites = Favorite::where('user_id', $id)->get();
-        $evaluations = Evalution::where('user_id', $id)->get();
+        $reservation_ids = Reservation::where('user_id', $id)->pluck('id')->toArray();
+        $evaluations = Evaluation::whereIn('reservation_id', $reservation_ids)->get();
         $areas = Area::all();
 
-        return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations', 'areas'));
+        return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations', 'areas', 'search_name2', 'search_area2', 'search_from_date', 'search_to_date'));
     }
 }

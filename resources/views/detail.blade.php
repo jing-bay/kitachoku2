@@ -62,9 +62,9 @@
         <div class="detail__review-item">
           <div class="detail__review-content-top">
             <div class="detail__review-left">
-              <p class="detail__review-user">{{ $evaluation->user->name }}</p>
+              <p class="detail__review-user">{{ $evaluation->reservation->user->name }}</p>
               <p class="detail__review-star">{{ $evaluation->evaluation }}</p>
-              <p class="detail__visited-date">{{ $evaluation->user->name }}</p>
+              <p class="detail__visited-date">{{ $evaluation->reservation->reservation_date }}</p>
             </div>
             <div class="detail__review-comment">
               {{ $evaluation->comment }}
@@ -83,6 +83,11 @@
           <tr>
             <td class="detail__table-ttl">クーポン名</td>
             <td>
+              <div class="detail__reservation-error">
+                @error('coupon_id')
+                {{ $message }}
+                @enderror
+              </div>
               <select name="coupon_id" class="detail__coupon-select">
                 @foreach($coupons as $coupon)
                 <option value="{{ $coupon->id }}">{{ $coupon->name }}</option>
@@ -92,16 +97,28 @@
           </tr>
           <tr>
             <td class="detail__table-ttl">来店日</td>
-            <td class="detail__reservation-date"><input type="date" name="reservation_date" id="tomorrow"></td>
+            <td class="detail__reservation-date">
+              <div class="detail__reservation-error">
+                @error('reservation_date')
+                {{ $message }}
+                @enderror
+              </div>
+              <input type="date" name="reservation_date" id="tomorrow">
+            </td>
           </tr>
           <tr>
             <td class="detail__table-ttl">来店時間</td>
             <td>
+              <div class="detail__reservation-error">
+                @error('reservation_time')
+                {{ $message }}
+                @enderror
+              </div>
               <select name="reservation_time" class="detail__reservation-time">
-                  @for ($i = 8; $i <= 20; $i++) 
-                  <option value="{{ substr('0'.$i, -2) }}:00">{{ substr('0'.$i, -2) }}:00</option>
-                  <option value="{{ substr('0'.$i, -2) }}:30">{{ substr('0'.$i, -2) }}:30</option>
-                  @endfor
+                @for ($i = 8; $i <= 20; $i++) 
+                <option value="{{ substr('0'.$i, -2) }}:00:00">{{ substr('0'.$i, -2) }}:00</option>
+                <option value="{{ substr('0'.$i, -2) }}:30:00">{{ substr('0'.$i, -2) }}:30</option>
+                @endfor
               </select>
             </td>
           </tr>

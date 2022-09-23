@@ -21,6 +21,7 @@ use App\Http\Controllers\SearchReservationController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\SearchFavoriteController;
 use App\Http\Controllers\SearchVisitedController;
+use App\Http\Controllers\ShopAdminThanksController;
 
 Route::get('/', [SearchController::class, 'index']);
 Route::get('/search', [SearchController::class, 'search']);
@@ -28,6 +29,8 @@ Route::get('/detail/{shop_id}', [SearchController::class, 'show']);
 Route::get('/user/destroy/withdraw', [UserController::class, 'show']);
 Route::get('/shopadmin/destroy/withdraw', [ShopAdminController::class, 'show']);
 Route::get('/admin/destroy/withdraw', [AdminController::class, 'show']);
+Route::get('/shop-admin/send-thanks', [ShopAdminThanksController::class, 'showSend']);
+Route::get('/admin/send-thanks', [AdminThanksController::class, 'showSend']);
 
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/mypage', [MypageController::class, 'index']);
@@ -39,7 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/evaluation/update/{evaluation_id}', [EvaluationController::class, 'update']);
     Route::post('/evaluation/destroy/{evaluation_id}', [EvaluationController::class, 'destroy']);
     Route::post('/reservation', [ReservationController::class, 'store']);
-    Route::get('/resavation-thanks', [ReservationController::class, 'show']);
+    Route::get('/reservation-thanks', [ReservationController::class, 'show']);
+    Route::get('/settings-user', [ReservationController::class, 'show']);
     Route::post('/reservation/update/{reservation_id}', [ReservationController::class, 'update']);
     Route::post('/reservation/destroy/{reservation_id}', [ReservationController::class, 'destroy']);
     Route::get('/reservation-cancel', [ReservationController::class, 'cancel']);
@@ -48,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
 });
 
 Route::middleware(['auth:shopadmin', 'verified'])->group(function (){
+    Route::get('/shop-admin/register-thanks', [ShopAdminThanksController::class, 'showThanks']);
     Route::get('/settings-shopadmin', [SettingsShopAdminController::class, 'index']);
     Route::get('/shop/create', [ShopController::class, 'create']);
     Route::post('/shop', [ShopController::class, 'store']);
@@ -58,6 +63,7 @@ Route::middleware(['auth:shopadmin', 'verified'])->group(function (){
 });
 
 Route::middleware(['auth:admin', 'verified'])->group(function (){
+    Route::get('/admin/register-thanks', [AdminThanksController::class, 'showThanks']);
     Route::get('/settings-admin', [SettingsAdminController::class, 'index']);
     Route::post('/admin/update', [AdminController::class, 'update']);
     Route::post('/admin/destroy', [AdminController::class, 'destroy']);

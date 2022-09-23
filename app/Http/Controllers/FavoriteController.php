@@ -13,7 +13,6 @@ class FavoriteController extends Controller
         Favorite::create([
             'shop_id' => $request->shop_id,
             'user_id' => Auth::id(),
-            
         ]);
         return back();
     }

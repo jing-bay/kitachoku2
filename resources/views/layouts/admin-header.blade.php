@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>キタチョク-店舗管理者登録</title>
+  <title>キタチョク-管理者登録</title>
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -17,36 +17,36 @@
         </div>
       </div>
       <div class="header__right">
-        @if(Auth::guard('shopadmin')->check())
-        <form action="/shop-admin/logout" method="post" class="header__menu--right">
+        @if(Auth::guard('admin')->check())
+        <form action="/admin/logout" method="post" class="header__menu--right">
           @csrf
           <button type="submit" class="header__menu-logout">ログアウト</button>
         </form>
         <div class="header__menu--right">
-          <a href="/settings-shopadmin">店舗管理ページ</a>
+          <a href="/settings-admin">管理ページ</a>
         </div>
         @else
         <div class="header__menu--right">
-          <a href="/shop-admin/login">店舗ログイン</a>
+          <a href="/admin/login">ログイン</a>
         </div>
         <div class="header__menu--right">
-          <a href="/shop-admin/register">新規登録</a>
+          <a href="/admin/register">新規登録</a>
         </div>
         @endif
       </div>
       <div class="header__ham-menu" id="js-ham">
         <ul class="header__list">
-          @if(Auth::guard('shopadmin')->check())
+          @if(Auth::guard('admin')->check())
           <li class="header__ham-item">
-            <form action="/shop-admin/logout" method="post" class="header__menu--right">
+            <form action="/admin/logout" method="post" class="header__menu--right">
               @csrf
               <button type="submit" class="header__menu-logout">ログアウト</button>
             </form>
           </li>
-          <li class="header__ham-item"><a href="/settings-shopadmin">店舗管理ページ</a></li>
+          <li class="header__ham-item"><a href="/settings-admin">管理ページ</a></li>
           @else
-          <li class="header__ham-item"><a href="/shop-admin/register">新規登録</a></li>
-          <li class="header__ham-item"><a href="/shop-admin/login">店舗ログイン</a></li>
+          <li class="header__ham-item"><a href="/admin/register">新規登録</a></li>
+          <li class="header__ham-item"><a href="/admin/login">ログイン</a></li>
           @endif
         </ul>
       </div>
@@ -57,7 +57,7 @@
       </div>
     </div>
   </header>
-  @yield('shopadmin-header')
+  @yield('admin-header')
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="{{ asset('js/main.js') }}"></script>
 </body>

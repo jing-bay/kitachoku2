@@ -62,12 +62,6 @@ Route::middleware('auth')->group(function () {
       Route::post('confirm-password', [ConfirmablePasswordController::class, 'store'])
             ->middleware('auth:admin');
 
-      Route::get('/admin/send-thanks', [RegisteredUserController::class, 'showSend'])
-            ->middleware('auth:admin');
-            
-      Route::get('/admin/register-thanks', [RegisteredUserController::class, 'showThanks'])
-            ->middleware('auth:admin');
-
       Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
             ->middleware('auth:admin')
             ->name('logout');

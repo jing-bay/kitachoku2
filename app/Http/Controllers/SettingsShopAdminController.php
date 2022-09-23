@@ -15,9 +15,10 @@ class SettingsShopAdminController extends Controller
     {
         $shop_admin = Auth::guard('shopadmin')->user();
         $id = Auth::guard('shopadmin')->id();
-        $shop = Shop::where('user_id', $id)->first();
-        $reservations = Reservation::where('user_id', $id)->paginate(100);
+        $shop = Shop::where('shop_admin_id', $id)->first();
         $coupons = Coupon::where('shop_id', $shop->shop_id)->get();
+        $reservation_ids = $coupons->pluck('id')->toArray();
+        $reservations = Reservation::where('coupon_id', $reservation_ids)->paginate(100);
         $areas = Area::all();
 
         return view('settings_shop', compact('shop_admin', 'shop', 'reservations', 'coupons', 'areas'));

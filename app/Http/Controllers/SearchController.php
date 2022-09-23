@@ -10,6 +10,7 @@ use App\Models\Notice;
 use App\Models\Shop;
 use App\Models\Coupon;
 use App\Models\Evaluation;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
@@ -72,7 +73,9 @@ class SearchController extends Controller
     {
         $shop = Shop::find($shop_id);
         $coupons = Coupon::where('shop_id', $shop_id)->get();
-        $evaluations = Evaluation::where('shop_id', $shop_id)->get();
+        $coupon_ids = $coupons->pluck('id')->toArray();
+        $reservation_ids = Reservation::whereIn('coupon_id', $coupon_ids)->pluck('id')->toArray();
+        $evaluations = Evaluation::whereIn('reservation_id', $reservation_ids)->get();
         $id = Auth::id();
         $favorites = Favorite::where('user_id', $id)->get();
 

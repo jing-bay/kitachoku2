@@ -11,7 +11,7 @@
       <ul class="result__tag-list" id="resultTag">
       @foreach ($tags as $tag)
         <li class="result__tag">
-          <input type="checkbox" class="result__searchbox--tag" name="search_tag[]" value="{{ $tag->id }}" id="{{ $tag->name }}" {{ is_array($search_tag)&&in_array($tag->id, $search_tag) ? 'checked' : ''}}>
+          <input type="checkbox" class="result__searchbox--tag" name="search_tag[]" value="{{ $tag->id }}" id="{{ $tag->name }}" {{ is_array($search_tag)&&in_array($tag->id, $search_tag) ? 'checked' : '' }}>
           <label for="{{ $tag->name }}" class="result__tag-label">{{ $tag->name }}</label>
         </li>
       @endforeach
@@ -56,9 +56,9 @@
         </h1>
         <div class="result__shop-content">
           <div class="result__content-left">
-            <div class="result__shop-area">エリア：{{ $shop->area->name }}</div>
+            <div>エリア：{{ $shop->area->name }}</div>
             @foreach ($shop->tags as $tag)
-            <div class="result__shop-tag">タグ：{{ $tag->name }}</div>
+            <div>タグ：{{ $tag->name }}</div>
             @endforeach
           </div>
           <div>

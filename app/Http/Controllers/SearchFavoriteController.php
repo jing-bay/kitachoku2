@@ -21,7 +21,7 @@ class SearchFavoriteController extends Controller
         $search_area = $request->search_area;
 
         if(!empty($search_name)){
-            $search_name_id = Shop::where('name', $search_name)->pluck('id')->toArray();
+            $search_name_id = Shop::where('name', 'like binary', '%'.$search_name.'%')->pluck('id')->toArray();
             $query->whereIn('shop_id', $search_name_id);
         }
 
@@ -37,9 +37,10 @@ class SearchFavoriteController extends Controller
         $today = date("Y-m-d");
         $unvisited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '>=', $today)->orderBy('id', 'asc')->get();
         $visited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '<', $today)->orderBy('id', 'asc')->get();
-        $evaluations = Evalution::where('user_id', $id)->get();
+        $reservation_ids = Reservation::where('user_id', $id)->pluck('id')->toArray();
+        $evaluations = Evaluation::whereIn('reservation_id', $reservation_ids)->get();
         $areas = Area::all();
 
-        return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations', 'areas'));
+        return view('mypage', compact('user', 'unvisited_reservations', 'favorites', 'visited_reservations', 'evaluations', 'areas', 'search_name', 'search_area'));
     }
 }

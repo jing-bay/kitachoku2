@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/evaluation/destroy/{evaluation_id}', [EvaluationController::class, 'destroy']);
     Route::post('/reservation', [ReservationController::class, 'store']);
     Route::get('/reservation-thanks', [ReservationController::class, 'show']);
-    Route::get('/settings-user', [ReservationController::class, 'show']);
+    Route::get('/settings-user', [SettingsUserController::class, 'index']);
     Route::post('/reservation/update/{reservation_id}', [ReservationController::class, 'update']);
     Route::post('/reservation/destroy/{reservation_id}', [ReservationController::class, 'destroy']);
     Route::get('/reservation-cancel', [ReservationController::class, 'cancel']);

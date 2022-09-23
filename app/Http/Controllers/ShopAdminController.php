@@ -12,6 +12,7 @@ class ShopAdminController extends Controller
     public function update(ShopAdminRegisterRequest $request)
     {
         $form = $request->all();
+        unset($form['_token']);
         $id = Auth::guard('shopadmin')->id();
         ShopAdmin::find($id)->update($form);
 

@@ -13,6 +13,7 @@ class UserController extends Controller
     {
         $id = Auth::id();
         $form = $request->all();
+        unset($form['_token']);
         User::find($id)->update($form);
 
         return back();

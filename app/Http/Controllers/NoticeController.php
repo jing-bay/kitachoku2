@@ -11,7 +11,7 @@ class NoticeController extends Controller
     {
         $form = $request->all();
         Notice::create($form);
-
+        
         return back();
     }
 

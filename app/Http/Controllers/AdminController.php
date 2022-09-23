@@ -17,6 +17,7 @@ class AdminController extends Controller
     public function update(AdminRegisterRequest $request)
     {
         $form = $request->all();
+        unset($form['_token']);
         $id = Auth::guard('admin')->id();
         Admin::find($id)->update($form);
 

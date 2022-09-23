@@ -44,6 +44,7 @@ class ShopController extends Controller
     public function update($shop_id, ShopRequest $request)
     {
         $form = $request->all();
+        unset($form['_token']);
         Shop::find($shop_id)->update($form);
         $shop = Shop::find($shop_id);
         $shop->tags()->sync($request->tags);

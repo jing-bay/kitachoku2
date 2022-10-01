@@ -25,7 +25,7 @@ class SearchVisitedController extends Controller
         $search_to_date = $request->search_to_date;
 
         if(!empty($search_name2)){
-            $search_name_id = Shop::where('name', 'likebinary', '%'.$search_name2.'%')->pluck('id')->toArray();
+            $search_name_id = Shop::where('name', 'LIKE BINARY', '%'.$search_name2.'%')->pluck('id')->toArray();
             $search_name_coupon_id = Coupon::whereIn('shop_id', $search_name_id)->pluck('id')->toArray();
             $query->whereIn('coupon_id', $search_name_coupon_id);
         }
@@ -41,7 +41,7 @@ class SearchVisitedController extends Controller
         }
 
         if(!empty($search_to_date)){
-            $query->where('reservation_date', '<=',$search_from_date);
+            $query->where('reservation_date', '<=',$search_to_date);
         }
 
         $visited_reservations = $query->get();

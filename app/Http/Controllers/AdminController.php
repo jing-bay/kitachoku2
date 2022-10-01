@@ -24,7 +24,7 @@ class AdminController extends Controller
         return back();
     }
 
-    public function destory()
+    public function destroy()
     {
         $id = Auth::guard('admin')->id();
         Admin::find($id)->delete();

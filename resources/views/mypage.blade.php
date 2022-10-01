@@ -2,8 +2,9 @@
 
 @section ('content')
 <div class="mypage">
+  <div class="mypage__username">{{ $user->name }}様ログイン中</div>
   <div class="mypage__top">
-    会員の設定確認・変更は<a href="/settings-user">こちら</a>から
+    会員の設定確認・変更は<a href="/user/settings">こちら</a>から
   </div>
   <div class="mypage__top-reservation">
     <div class="mypage__ttl-reservation">来店予約クーポン</div>
@@ -93,7 +94,7 @@
   <div class="mypage__fav-content">
     @foreach($favorites as $favorite)
     <div class="mypage__fav-shop">
-      <div class="mypage__fav-img"><img src="{{ asset('images/4829554_s.jpg') }}" alt="店舗画像"></div>
+      <div class="mypage__fav-img"><img src="{{ asset('storage/shopimg/'.$favorite->shop->shop_img) }}" alt="店舗画像"></div>
       <div class="mypage__fav-inner">
         <h1>
           <a href="/detail/{{ $favorite->shop_id }}">{{ $favorite->shop->name }}</a>
@@ -102,8 +103,9 @@
           <div class="mypage__fav-content-left">
             <div>エリア：{{ $favorite->shop->area->name }}</div>
             <div>
+              タグ：
               @foreach ($favorite->shop->tags as $tag)
-              <div class="result__shop-tag">タグ：{{ $tag->name }}</div>
+              <span class="result__shop-tag">{{ $tag->name }}</span>
               @endforeach
             </div>
           </div>
@@ -140,7 +142,7 @@
         来店日：<input type="date" name="search_from_date" onchange="changeColor(this)" value="{{ !empty($search_from_date) ? $search_from_date : '' }}">
       </div>
       <div class="mypage__visited-search-to">
-        〜<input type="date" name="search_from_date" onchange="changeColor(this)" value="{{ !empty($search_to_date) ? $search_to_date : '' }}">
+        〜<input type="date" name="search_to_date" onchange="changeColor(this)" value="{{ !empty($search_to_date) ? $search_to_date : '' }}">
       </div>
     </div>
     <div class="mypage__visited-search-btn">
@@ -150,7 +152,7 @@
   <div class="mypage__visited-content">
   @foreach($visited_reservations as $visited_reservation)
     <div class="mypage__visited-shop">
-      <div class="mypage__visited-img"><img src="{{ asset('images/4829554_s.jpg') }}" alt="店舗画像"></div>
+      <div class="mypage__visited-img"><img src="{{ asset('storage/shopimg/'.$visited_reservation->coupon->shop->shop_img) }}" alt="店舗画像"></div>
       <div class="mypage__visited-inner">
         <h1>
           <a href="/detail/{{ $visited_reservation->coupon->shop_id }}">
@@ -196,21 +198,26 @@
           <div class="mypage__review-star">
             @for ($l = 5; $l >= 1; $l--)
             @if($l == $evaluation->evaluation)
-            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" checked>
+            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" checked disabled>
             @else
-            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}">
+            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" disabled>
             @endif
             <label for="star{{ $l }}">★</label>
             @endfor
           </div>
-          <div class="mypage__review-visited-date"></div>
-          <div class="mypage__review-review-date"></div>
+          <div class="mypage__review-date">来店日：{{ $evaluation->reservation->reservation_date }}</div>
+          <div class="mypage__review-date">レビュー日時：{{ $evaluation->updated_at }}</div>
         </div>
         <div class="mypage__review-right">
-          <div class="mypage__review-comment"></div>
+          <div class="mypage__review-comment">{{ $evaluation->comment }}</div>
           <div class="mypage__review-bottom">
-            <div class="mypage__review-update"></div>
-            <div class="mypage__review-delete"></div>
+            <button class="mypage__review-update">
+              <a href="/evaluation/edit/{{ $evaluation->id }}">編集する</a>
+            </button>
+            <form class="mypage__review-delete" action="/evaluation/destroy/{{ $evaluation->id }}" method="post">
+              @csrf
+              <button type="submit">削除する</button>
+            </form>
           </div>
         </div>
       </div>

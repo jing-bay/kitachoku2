@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use Illuminate\Support\Facades\Route;
 
 class Authenticate extends Middleware
 {
@@ -16,13 +15,10 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            if(Route::is('admin.*')){
-                return route('admin.login');
-            }elseif(Route::is('shopadmin.*')){
-                return route('shopadmin.login');
-            }else{
-                return route('login');
-            }
+            if($request->is('admin/*')) return route('admin.login');
+            if($request->is('shopadmin/*')) return route('shopadmin.login');
+            return route('login');
         }
     }
 }
+

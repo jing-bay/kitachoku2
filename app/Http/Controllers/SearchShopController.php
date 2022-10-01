@@ -12,15 +12,15 @@ use Illuminate\Http\Request;
 
 class SearchShopController extends Controller
 {
-    public function search(Request $requset)
+    public function search(Request $request)
     {
         $query = Shop::query();
 
-        $search_name = $request->search_name;
+        $search_shop = $request->search_shop;
         $search_area = $request->search_area;
 
-        if(!empty($search_name)){
-            $query->where('name', $search_name);
+        if(!empty($search_shop)){
+            $query->where('name', 'LIKE BINARY', '%'.$search_shop.'%');
         }
 
         if(!empty($search_area)){
@@ -34,6 +34,6 @@ class SearchShopController extends Controller
         $notices = Notice::paginate(100);
         $areas = Area::all();
 
-        return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas'));
+        return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas','search_shop', 'search_area'));
     }
 }

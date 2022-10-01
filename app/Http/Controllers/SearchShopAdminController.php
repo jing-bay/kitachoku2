@@ -17,22 +17,22 @@ class SearchShopAdminController extends Controller
         $query = ShopAdmin::query();
 
         $search_name = $request->search_name;
-        $search_shop = $request->search_shop;
+        $search_shop2 = $request->search_shop2;
         $search_email = $request->search_email;
 
         if(!empty($search_name)){
-            $query->where('name', $search_name);
+            $query->where('name', 'LIKE BINARY', '%'.$search_name.'%');
         }
 
-        if(!empty($search_shop)){
-            $search_shops = Shop::where('name', $search_shop)->get();
-            $shop_admin_id_array = $search_shops->pluck('shop_admin_id');
+        if(!empty($search_shop2)){
+            $search_shops2 = Shop::where('name', 'LIKE BINARY', '%'.$search_shop2.'%')->get();
+            $shop_admin_id_array = $search_shops2->pluck('shop_admin_id');
 
             $query->whereIn('id', $shop_admin_id_array);
         }
 
         if(!empty($search_email)){
-            $query->where('email', $search_email);
+            $query->where('email', 'LIKE BINARY', '%'.$search_email.'%');
         }
 
         $users = User::paginate(100);
@@ -42,6 +42,6 @@ class SearchShopAdminController extends Controller
         $notices = Notice::paginate(100);
         $areas = Area::all();
 
-        return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas'));
+        return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas', 'search_name', 'search_shop2', 'search_email'));
     }
 }

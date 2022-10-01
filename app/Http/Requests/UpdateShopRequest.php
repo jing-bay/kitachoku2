@@ -4,13 +4,23 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShopRequest extends FormRequest
+class UpdateShopRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize()
     {
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
@@ -23,7 +33,7 @@ class ShopRequest extends FormRequest
             'tel_number' => 'required|string|between:12,13',
             'email2' => 'nullable|email',
             'overview' => 'required|string|max:250',
-            'shop_img' => 'required|file',
+            'shop_img' => 'file',
             'shop_url' => 'nullable|url',
             'facebook_url' => 'nullable|url',
             'twitter_url' => 'nullable|url',
@@ -49,7 +59,6 @@ class ShopRequest extends FormRequest
             'email2.email' => '有効なメールアドレスを入力してください',
             'overview.required' => '店舗の説明を入力してください',
             'overview.max' => '200字以内で入力してください',
-            'shop_img.required'  => '画像は必ず指定してください',
             'facebook_url.url' => 'FacebookのURLを入力してください',
             'twitter_url.url' =>'TwitterのURLを入力してください'
         ];

@@ -10,8 +10,10 @@ class CouponController extends Controller
 {
     public function store(CouponRequest $request)
     {
-        $form = $request->all();
-        Coupon::create($form);
+        Coupon::create([
+            'shop_id' => $request->shop_id,
+            'name' => $request->name3,
+        ]);
 
         return back();
     }

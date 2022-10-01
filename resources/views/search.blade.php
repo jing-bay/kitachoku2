@@ -48,7 +48,7 @@
     @foreach ($shops as $shop)
     <div class="result__shop">
       <div class="result__shop-img">
-        <img src="{{ asset('images/4829554_s.jpg') }}" alt="店舗画像">
+        <img src="{{ asset('storage/shopimg/'.$shop->shop_img) }}" alt="店舗画像">
       </div>
       <div class="result__shop-inner">
         <h1 class="result__shop-ttl">
@@ -57,8 +57,9 @@
         <div class="result__shop-content">
           <div class="result__content-left">
             <div>エリア：{{ $shop->area->name }}</div>
+            タグ：
             @foreach ($shop->tags as $tag)
-            <div>タグ：{{ $tag->name }}</div>
+            <span>{{ $tag->name }}</span>
             @endforeach
           </div>
           <div>

@@ -1,11 +1,12 @@
-@extends ('layouts.default')
-@section ('content')
+@extends ('layouts.admin-header')
+@section ('admin-header')
 <div class="register">
   <p class="register__ttl">設定変更</p>
   <div class="register__content">
     <table class="register__inner">
       <form action="/user/update" method="post" id="update_{{ $user->id }}">
         @csrf
+        <input type="hidden" name="id" value="{{ $user->id }}">
         <tr>
           <td class="register__content-ttl">名前</td>
           <td class="register__content-item">
@@ -42,6 +43,7 @@
     </div>
     <form action="/user/destroy" method="post" class="settings__btn">
       @csrf
+      <input type="hidden" name="user_id" value="{{ $user->id }}">
       <button type="submit" class="settings__delete">退会する</button>
     </form>
   </div>

@@ -21,7 +21,7 @@ class EvaluationController extends Controller
     public function store(EvaluationRequest $request)
     {
         Evaluation::create([
-            'reservation_id' => $request->reservation,
+            'reservation_id' => $request->reservation_id,
             'evaluation' => $request->evaluation,
             'comment' => $request->comment,
         ]);
@@ -34,7 +34,7 @@ class EvaluationController extends Controller
         $evaluation = Evaluation::find($evaluation_id);
         $user = Auth::user();
 
-        return view('evaluation', compact('user', 'evaluation'));
+        return view('evaluation-edit', compact('user', 'evaluation'));
     }
 
     public function update($evaluation_id, EvaluationRequest $request)

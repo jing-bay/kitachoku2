@@ -26,9 +26,10 @@
                     </td>
                 </tr>
             </table>
+            <div class="login__password-reset">パスワードを忘れた、変更したい場合は<a href="/forgot-password">こちら</a>から</div>
         </div>
         <div class="register__btn">
-            <button class="register__btn-form" type="submit">登録する</button>
+            <button class="register__btn-form" type="submit">ログイン</button>
         </div>
     </form>
 </div>

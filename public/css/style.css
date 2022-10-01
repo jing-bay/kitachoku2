@@ -52,6 +52,10 @@ body {
   align-items: center;
 }
 
+.header__middle {
+  font-size: 20px;
+}
+
 .header__right {
   display: flex;
   justify-content: space-between;
@@ -101,6 +105,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .header__middle {
+    display: none;
   }
 
   .header__menu--left {
@@ -935,8 +943,8 @@ body {
 
 .detail__review-top {
   display: flex;
-  align-items: flex-end;
   padding-bottom: 20px;
+  align-items: flex-end;
 }
 
 .detail__review-ttl {
@@ -958,11 +966,55 @@ body {
 
 .detail__review-item {
   width: 90%;
+  margin: 0 auto;
+  padding: 20px 0px;
+}
+
+.detail__review-item:not(:last-child){
   border-bottom: 1px solid #000000;
 }
 
-.detail__review-content-top {
+.detail__review-user {
+  font-size: clamp(16px, 1.5vw, 20px);
+  padding-bottom: 10px;
+}
+
+.detail__review-star{
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.detail__review-star input {
+  display: none;
+}
+
+.detail__review-star input:checked~label {
+  color: #ffcc00;
+}
+
+.detail__review-star label {
+  padding: 0 2px;
+  color: #eeeeee;
+  font-size: clamp(14px, 2vw, 20px);
+}
+
+.detail__visited-date {
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.detail__review-comment {
+  font-size: clamp(12px, 1.5vw, 16px);
+  height: 70px;
+  overflow: scroll;
+}
+
+.detail__review-date {
+  padding: 10px 0px;
+  font-size: 12px;
+
 }
 
 .detail__coupon {
@@ -1099,6 +1151,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: clamp(16px, 3vw, 20px);
   }
 
+  .detail__review-user {
+    font-size: clamp(16px, 3vw, 20px);
+  }
+
+  .detail__review-star label {
+    font-size: clamp(14px, 3vw, 20px);
+  }
+
   .detail__coupon {
     width: 100%;
     padding: 20px 0px 20px;
@@ -1195,6 +1255,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: clamp(10px, 2vw, 14px);
   color: #ff0000;
   padding-bottom: 10px;
+}
+
+.login__password-reset {
+  font-size: clamp(12px, 2vw, 14px);
+  padding: 10px 0px 10px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.login__password-reset a {
+  border-bottom: 1px solid #000000;
 }
 
 @media screen and (max-width:768px) {
@@ -1319,8 +1390,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 0 auto;
 }
 
-.mypage__top {
+.mypage__username {
+  font-size: clamp(18px, 3vw, 24px);
   padding-top: 80px;
+}
+
+.mypage__top {
+  padding-top: 30px;
 }
 
 .mypage__top a {
@@ -1341,6 +1417,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage__txt-reservation {
+  font-size: clamp(12px, 2.5vw, 18px);
   padding-left: 30px;
 }
 
@@ -1554,13 +1631,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage__visited-ttl {
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(18px, 2.5vw, 24px);
   width: 15%;
 }
 
 .mypage__visited-search-na {
   width: 30%;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .mypage__visited-search-name {
@@ -1638,8 +1715,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage__visited-search-btn {
-  width: 120px;
-  padding-left: 40px;
+  width: 130px;
+  padding-left: 45px;
 }
 
 .mypage__visited-btn {
@@ -1725,15 +1802,176 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .mypage__review-content {
   width: 90%;
-  border-bottom: 1px solid #000000;
   margin: 0 auto;
   padding: 20px 0px;
   display: flex;
   justify-content: space-between;
+  height: 150px;
+}
+
+.mypage__review-content:not(:last-child) {
+  border-bottom: 1px solid #000000;
 }
 
 .mypage__review-left {
-  width: 30%;
+  width: 40%;
+}
+
+.mypage__review-shopttl {
+  font-size: clamp(14px, 3vw, 18px);
+  padding: 10px 0px;
+  overflow: hidden;
+}
+
+.mypage__review-star {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.mypage__review-star label {
+  padding: 0 2px;
+  color: #eeeeee;
+  font-size: clamp(14px, 2vw, 24px);
+}
+
+.mypage__review-star input{
+  display: none;
+}
+
+.mypage__review-star input:checked~label {
+  color: #ffcc00;
+}
+
+.mypage__review-date {
+  padding-top: 5px;
+  font-size: clamp(10px, 2vw, 14px);
+}
+
+.mypage__review-right {
+  width: 60%;
+}
+
+.mypage__review-comment {
+  font-size: clamp(10px, 2vw, 14px);
+  padding: 10px 0px;
+  height: 80%;
+  overflow: scroll;
+}
+
+.mypage__review-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+
+.mypage__review-update {
+  margin-right: 10px;
+  font-size: clamp(10px, 2vw, 14px);
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.mypage__review-delete button{
+  font-size: clamp(10px, 2vw, 14px);
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+  .mypage__top-reservation {
+    padding-top: 30px;
+  }
+
+  .mypage__top-fav {
+    display: inherit;
+  }
+
+  .mypage__fav-ttl {
+    font-size: clamp(18px, 3vw, 24px);
+    width: 100%;
+  }
+
+  .mypage__fav-search-name {
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 10px;
+  }
+
+  .mypage__fav-search-area {
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 10px;
+  }
+
+  .mypage__fav-search-btn {
+    padding-left: 0px;
+    padding-top: 10px;
+  }
+
+  .mypage__top-visited {
+    display: inherit;
+    padding-top: 30px;
+  }
+
+  .mypage__visited-ttl {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .mypage__visited-search-na {
+    width: 60%;
+    min-width: 250px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+  }
+
+  .mypage__visited-search-date {
+    width: 60%;
+    min-width: 250px;
+    padding-left: 0px;
+    text-align: start;
+    line-height: 150%;
+  }
+
+  .mypage__visited-search-from {
+    font-size: 14px;
+    width: 100%;
+    padding-bottom: 0px;
+  }
+
+  .mypage__review-content {
+    display: inherit;
+  }
+
+  .mypage__visited-search-from input {
+    width: 100%;
+  }
+
+  .mypage__visited-search-to input {
+    width: 100%;
+  }
+
+  .mypage__visited-search-btn {
+    padding-left: 0px;
+    padding-top: 10px;
+    width: 100px;
+  }
+
+  .mypage__review-left {
+    width: 100%;
+  }
+
+  .mypage__review-right {
+    width: 100%;
+  }
+
+  .mypage__review-comment {
+    height: 100%;
+  }
 }
 
 /*レビュー作成画面*/
@@ -1854,5 +2092,501 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
   .evaluation__ttl {
     padding-bottom: 20px;
+  }
+}
+
+/*ユーザー情報変更・削除*/
+.settings__bottom {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.settings__btn {
+  width: 100px;
+}
+
+.settings__update {
+  width: 100%;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 5px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.settings__delete {
+  width: 100%;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 5px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/*店舗管理ページ*/
+.shopadmin {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.shopadmin__ttl-admin {
+  padding-top: 80px;
+  font-size: clamp(18px, 3vw, 24px);
+  padding-bottom: 20px;
+}
+
+.shopadmin__content-admin {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.shopadmin__admin-inner {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shopadmin__admin-item {
+  width: 50%;
+  font-size: clamp(12px, 1.8vw, 18px);
+  display: flex;
+}
+
+.shopadmin__admin-item input{
+  width: 60%;
+  font-size: clamp(12px, 1.8vw, 18px);
+  border-bottom: 1px solid #000000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-left: 10px;
+}
+
+.shopadmin__admin-bottom {
+  display: flex;
+  padding-top: 20px;
+  width: 400px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.shopadmin__admin-changebtn {
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.shopadmin__admin-deletebtn {
+  width: 150px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.shopadmin__ttl-shopsetting {
+  font-size: clamp(18px, 3vw, 24px);
+  padding: 20px 0px;
+}
+
+.shopadmin__shopsetting-content {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px 0px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.shopadmin__shopsetting-inner {
+  margin: 0 auto;
+  width: 90%;
+  font-size: clamp(12px, 1.5vw, 18px);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shopadmin__shopsetting-heading {
+  width: 15%;
+  padding-top: 20px;
+}
+
+.shopadmin__shopsetting-input {
+  width: 35%;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.shopadmin__shopsetting-input input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #000000;
+  width: 90%;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.shopadmin__shopsetting-input select {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #000000;
+  width: 90%;
+  cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.shopadmin__shopsetting-file {
+  background-color: #87c957;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: clamp(12px, 1.8vw, 14px);
+}
+
+.shopadmin__shopsetting-file input {
+  display: none;
+}
+
+.shopadmin__img-name {
+  color: #000000;
+  padding-top: 10px;
+  font-size: clamp(12px, 1.8vw, 14px);
+}
+
+.shopadmin__shopsetting-tag-heading {
+  padding: 20px 0px;
+}
+
+.shopadmin__shopsetting-tags {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.shopadmin__shopsetting-overview {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  align-items: baseline;
+  font-size: clamp(12px, 1.5vw, 16px);
+  padding-top: 20px;
+}
+
+.shopadmin__shopsetting-overview label {
+  width: 15%;
+}
+
+.shopadmin__shopsetting-overview textarea {
+  width: 85%;
+  resize: none;
+  height: 100px;
+}
+
+.shopadmin__shop-btn {
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+.shopadmin__shop-bottom {
+  display: flex;
+  padding-top: 20px;
+  width: 400px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.shopadmin__shop-btn--update {
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.shopadmin__shop-btn--delete {
+  width: 150px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.shopadmin__top-reservation {
+  display: flex;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.shopadmin__ttl-reservation {
+  font-size: clamp(18px, 2.5vw, 24px);
+  width: 15%;
+}
+
+.shopadmin__reservation-content {
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  height: 400px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.shopadmin__reservation-inner {
+  table-layout: fixed;
+  min-width: 100%;
+}
+
+.shopadmin__reservation-item {
+  overflow: scroll;
+  font-size: 14px;
+}
+
+.shopadmin__reservation-item:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
+
+.shopadmin__reservation-item-name {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.shopadmin__reservation-item-date {
+  width: 250px;
+  min-width: 250px;
+  overflow: scroll;
+  padding-right: 10px;
+}
+
+.shopadmin__reservation-item-coupon {
+  width: 300px;
+  min-width: 300px;
+  overflow: scroll;
+  padding-right: 10px;
+}
+
+.shopadmin__reservation-item-reservation {
+  width: 250px;
+  min-width: 250px;
+  overflow: scroll;
+  padding-right: 10px;
+}
+
+.shopadmin__reservation-item-btn {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+}
+
+.shopadmin__reservation-item-btn button {
+  width: 80px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.shopadmin__ttl-coupon {
+  padding: 30px 0px;
+  font-size: clamp(18px, 3vw, 24px);
+}
+
+.shopadmin__coupon-content {
+  min-width: 40%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  padding: 20px;
+  height: 300px;
+  overflow: scroll;
+  margin-bottom: 30px;
+}
+
+.shopadmin__coupon-inner {
+  table-layout: fixed;
+  min-width: 100%;
+}
+
+.shopadmin__coupon-item {
+  overflow: scroll;
+  font-size: 12px;
+}
+
+.shopadmin__coupon-item:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
+
+.shopadmin__coupon-name {
+  width: 300px;
+  min-width: 300px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.shopadmin__coupon-name input {
+  width: 100%;
+  height: 25px;
+  font-size: 12px;
+  border: none;
+}
+
+.shopadmin__coupon-add {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.shopadmin__coupon-add button {
+  width: 80px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.shopadmin__coupon-delete {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.shopadmin__coupon-delete button{
+  width: 80px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width:768px) {
+  .shopadmin {
+    width: 90%;
+  }
+
+  .shopadmin__admin-inner {
+    display: inherit;
+  }
+
+  .shopadmin__admin-item {
+    padding: 10px 0px;
+    width: 90%;
+  }
+
+  .shopadmin__admin-heading {
+    width: 40%;
+  }
+  .shopadmin__admin-item input {
+    width: 60%;
+  }
+
+  .shopadmin__admin-bottom {
+    display: inherit;
+    width: inherit;
+  }
+
+  .shopadmin__admin-bottomleft {
+    padding-bottom: 20px;
+  }
+
+  .shopadmin__shopsetting-inner {
+    display: inherit;
+    font-size: clamp(14px, 3vw, 16px);
+  }
+
+  .shopadmin__shopsetting-heading {
+    width: 100%;
+  }
+    
+  .shopadmin__shopsetting-input {
+    width: 100%;
+  }
+
+  .shopadmin__shopsetting-input input {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .shopadmin__shopsetting-tag-heading {
+    font-size: clamp(14px, 3vw, 16px);
+  }
+
+  .shopadmin__shopsetting-overview {
+    font-size: clamp(14px, 3vw, 16px);
+    display: inherit;
+  }
+
+  .shopadmin__shopsetting-overview textarea {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .shopadmin__top-reservation {
+    display: inherit;
+  }
+
+  .shopadmin__ttl-reservation {
+    padding-bottom: 10px;
+    width: 100%;
   }
 }

@@ -2,26 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use\App\Models\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-    public function update(RegisterRequest $request)
+    public function update(UserRequest $request)
     {
-        $id = Auth::id();
+        if(empty($request->id)){
+            $id = Auth::id();
+        } else {
+            $id = $request->id;
+        };
         $form = $request->all();
         unset($form['_token']);
+
         User::find($id)->update($form);
 
         return back();
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
-        $id = Auth::id();
+        if(empty($request->user_id)){
+            $id = Auth::id();
+        } else {
+            $id = $request->user_id;
+        };
         User::find($id)->delete();
         return redirect('/user/destroy/withdraw');
     }

@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/settings-shopadmin');
+        return redirect('/shopadmin/settings');
     }
     
     public function destroy(Request $request)
@@ -32,6 +32,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/shop-admin/login');
+        return redirect('/shopadmin/login');
     }
 }

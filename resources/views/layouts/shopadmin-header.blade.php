@@ -7,6 +7,7 @@
   <title>キタチョク-店舗管理者登録</title>
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 </head>
 <body>
   <header class="header">
@@ -16,21 +17,22 @@
           <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="キタチョク"></a>
         </div>
       </div>
+      <div class="header__middle">店舗管理者ページ</div>
       <div class="header__right">
         @if(Auth::guard('shopadmin')->check())
-        <form action="/shop-admin/logout" method="post" class="header__menu--right">
+        <form action="/shopadmin/logout" method="post" class="header__menu--right">
           @csrf
           <button type="submit" class="header__menu-logout">ログアウト</button>
         </form>
         <div class="header__menu--right">
-          <a href="/settings-shopadmin">店舗管理ページ</a>
+          <a href="/shopadmin/settings">店舗管理ページ</a>
         </div>
         @else
         <div class="header__menu--right">
-          <a href="/shop-admin/login">店舗ログイン</a>
+          <a href="/shopadmin/login">店舗ログイン</a>
         </div>
         <div class="header__menu--right">
-          <a href="/shop-admin/register">新規登録</a>
+          <a href="/shopadmin/register">新規登録</a>
         </div>
         @endif
       </div>
@@ -38,15 +40,15 @@
         <ul class="header__list">
           @if(Auth::guard('shopadmin')->check())
           <li class="header__ham-item">
-            <form action="/shop-admin/logout" method="post" class="header__menu--right">
+            <form action="/shopadmin/logout" method="post">
               @csrf
               <button type="submit" class="header__menu-logout">ログアウト</button>
             </form>
           </li>
-          <li class="header__ham-item"><a href="/settings-shopadmin">店舗管理ページ</a></li>
+          <li class="header__ham-item"><a href="/shopadmin/settings">店舗管理ページ</a></li>
           @else
-          <li class="header__ham-item"><a href="/shop-admin/register">新規登録</a></li>
-          <li class="header__ham-item"><a href="/shop-admin/login">店舗ログイン</a></li>
+          <li class="header__ham-item"><a href="/shopadmin/register">新規登録</a></li>
+          <li class="header__ham-item"><a href="/shopadmin/login">店舗ログイン</a></li>
           @endif
         </ul>
       </div>
@@ -60,5 +62,7 @@
   @yield('shopadmin-header')
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/shopadmin.js') }}"></script>
+  <script src="{{ asset('js/search.js') }}"></script>
 </body>
 </html>

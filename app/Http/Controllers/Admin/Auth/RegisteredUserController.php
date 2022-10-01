@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\AdminRegisterRequest;
 
 class RegisteredUserController extends Controller
 {
@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
         return view('admin.auth.register');
     }
 
-    public function store(RegisterRequest $request)
+    public function store(AdminRegisterRequest $request)
     {
         $user = Admin::create([
             'name' => $request->name,

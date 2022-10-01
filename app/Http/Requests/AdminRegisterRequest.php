@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-class RegisterRequest extends FormRequest
+class AdminRegisterRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,9 +16,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:40',
-            'email' => 'required|unique:admins|email',
-            'password' => 'required|string|between:8,20',
+            'name' => ['required', 'string', 'max:40'],
+            'email' => ['required', 'email', Rule::unique('admins')->ignore(Auth::guard('admin')->id())],
         ];
     }
     public function messages()
@@ -27,8 +28,6 @@ class RegisterRequest extends FormRequest
             'email.required' => 'メールアドレスを入力してください',
             'email.unique' => '既に存在するメールアドレスです',
             'email.email' => 'メールアドレスの形式で入力してください',
-            'password.required' => '半角英数でパスワードを入力してください',
-            'password.between' => '8文字以上20字以内で入力してください',
         ];
     }
 }

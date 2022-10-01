@@ -13,15 +13,24 @@ class ShopAdminController extends Controller
     {
         $form = $request->all();
         unset($form['_token']);
-        $id = Auth::guard('shopadmin')->id();
+        if(empty($request->id)){
+            $id = Auth::guard('shopadmin')->id();
+        } else {
+            $id = $request->id;
+        };
         ShopAdmin::find($id)->update($form);
 
         return back();
     }
 
-    public function destory()
+    public function destroy(Request $request)
     {
-        $id = Auth::guard('shopadmin')->id();
+        if(empty($request->shopadmin_id)){
+            $id = Auth::guard('shopadmin')->id();
+        } else {
+            $id = $request->shopadmin_id;
+        };
+
         ShopAdmin::find($id)->delete();
 
         return redirect('/shopadmin/destroy/withdraw');

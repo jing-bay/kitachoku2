@@ -27,7 +27,7 @@
   </div>
   <div class="detail__shop-top">
     <div class="detail__shop-img">
-      <img src="{{ asset('images/4829554_s.jpg') }}" alt="店舗画像">
+      <img src="{{ asset('storage/shopimg/'.$shop->shop_img) }}" alt="店舗画像">
     </div>
     <div class="detail__shop-txt">
       {{ $shop->overview }}
@@ -60,17 +60,20 @@
       <div class="detail__review-content">
         @foreach($evaluations as $evaluation)
         <div class="detail__review-item">
-          <div class="detail__review-content-top">
-            <div class="detail__review-left">
-              <p class="detail__review-user">{{ $evaluation->reservation->user->name }}</p>
-              <p class="detail__review-star">{{ $evaluation->evaluation }}</p>
-              <p class="detail__visited-date">{{ $evaluation->reservation->reservation_date }}</p>
-            </div>
-            <div class="detail__review-comment">
-              {{ $evaluation->comment }}
-            </div>
-            <p class="detail__review-date">{{ $evaluation->created_at }}</p>
-          </div>
+          <p class="detail__review-user">{{ $evaluation->reservation->user->nickname }}様</p>
+          <p class="detail__visited-date">来店日：{{ $evaluation->reservation->reservation_date }}</p>
+          <p class="detail__review-star">
+            @for ($l = 5; $l >= 1; $l--)
+            @if($l == $evaluation->evaluation)
+            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" checked disabled>
+            @else
+            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" disabled>
+            @endif
+            <label for="star{{ $l }}">★</label>
+            @endfor
+          </p>
+          <div class="detail__review-comment">{{ $evaluation->comment }}</div>
+          <p class="detail__review-date">{{ $evaluation->created_at }}</p>
         </div>
         @endforeach
       </div>

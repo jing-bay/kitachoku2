@@ -7,6 +7,7 @@
   <title>キタチョク-管理者登録</title>
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 </head>
 <body>
   <header class="header">
@@ -16,6 +17,7 @@
           <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="キタチョク"></a>
         </div>
       </div>
+      <div class="header__middle">管理者ページ</div>
       <div class="header__right">
         @if(Auth::guard('admin')->check())
         <form action="/admin/logout" method="post" class="header__menu--right">
@@ -23,7 +25,7 @@
           <button type="submit" class="header__menu-logout">ログアウト</button>
         </form>
         <div class="header__menu--right">
-          <a href="/settings-admin">管理ページ</a>
+          <a href="/admin/settings">管理ページ</a>
         </div>
         @else
         <div class="header__menu--right">
@@ -60,5 +62,6 @@
   @yield('admin-header')
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/search.js') }}"></script>
 </body>
 </html>

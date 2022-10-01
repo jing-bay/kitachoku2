@@ -21,7 +21,7 @@ class SearchFavoriteController extends Controller
         $search_area = $request->search_area;
 
         if(!empty($search_name)){
-            $search_name_id = Shop::where('name', 'like binary', '%'.$search_name.'%')->pluck('id')->toArray();
+            $search_name_id = Shop::where('name', 'LIKE BINARY', '%'.$search_name.'%')->pluck('id')->toArray();
             $query->whereIn('shop_id', $search_name_id);
         }
 

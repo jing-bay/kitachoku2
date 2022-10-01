@@ -2,52 +2,137 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\Area;
 use App\Models\Tag;
 use App\Models\Shop;
+use App\Http\Requests\ShopRequest;
+use App\Http\Requests\UpdateShopRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Http\Requests\ShopRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
-    public function create()
-    {
-        $areas = Area::all();
-        $tags = Tag::all();
-
-        return view('create_shop', compact('areas', 'tags', 'shop_admin_id'));
-    }
-
     public function store(ShopRequest $request)
     {
-        $form = $request->all();
-        $shop = Shop::create($form);
-        $shop->tags()->attach($form->tags);
+        $file_name = $request->file('shop_img')->getClientOriginalName();
+        $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
+        Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
 
-        $shop_img = Image::make($request->file('shop_img'));
-        $shop_jpg = $shop_img->encode('jpg');
+        $shop = Shop::create([
+            'name' => $request->name2,
+            'shop_admin_id' => Auth::guard('shopadmin')->id(),
+            'area_id' => $request->area_id,
+            'postal_code' => $request->postal_code,
+            'address' => $request->address,
+            'opening_hour' => $request->opening_hour,
+            'holiday' => $request->holiday,
+            'tel_number' => $request->tel_number,
+            'email' => $request->email2,
+            'overview' => $request->overview,
+            'shop_img' => $file_name.'.jpg',
+            'shop_url' => $request->shop_url,
+            'facebook_url' => $request->facebook_url,
+            'twitter_url' => $request->twitter_url,
+        ]);
+
+        $shop->tags()->attach($request->tag_ids);
         
         return redirect('/shop/done');
     }
 
-    public function edit($shop_id)
-    {
-        $shop = Shop::find($shop_id);
-        $tags = $shop->tags->pluck('id')->toArray();
-        $areas = Area::all();
-        $tags_list = Tag::all();
-
-        return view('edit_shop', compact('shop', 'areas', 'tags', 'tags_list'));
-    }
-
-    public function update($shop_id, ShopRequest $request)
+    public function update($shop_id, UpdateShopRequest $request)
     {
         $form = $request->all();
         unset($form['_token']);
-        Shop::find($shop_id)->update($form);
         $shop = Shop::find($shop_id);
-        $shop->tags()->sync($request->tags);
+        $old_shop_img = $shop->shop_img;
+        
+        if(empty($request->file('shop_img')) && empty($request->shop_admin_id)) {
+            $shop->update([
+                'name' => $request->name2,
+                'shop_admin_id' => Auth::guard('shopadmin')->id(),
+                'area_id' => $request->area_id,
+                'postal_code' => $request->postal_code,
+                'address' => $request->address,
+                'opening_hour' => $request->opening_hour,
+                'holiday' => $request->holiday,
+                'tel_number' => $request->tel_number,
+                'email' => $request->email2,
+                'overview' => $request->overview,
+                'shop_img' => $old_shop_img,
+                'shop_url' => $request->shop_url,
+                'facebook_url' => $request->facebook_url,
+                'twitter_url' => $request->twitter_url,
+            ]);
+        } else if (empty($request->file('shop_img')) && !empty($request->shop_admin_id)) {
+            $shop->update([
+                'name' => $request->name2,
+                'shop_admin_id' => $request->shop_admin_id,
+                'area_id' => $request->area_id,
+                'postal_code' => $request->postal_code,
+                'address' => $request->address,
+                'opening_hour' => $request->opening_hour,
+                'holiday' => $request->holiday,
+                'tel_number' => $request->tel_number,
+                'email' => $request->email2,
+                'overview' => $request->overview,
+                'shop_img' => $old_shop_img,
+                'shop_url' => $request->shop_url,
+                'facebook_url' => $request->facebook_url,
+                'twitter_url' => $request->twitter_url,
+            ]);
+        } else if (!empty($request->file('shop_img')) && empty($request->shop_admin_id)) {
+
+            Storage::delete('public/shopimg/'.$old_shop_img);
+
+            $file_name = $request->file('shop_img')->getClientOriginalName();
+            $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
+            Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+
+            $shop->update([
+                'name' => $request->name2,
+                'shop_admin_id' => Auth::guard('shopadmin')->id(),
+                'area_id' => $request->area_id,
+                'postal_code' => $request->postal_code,
+                'address' => $request->address,
+                'opening_hour' => $request->opening_hour,
+                'holiday' => $request->holiday,
+                'tel_number' => $request->tel_number,
+                'email' => $request->email2,
+                'overview' => $request->overview,
+                'shop_img' => $file_name.'.jpg',
+                'shop_url' => $request->shop_url,
+                'facebook_url' => $request->facebook_url,
+                'twitter_url' => $request->twitter_url,
+            ]);
+        } else {
+            Storage::delete('public/shopimg/'.$old_shop_img);
+
+            $file_name = $request->file('shop_img')->getClientOriginalName();
+            $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
+            Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+
+            $shop->update([
+                'name' => $request->name2,
+                'shop_admin_id' => $request->shop_admin_id,
+                'area_id' => $request->area_id,
+                'postal_code' => $request->postal_code,
+                'address' => $request->address,
+                'opening_hour' => $request->opening_hour,
+                'holiday' => $request->holiday,
+                'tel_number' => $request->tel_number,
+                'email' => $request->email2,
+                'overview' => $request->overview,
+                'shop_img' => $file_name.'.jpg',
+                'shop_url' => $request->shop_url,
+                'facebook_url' => $request->facebook_url,
+                'twitter_url' => $request->twitter_url,
+            ]);
+        };
+        
+        $shop->tags()->sync($request->tag_ids);
 
         return redirect('/shop/done');
     }

@@ -16,20 +16,20 @@ class SearchUserController extends Controller
     {
         $query = User::query();
 
-        $search_name = $request->search_name;
+        $search_name2 = $request->search_name2;
         $search_nickname = $request->search_nickname;
-        $search_email = $request->search_email;
+        $search_email2 = $request->search_email2;
 
-        if(!empty($search_name)){
-            $query->where('name', $search_name);
+        if(!empty($search_name2)){
+            $query->where('name', 'LIKE BINARY', '%'.$search_name2.'%');
         }
 
         if(!empty($search_nickname)){
-            $query->where('nickname', $search_nickname);
+            $query->where('nickname', 'LIKE BINARY', '%'.$search_nickname.'%');
         }
 
-        if(!empty($search_email)){
-            $query->where('email', $search_email);
+        if(!empty($search_email2)){
+            $query->where('email', 'LIKE BINARY', '%'.$search_email2.'%');
         }
 
         $users = $query->paginate(100);
@@ -39,6 +39,6 @@ class SearchUserController extends Controller
         $notices = Notice::paginate(100);
         $areas = Area::all();
 
-        return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas'));
+        return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas', 'search_name2', 'search_nickname', 'search_email2'));
     }
 }

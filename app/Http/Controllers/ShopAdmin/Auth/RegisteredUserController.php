@@ -31,6 +31,6 @@ class RegisteredUserController extends Controller
 
         Auth::guard('shopadmin')->login($user);
 
-        return redirect('/shop-admin/send-thanks');
+        return redirect('/shopadmin/send-thanks');
     }
 }

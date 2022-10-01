@@ -14,15 +14,15 @@ class CouponRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:50'
+            'name3' => 'required|string|max:50'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'クーポン名を入力してください',
-            'name.max' => '50字以内で入力してください',
+            'name3.required' => 'クーポン名を入力してください',
+            'name3.max' => '50字以内で入力してください',
         ];
     }
 }

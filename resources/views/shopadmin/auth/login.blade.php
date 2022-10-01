@@ -3,7 +3,7 @@
 @section ('shopadmin-header')
 <div class="register">
   <p class="register__ttl">ログイン</p>
-  <form action="/shop-admin/login" method="post">
+  <form action="/shopadmin/login" method="post">
     @csrf
     <div class="register__content">
       <table class="register__inner">
@@ -26,9 +26,10 @@
           </td>
         </tr>
       </table>
+      <div class="login__password-reset">パスワードを忘れた、変更したい場合は<a href="/shopadmin/forgot-password">こちら</a>から</div>
     </div>
     <div class="register__btn">
-      <button class="register__btn-form" type="submit">登録する</button>
+      <button class="register__btn-form" type="submit">ログイン</button>
     </div>
   </form>
 </div>

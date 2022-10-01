@@ -3,7 +3,7 @@
 @section ('shopadmin-header')
 <div class="register">
   <p class="register__ttl">会員登録</p>
-  <form action="/shop-admin/register" method="post">
+  <form action="/shopadmin/register" method="post">
     @csrf
     <div class="register__content">
       <table class="register__inner">

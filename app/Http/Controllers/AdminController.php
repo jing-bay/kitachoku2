@@ -10,11 +10,11 @@ use App\Models\Notice;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\AdminRegisterRequest;
+use App\Http\Requests\AdminRequest;
 
 class AdminController extends Controller
 {
-    public function update(AdminRegisterRequest $request)
+    public function update(AdminRequest $request)
     {
         $form = $request->all();
         unset($form['_token']);

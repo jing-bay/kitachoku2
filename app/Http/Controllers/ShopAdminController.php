@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\ShopAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ShopAdminRegisterRequest;
+use App\Http\Requests\ShopAdminRequest;
 
 class ShopAdminController extends Controller
 {
-    public function update(ShopAdminRegisterRequest $request)
+    public function update(ShopAdminRequest $request)
     {
         $form = $request->all();
         unset($form['_token']);

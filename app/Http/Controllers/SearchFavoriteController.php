@@ -35,8 +35,8 @@ class SearchFavoriteController extends Controller
         $user = Auth::user();
         $id = Auth::id();
         $today = date("Y-m-d");
-        $unvisited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '>=', $today)->orderBy('id', 'asc')->get();
-        $visited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '<', $today)->orderBy('id', 'asc')->get();
+        $unvisited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '>', $today)->orderBy('id', 'asc')->get();
+        $visited_reservations = Reservation::where('user_id', $id)->where('reservation_date', '<=', $today)->orderBy('id', 'asc')->get();
         $reservation_ids = Reservation::where('user_id', $id)->pluck('id')->toArray();
         $evaluations = Evaluation::whereIn('reservation_id', $reservation_ids)->get();
         $areas = Area::all();

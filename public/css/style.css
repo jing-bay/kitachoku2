@@ -1252,7 +1252,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .register__content-error {
-  font-size: clamp(10px, 2vw, 14px);
+  font-size: clamp(10px, 1.5vw, 14px);
   color: #ff0000;
   padding-bottom: 10px;
 }
@@ -1879,6 +1879,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: none;
   background-color: inherit;
   cursor: pointer;
+}
+
+.mypage__content-error {
+  font-size: 10px;
+  color: #ff0000;
+  padding-bottom: 10px;
 }
 
 @media screen and (max-width:768px) {
@@ -2589,4 +2595,707 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-bottom: 10px;
     width: 100%;
   }
+}
+
+/*管理者ページ*/
+.admin {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.admin__ttl-admin {
+  padding-top: 80px;
+  font-size: clamp(18px, 3vw, 24px);
+  padding-bottom: 20px;
+}
+
+.admin__content-admin {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.admin__admin-inner {
+  width: 100%;
+  padding: 20px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.admin__admin-left {
+  width: 35%;
+  font-size: clamp(12px, 1.5vw, 18px);
+  display: flex;
+}
+
+.admin__admin-right {
+  width: 65%;
+  font-size: clamp(12px, 1.5vw, 18px);
+  display: flex;
+}
+
+.admin__admin-heading {
+  width: 25%;
+}
+
+.admin__admin-input {
+  width: 75%;
+}
+
+.admin__admin-input input {
+  width: 90%;
+  font-size: clamp(12px, 1.5vw, 18px);
+  border-bottom: 1px solid #000000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.admin__admin-right input {
+  width: 90%;
+  font-size: clamp(12px, 1.5vw, 18px);
+  border-bottom: 1px solid #000000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.admin__admin-bottom {
+  display: flex;
+  padding-top: 20px;
+  width: 400px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.admin__admin-changebtn {
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.admin__admin-deletebtn {
+  width: 150px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.admin__shop-btn {
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 35px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+.admin__shop-bottom {
+  display: flex;
+  padding-top: 20px;
+  width: 400px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.admin__top-item {
+  display: flex;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.admin__ttl-shop {
+  font-size: clamp(18px, 2.5vw, 24px);
+  width: 15%;
+}
+
+.admin__shop-top {
+  display: flex;
+  width: 500px;
+  padding-left: 20px;
+}
+
+.admin__shop-searchbox {
+  cursor: pointer;
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  border-radius: 5px;
+  color: #777777;
+  padding-left: 10px;
+}
+
+.admin__shop-name {
+  width: 100%;
+  padding-right: 20px;
+}
+
+.admin__shop-area {
+  width: 100%;
+  padding-right: 20px;
+}
+
+.admin__shop-content {
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  height: 400px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.admin__shop-inner {
+  table-layout: fixed;
+  min-width: 100%;
+}
+
+.admin__shop-item {
+  overflow: scroll;
+  font-size: 14px;
+}
+
+.admin__shop-item:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
+
+.admin__shop-item-shop {
+  width: 200px;
+  min-width: 200px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shop-item-area {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shop-item-address {
+  width: 400px;
+  min-width: 400px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shop-item-shopadmin {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shop-item-btn {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+}
+
+.admin__shop-item-btn button {
+  width: 80px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.admin__ttl-shopadmin {
+  font-size: clamp(18px, 2.5vw, 24px);
+  width: 25%;
+}
+
+.admin__shopadmin-left {
+  margin-left: 20px;
+  width: 30%;
+}
+
+.admin__shopadmin-right {
+  width: 30%;
+  margin-left: 20px;
+}
+
+.admin__shopadmin-searchbox {
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.admin__shopadmin-top {
+  display: flex;
+}
+
+.admin__shopadmin-content {
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  height: 400px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.admin__shopadmin-inner {
+  table-layout: fixed;
+  min-width: 100%;
+}
+
+.admin__shopadmin-item {
+  overflow: scroll;
+  font-size: 14px;
+  height: 100%;
+}
+
+.admin__shopadmin-item:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
+
+.admin__shopadmin-item-name {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shopadmin-item-shop {
+  width: 250px;
+  min-width: 250px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shopadmin-item-email {
+  width: 250px;
+  min-width: 250px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shopadmin-item-change {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shopadmin-item-change a{
+  display: block;
+  width: 80px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.admin__shopadmin-item-btn {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__shopadmin-item-btn button{
+  width: 80px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.admin__ttl-user {
+  padding-bottom: 20px;
+  width: 100%;
+  font-size: clamp(18px, 3vw, 24px);
+}
+
+.admin__user-top {
+  display: inherit;
+  max-width: 400px;
+  width: 100%;
+  padding-left: 0px;
+}
+
+.admin__user-left {
+  margin-left: 20px;
+  width: 30%;
+}
+
+.admin__user-right {
+  margin-left: 20px;
+  width: 30%;
+}
+
+.admin__user-searchbox {
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.admin__user-content {
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  height: 400px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.admin__user-inner {
+  table-layout: fixed;
+  min-width: 100%;
+}
+
+.admin__user-item {
+  overflow: scroll;
+  font-size: 14px;
+  height: 100%;
+}
+
+.admin__user-item:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
+
+.admin__user-item-name {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__user-item-nickname {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__user-item-email {
+  width: 250px;
+  min-width: 250px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__user-item-change {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__user-item-btn {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__user-item-change a {
+  display: block;
+  width: 80px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.admin__user-item-btn button {
+  width: 80px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.admin__ttl-coupon {
+  padding: 30px 0px;
+  font-size: clamp(18px, 3vw, 24px);
+}
+
+.admin__coupon-content {
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  padding: 20px;
+  height: 300px;
+  overflow: scroll;
+  margin-bottom: 30px;
+}
+
+.admin__coupon-inner {
+  table-layout: fixed;
+  min-width: 100%;
+}
+
+.admin__coupon-item {
+  overflow: scroll;
+  font-size: 12px;
+}
+
+.admin__coupon-item:not(:last-child) {
+  border-bottom: 1px solid #000000;
+}
+
+.admin__coupon-name {
+  width: 200px;
+  min-width: 200px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__coupon-name input {
+  width: 100%;
+  height: 25px;
+  font-size: 12px;
+  border: none;
+}
+
+.admin__coupon-update {
+  width: 150px;
+  min-width: 150px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__coupon-add {
+  width: 80px;
+  min-width: 80px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__coupon-add button {
+  width: 80px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
+.admin__coupon-delete {
+  width: 100px;
+  min-width: 100px;
+  overflow: scroll;
+  padding: 10px 10px 10px 0px;
+}
+
+.admin__coupon-delete button {
+  width: 80px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width:768px) {
+  .admin {
+    width: 90%;
+  }
+
+  .admin__admin-inner {
+    display: inherit;
+    padding: 20px;
+  }
+
+  .admin__admin-left {
+    width: 100%;
+    font-size: clamp(12px, 3vw, 16px);
+    padding: 10px 0px;
+  }
+
+  .admin__admin-right {
+    width: 100%;
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .admin__admin-heading {
+    width: 35%;
+  }
+
+  .admin__admin-input {
+    width: 65%;
+  }
+
+  .admin__admin-input input {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .admin__admin-right input {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .admin__admin-bottom {
+    display: inherit;
+    width: inherit;
+  }
+
+  .admin__admin-bottomleft {
+    padding-bottom: 20px;
+  }
+
+  .admin__top-item {
+    display: inherit;
+  }
+
+  .admin__ttl-shop {
+    padding-bottom: 20px;
+    width: 100%;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  .admin__ttl-shopadmin {
+    padding-bottom: 20px;
+    width: 100%;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  .admin__shop-top {
+    display: inherit;
+    max-width: 400px;
+    width: 100%;
+    padding-left: 0px;
+  }
+
+  .admin__shop-name {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+
+  .admin__shop-area {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+
+  .admin__shopadmin-top {
+    display: inherit;
+    max-width: 400px;
+    width: 100%;
+    padding-left: 0px;
+  }
+
+  .admin__shopadmin-left {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+  }
+
+  .admin__shopadmin-right {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+  }
+
+  .admin__user-top {
+    display: inherit;
+  }
+
+  .admin__user-left {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+  }
+
+  .admin__user-right {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+  }
+}
+
+/*評価編集ページ*/
+.review__edit-inner {
+  height: 200px;
+  width: 80%;
+  overflow: scroll;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 100px auto;
+}
+
+.review__edit-content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
 }

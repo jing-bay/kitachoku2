@@ -23,7 +23,7 @@
           <tr>
             <td class="mypage__reservation-table-ttl">クーポン名</td>
             <td class="mypage__reservation-table-content">
-              <div class="mypage__reservation-error">
+              <div class="mypage__content-error">
                 @error('coupon_id')
                 {{ $message }}
                 @enderror
@@ -38,7 +38,7 @@
           <tr>
             <td class="mypage__reservation-table-ttl">来店日</td>
             <td class="mypage__reservation-table-content">
-              <div class="mypage__reservation-error">
+              <div class="mypage__content-error">
                 @error('reservation_date')
                 {{ $message }}
                 @enderror
@@ -49,7 +49,7 @@
           <tr>
             <td class="mypage__reservation-table-ttl">来店時間</td>
             <td class="mypage__reservation-table-content">
-              <div class="mypage__reservation-error">
+              <div class="mypage__content-error">
                 @error('reservation_time')
                 {{ $message }}
                 @enderror

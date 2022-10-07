@@ -27,7 +27,11 @@
   </div>
   <div class="detail__shop-top">
     <div class="detail__shop-img">
+      @if(app()->isLocal())
       <img src="{{ asset('storage/shopimg/'.$shop->shop_img) }}" alt="店舗画像">
+      @else
+      <img src="{{ $shop->shop_img }}" alt="店舗画像">
+      @endif
     </div>
     <div class="detail__shop-txt">
       {{ $shop->overview }}

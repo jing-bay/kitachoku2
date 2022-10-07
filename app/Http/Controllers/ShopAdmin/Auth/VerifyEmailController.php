@@ -18,13 +18,13 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect('/shop-admin/register-thanks');
+            return redirect('/shopadmin/register-thanks');
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return redirect('/shop-admin/register-thanks');
+        return redirect('/shopadmin/register-thanks');
     }
 }

@@ -16,9 +16,13 @@ class ShopController extends Controller
 {
     public function store(ShopRequest $request)
     {
-        $file_name = $request->file('shop_img')->getClientOriginalName();
-        $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
+    $file_name = $request->file('shop_img')->getClientOriginalName();
+    $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
+    if ( app()->isLocal() ) {
         Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+    } else {
+        Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+    }
 
         $shop = Shop::create([
             'name' => $request->name2,
@@ -66,6 +70,7 @@ class ShopController extends Controller
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
+
         } else if (empty($request->file('shop_img')) && !empty($request->shop_admin_id)) {
             $shop->update([
                 'name' => $request->name2,
@@ -83,13 +88,22 @@ class ShopController extends Controller
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
-        } else if (!empty($request->file('shop_img')) && empty($request->shop_admin_id)) {
 
-            Storage::delete('public/shopimg/'.$old_shop_img);
+        } else if (!empty($request->file('shop_img')) && empty($request->shop_admin_id)) {
+            if ( app()->isLocal() ) {
+                Storage::delete('public/shopimg/'.$old_shop_img);
+            } else {
+                Storage::disk('s3')->delete($old_shop_img);
+            }
 
             $file_name = $request->file('shop_img')->getClientOriginalName();
             $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
-            Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+            
+            if ( app()->isLocal() ) {
+                Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+            } else {
+                Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+            }
 
             $shop->update([
                 'name' => $request->name2,
@@ -108,11 +122,19 @@ class ShopController extends Controller
                 'twitter_url' => $request->twitter_url,
             ]);
         } else {
-            Storage::delete('public/shopimg/'.$old_shop_img);
+            if ( app()->isLocal() ) {
+                Storage::delete('public/shopimg/'.$old_shop_img);
+            } else {
+                Storage::disk('s3')->delete($old_shop_img);
+            }
 
             $file_name = $request->file('shop_img')->getClientOriginalName();
             $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
-            Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+            if ( app()->isLocal() ) {
+                Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+            } else {
+                Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+            }
 
             $shop->update([
                 'name' => $request->name2,
@@ -144,6 +166,14 @@ class ShopController extends Controller
 
     public function destroy($shop_id)
     {
+        $shop_img =Shop::find($shop_id)->shop_img;
+
+        if ( app()->isLocal() ) {
+            Storage::delete('public/shopimg/'.$shop_img);
+        } else {
+            Storage::disk('s3')->delete($shop_img);
+        }
+
         Shop::find($shop_id)->delete();
 
         return redirect('/shop/done');

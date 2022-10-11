@@ -17,7 +17,7 @@ class ShopController extends Controller
     public function store(ShopRequest $request)
     {
     if ( app()->isLocal() ) {
-        $path = Storage::putFile('public/shopimg/', $request->shop_img, 'public');
+        $path = Storage::putFile('public/shopimg/', $request->shop_img);
         $file_name = Storage::url($path);
     } else {
         $path = Storage::disk('s3')->putFile('/', $request->shop_img, 'public');

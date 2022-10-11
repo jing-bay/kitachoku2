@@ -16,12 +16,12 @@ class ShopController extends Controller
 {
     public function store(ShopRequest $request)
     {
-    $file_name = $request->file('shop_img')->getClientOriginalName();
-    $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
     if ( app()->isLocal() ) {
-        Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+        $path = Storage::putFile('public/shopimg/', $request->shop_img, 'public');
+        $file_name = Storage::url($path);
     } else {
-        Storage::disk('s3')->put($file_name.'.jpg', $img_jpg, 'public');
+        $path = Storage::disk('s3')->putFile('/', $request->shop_img, 'public');
+        $file_name = Storage::disk('s3')->url($path);
     }
 
         $shop = Shop::create([
@@ -35,7 +35,7 @@ class ShopController extends Controller
             'tel_number' => $request->tel_number,
             'email' => $request->email2,
             'overview' => $request->overview,
-            'shop_img' => $file_name.'.jpg',
+            'shop_img' => $file_name,
             'shop_url' => $request->shop_url,
             'facebook_url' => $request->facebook_url,
             'twitter_url' => $request->twitter_url,

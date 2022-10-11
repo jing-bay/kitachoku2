@@ -20,8 +20,10 @@ class ShopController extends Controller
     $img_jpg = Image::make($request->file('shop_img'))->encode('jpg');
     if ( app()->isLocal() ) {
         Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
+        $file_path = 'public/shopimg/'.$file_name.'.jpg';
     } else {
-        Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+        $file = Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+        $file_path = Storage::url($file);
     }
 
         $shop = Shop::create([
@@ -35,7 +37,7 @@ class ShopController extends Controller
             'tel_number' => $request->tel_number,
             'email' => $request->email2,
             'overview' => $request->overview,
-            'shop_img' => $file_name.'.jpg',
+            'shop_img' => $file_path,
             'shop_url' => $request->shop_url,
             'facebook_url' => $request->facebook_url,
             'twitter_url' => $request->twitter_url,

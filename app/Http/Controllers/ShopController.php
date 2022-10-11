@@ -21,7 +21,7 @@ class ShopController extends Controller
     if ( app()->isLocal() ) {
         Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
     } else {
-        Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+        Storage::disk('s3')->put($file_name.'.jpg', $img_jpg, 'public');
     }
 
         $shop = Shop::create([
@@ -102,7 +102,7 @@ class ShopController extends Controller
             if ( app()->isLocal() ) {
                 Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
             } else {
-                Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+                Storage::disk('s3')->put($file_name.'.jpg', $img_jpg, 'public');
             }
 
             $shop->update([
@@ -133,7 +133,7 @@ class ShopController extends Controller
             if ( app()->isLocal() ) {
                 Storage::put('public/shopimg/'.$file_name.'.jpg', $img_jpg);
             } else {
-                Storage::disk('s3')->put($file_name.'.jpg', $img_jpg);
+                Storage::disk('s3')->put($file_name.'.jpg', $img_jpg, 'public');
             }
 
             $shop->update([
@@ -167,7 +167,7 @@ class ShopController extends Controller
     public function destroy($shop_id)
     {
         $shop_img =Shop::find($shop_id)->shop_img;
-
+        
         if ( app()->isLocal() ) {
             Storage::delete('public/shopimg/'.$shop_img);
         } else {

@@ -20,7 +20,8 @@ class ShopController extends Controller
             $file_path = $request->file('shop_img')->getClientOriginalName();
             Storage::putFileAs('public/shopimg', $request->file('shop_img'), $file_path);
         } else {
-            $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+            $file = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+            $file_path = Storage::disk('s3')->url($file);
         }
 
         $shop = Shop::create([
@@ -99,7 +100,8 @@ class ShopController extends Controller
                 $file_path = $request->file('shop_img')->getClientOriginalName();
                 Storage::putFileAs('public/shopimg', $request->file('shop_img'), $file_path);
             } else {
-                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+                $file = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+                $file_path = Storage::disk('s3')->url($file);
             }
 
             $shop->update([
@@ -131,7 +133,8 @@ class ShopController extends Controller
                 $file_path = $request->file('shop_img')->getClientOriginalName();
                 Storage::putFileAs('public/shopimg', $request->file('shop_img'), $file_path);
             } else {
-                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+                $file = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+                $file_path = Storage::disk('s3')->url($file);
             }
 
             $shop->update([

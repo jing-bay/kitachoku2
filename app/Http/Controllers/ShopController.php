@@ -20,7 +20,7 @@ class ShopController extends Controller
             $file = Storage::putFile('public/shopimg/', $request->file('shop_img'));
             $file_path = Storage::url($file);
         } else {
-            $file = Storage::disk('s3')->putFile('public/shopimg/', $request->file('shop_img'), 'public');
+            $file = Storage::disk('s3')->putFile('public/shopimg/', $request->file('shop_img'));
             $file_path = Storage::url($file);
         }
 

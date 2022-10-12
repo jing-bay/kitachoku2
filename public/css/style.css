@@ -2280,6 +2280,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #000000;
   padding-top: 10px;
   font-size: clamp(12px, 1.8vw, 14px);
+  word-break: break-all
 }
 
 .shopadmin__shopsetting-tag-heading {

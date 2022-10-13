@@ -1321,7 +1321,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-left: 20px;
 }
 
-/*メール送信完了画面*/
+/*サンクス画面*/
 .thanks {
   width: 50%;
   margin: 0 auto;
@@ -1342,6 +1342,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 0 auto;
   width: 80%;
   text-align: center;
+  padding-bottom: 30px;
+}
+
+.thanks__backbtn {
+  width: 100px;
+  background-color: #87c957;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
 }
 
 @media screen and (max-width:768px) {
@@ -1446,9 +1461,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .mypage__reservation-table {
   width: 80%;
-  padding: 15px 0px;
-  display: flex;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .mypage__reservation-table tr {
@@ -1463,6 +1476,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .mypage__reservation-table-content {
   width: 70%;
+  padding-left: 10px;
   font-size: 14px;
 }
 
@@ -1475,6 +1489,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .mypage__reservation-date {
   border: none;
   cursor: pointer;
+  font-size: 12px;
 }
 
 .mypage__reservation-time {
@@ -1487,6 +1502,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
 }
 
 .mypage__reservation-btn {
@@ -1813,7 +1829,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 20px 0px;
   display: flex;
   justify-content: space-between;
-  height: 150px;
 }
 
 .mypage__review-content:not(:last-child) {
@@ -1854,6 +1869,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .mypage__review-date {
   padding-top: 5px;
   font-size: clamp(10px, 2vw, 14px);
+  line-height: 120%;
 }
 
 .mypage__review-right {
@@ -1863,7 +1879,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .mypage__review-comment {
   font-size: clamp(10px, 2vw, 14px);
   padding: 10px 0px;
-  height: 80%;
+  height: 100px;
   overflow: scroll;
 }
 
@@ -2316,6 +2332,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .shopadmin__shopsetting-overview label {
   width: 15%;
+  padding-bottom: 10px;
+  display: block;
 }
 
 .shopadmin__shopsetting-overview textarea {
@@ -2816,35 +2834,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__shop-item-shop {
   width: 200px;
   min-width: 200px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
+}
+
+.admin__shop-item-shop a{
+  border-bottom: 1px solid #959595;
 }
 
 .admin__shop-item-area {
   width: 100px;
   min-width: 100px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__shop-item-address {
   width: 400px;
   min-width: 400px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__shop-item-shopadmin {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__shop-item-btn {
   width: 100px;
   min-width: 100px;
-  overflow: scroll;
 }
 
 .admin__shop-item-btn button {
@@ -2919,28 +2936,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__shopadmin-item-name {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__shopadmin-item-shop {
   width: 250px;
   min-width: 250px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__shopadmin-item-email {
   width: 250px;
   min-width: 250px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__shopadmin-item-change {
   width: 100px;
   min-width: 100px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
@@ -3039,35 +3052,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__user-item-name {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__user-item-nickname {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__user-item-email {
   width: 250px;
   min-width: 250px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__user-item-change {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__user-item-btn {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
@@ -3133,7 +3141,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__notice-name {
   width: 200px;
   min-width: 200px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
@@ -3147,14 +3154,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__notice-update {
   width: 150px;
   min-width: 150px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
 .admin__notice-add {
   width: 80px;
   min-width: 80px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
@@ -3174,7 +3179,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__notice-delete {
   width: 100px;
   min-width: 100px;
-  overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 

@@ -13,7 +13,7 @@
                         @error('name')
                         <p class="register__content-error">{{ $message }}</p>
                         @enderror
-                        <input type="text" name="name">
+                        <input type="text" name="name" value="{{ old('name') }}">
                     </td>
                 </tr>
                 <tr>
@@ -22,7 +22,7 @@
                         @error('nickname')
                         <p class="register__content-error">{{ $message }}</p>
                         @enderror
-                        <input type="text" name="nickname">
+                        <input type="text" name="nickname" value="{{ old('nickname') }}">
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         @error('email')
                         <p class="register__content-error">{{ $message }}</p>
                         @enderror
-                        <input type="text" name="email">
+                        <input type="text" name="email" value="{{ old('email') }}">
                     </td>
                 </tr>
                 <tr>

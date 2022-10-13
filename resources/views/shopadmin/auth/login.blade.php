@@ -13,7 +13,7 @@
             @error('email')
             <p class="register__content-error">{{ $message }}</p>
             @enderror
-            <input type="text" name="email">
+            <input type="text" name="email" value="{{ old('email') }}">
           </td>
         </tr>
         <tr>

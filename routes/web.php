@@ -46,7 +46,6 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/reservation-thanks', [ReservationController::class, 'show']);
     Route::get('/user/settings', [SettingsUserController::class, 'index']);
     Route::post('/reservation/update/{reservation_id}', [ReservationController::class, 'update']);
-    Route::get('/reservation-cancel', [ReservationController::class, 'cancel']);
     Route::get('/search/favorite', [SearchFavoriteController::class, 'search']);
     Route::get('/search/visited', [SearchVisitedController::class, 'search']);
 });
@@ -91,6 +90,7 @@ Route::middleware(['auth:web,admin', 'verified'])->group(function (){
 
 Route::middleware(['auth:web,shopadmin', 'verified'])->group(function (){
     Route::post('/reservation/destroy/{reservation_id}', [ReservationController::class, 'destroy']);
+    Route::get('/reservation-cancel', [ReservationController::class, 'cancel']);
 });
 
 require __DIR__.'/auth.php';

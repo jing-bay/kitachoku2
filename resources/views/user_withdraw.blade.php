@@ -21,12 +21,12 @@
   <div class="thanks">
   <div class="thanks__inner">
     <p class="thanks__txt">
-      完了しました
+      ユーザーの削除が完了しました
     </p>
-    @if(Auth::guard('shopadmin')->check())
-    <button type="button" onclick="location.href='/shopadmin/settings'" class="thanks__backbtn">戻る</button>
-    @elseif(Auth::guard('admin')->check())
+    @if(Auth::guard('admin')->check())
     <button type="button" onclick="location.href='/admin/settings'" class="thanks__backbtn">戻る</button>
+    @else
+    <button type="button" onclick="location.href='/'" class="thanks__backbtn">戻る</button>
     @endif
   </div>
 </div>

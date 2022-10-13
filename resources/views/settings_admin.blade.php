@@ -64,7 +64,7 @@
       </tr>
       @foreach($shops as $shop)
       <tr class="admin__shop-item">
-        <td class="admin__shop-item-shop"><a href="/admin/settings/shopdetail/{{ $shop->id }}">{{ $shop->name }}</a></td>
+        <td class="admin__shop-item-shop"><a href="/admin/settings/shopdetail/{{ $shop->id }}">{{ $shop->name }} &gt;&gt;</a></td>
         <td class="admin__shop-item-area">{{ $shop->area->name }}</td>
         <td class="admin__shop-item-address">{{ $shop->address }}</td>
         <td class="admin__shop-item-shopadmin">{{ $shop->shopAdmin->name }}</td>

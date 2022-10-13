@@ -41,7 +41,7 @@
         @error('name2')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="name2" value="{{ !empty($shop) ? $shop->name : '' }}">
+        <input type="text" name="name2" value="{{ !empty($shop) ? $shop->name : old('name2') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">エリア</li>
       <li class="shopadmin__shopsetting-input">
@@ -53,7 +53,7 @@
           @if(!empty($shop))
           <option value="{{ $area->id }}" {{ $area->id == $shop->area_id ? 'selected' : '' }}>{{ $area->name }}</option>
           @else
-          <option value="{{ $area->id }}">{{ $area->name }}</option>
+          <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>{{ $area->name }}</option>
           @endif
           @endforeach
         </select>
@@ -63,49 +63,49 @@
         @error('postal_code')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="postal_code" class="p-postal-code"  value="{{ !empty($shop) ? $shop->postal_code : '' }}" onblur="toHalfWidth(this)">
+        <input type="text" name="postal_code" class="p-postal-code"  value="{{ !empty($shop) ? $shop->postal_code : old('postal_code') }}" onblur="toHalfWidth(this)">
       </li>
       <li class="shopadmin__shopsetting-heading">住所</li>
       <li class="shopadmin__shopsetting-input">
         @error('address')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" class="p-region p-locality p-street-address p-extended-address" name="address"  value="{{ !empty($shop) ? $shop->address : '' }}">
+        <input type="text" class="p-region p-locality p-street-address p-extended-address" name="address"  value="{{ !empty($shop) ? $shop->address : old('address') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">営業時間</li>
       <li class="shopadmin__shopsetting-input">
         @error('opening_hour')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="opening_hour"  value="{{ !empty($shop) ? $shop->opening_hour : '' }}">
+        <input type="text" name="opening_hour" value="{{ !empty($shop) ? $shop->opening_hour : old('opening_hour') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">定休日</li>
       <li class="shopadmin__shopsetting-input">
         @error('holiday')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="holiday"  value="{{ !empty($shop) ? $shop->holiday : '' }}">
+        <input type="text" name="holiday" value="{{ !empty($shop) ? $shop->holiday : old('holiday') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">店舗URL</li>
       <li class="shopadmin__shopsetting-input">
         @error('shop_url')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="shop_url"  value="{{ !empty($shop) ? $shop->shop_url : '' }}">
+        <input type="text" name="shop_url" value="{{ !empty($shop) ? $shop->shop_url : old('shop_url') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">FacebookURL</li>
       <li class="shopadmin__shopsetting-input">
         @error('facebook_url')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="facebook_url"  value="{{ !empty($shop) ? $shop->facebook_url : '' }}">
+        <input type="text" name="facebook_url"  value="{{ !empty($shop) ? $shop->facebook_url : old('facebook_url') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">TwitterURL</li>
       <li class="shopadmin__shopsetting-input">
         @error('twitter_url')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="twitter_url"  value="{{ !empty($shop) ? $shop->twitter_url : '' }}">
+        <input type="text" name="twitter_url" value="{{ !empty($shop) ? $shop->twitter_url : old('twitter_url') }}">
       </li>
       <li class="shopadmin__shopsetting-heading">店舗画像</li>
       <li class="shopadmin__shopsetting-input">
@@ -122,14 +122,14 @@
         @error('tel_number')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="tel_number" value="{{ !empty($shop) ? $shop->tel_number : ''}}" onblur=toHalfWidth(this)>
+        <input type="text" name="tel_number" value="{{ !empty($shop) ? $shop->tel_number : old('tel_number') }}" onblur=toHalfWidth(this)>
       </li>
       <li class="shopadmin__shopsetting-heading">メールアドレス</li>
       <li class="shopadmin__shopsetting-input">
         @error('email2')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="email2"  value="{{ !empty($shop) ? $shop->email : ''}}">
+        <input type="text" name="email2" value="{{ !empty($shop) ? $shop->email : old('email2') }}">
       </li>
     </ul>
     <div class="shopadmin__shopsetting-tags">
@@ -140,9 +140,9 @@
           @if(!empty($shop))
           <input type="checkbox" name="tag_ids[]" id="{{ $tag->name }}" value="{{ $tag->id }}" {{ in_array($tag->id, $tagIds) ? 'checked' : '' }}>
           @else
-          <input type="checkbox" name="tag_ids[]" id="{{ $tag->name }}" value="{{ $tag->id }}">
+          <input type="checkbox" name="tag_ids[]" id="{{ $tag->name }}" value="{{ $tag->id }}" {{ !empty(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'checked' : '' }}>
           @endif
-          <label for="{{ $tag->name }}" class="search__tag-label">{{ $tag->name }}</label>
+          <label for="{{ $tag->name }}" class="search__tag-label" >{{ $tag->name }}</label>
         </li>
         @endforeach
       </ul>
@@ -152,7 +152,7 @@
       @error('overview')
       <p class="register__content-error">{{ $message }}</p>
       @enderror
-      <textarea name="overview">{{ !empty($shop) ? $shop->overview : '' }}</textarea>
+      <textarea name="overview">{{ !empty($shop) ? $shop->overview : old('overview') }}</textarea>
     </div>
   </form>
   @if(empty($shop))
@@ -239,7 +239,7 @@
             @error('name3')
             <p class="register__content-error">{{ $message }}</p>
             @enderror
-            <input type="text" name="name3" placeholder= "クーポン名を記入">
+            <input type="text" name="name3" placeholder="クーポン名を記入">
           </td>
           <td class="shopadmin__coupon-add"><button type="submit">追加</button></td>
         </form>

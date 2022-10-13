@@ -97,7 +97,7 @@
               </div>
               <select name="coupon_id" class="detail__coupon-select">
                 @foreach($coupons as $coupon)
-                <option value="{{ $coupon->id }}" @if(old('coupon_id') == $coupon->id) selected @endif>{{ $coupon->name }}</option>
+                <option value="{{ $coupon->id }}" {{ old('coupon_id') == $coupon->id ? 'selected' : '' }}>{{ $coupon->name }}</option>
                 @endforeach
               </select>
             </td>
@@ -123,8 +123,8 @@
               </div>
               <select name="reservation_time" class="detail__reservation-time">
                 @for ($i = 8; $i <= 20; $i++) 
-                <option value="{{ substr('0'.$i, -2) }}:00:00">{{ substr('0'.$i, -2) }}:00</option>
-                <option value="{{ substr('0'.$i, -2) }}:30:00">{{ substr('0'.$i, -2) }}:30</option>
+                <option value="{{ substr('0'.$i, -2) }}:00:00" {{ old('reservation_time') == substr('0'.$i, -2).':00:00' ? 'selected' : ''}}>{{ substr('0'.$i, -2) }}:00</option>
+                <option value="{{ substr('0'.$i, -2) }}:30:00" {{ old('reservation_time') == substr('0'.$i, -2).':30:00' ? 'selected' : ''}}>{{ substr('0'.$i, -2) }}:30</option>
                 @endfor
               </select>
             </td>

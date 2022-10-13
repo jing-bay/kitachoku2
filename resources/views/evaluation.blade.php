@@ -22,7 +22,7 @@
             @enderror
             <div class="rate-form">
               @for ($l = 5; $l >= 1; $l--)
-              <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}">
+              <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" {{ old('evaluation') == $l ? 'checked' : '' }}>
               <label for="star{{ $l }}">★</label>
               @endfor
             </div>
@@ -34,7 +34,7 @@
             @error('comment')
             <p class="evaluation__content-error">{{ $message }}</p>
             @enderror
-            <textarea name="comment" class="evaluation__content-form"></textarea>
+            <textarea name="comment" class="evaluation__content-form">{{ old('comment') }}</textarea>
           </td>
         </tr>
       </table>

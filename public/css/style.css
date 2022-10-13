@@ -424,11 +424,11 @@ body {
 }
 
 .notice__date {
-  width: 40%;
+  width: 30%;
 }
 
 .notice__txt {
-  width: 50%;
+  width: 70%;
   padding-left: 10px;
 }
 
@@ -1319,6 +1319,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: none;
   cursor: pointer;
   padding-left: 20px;
+}
+
+/*パスワードリセット送信画面*/
+.forgot-password__input {
+  width: 70%;
+  margin: 20px 0px;
+  height: 30px;
 }
 
 /*サンクス画面*/

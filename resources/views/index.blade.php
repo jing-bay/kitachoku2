@@ -52,7 +52,7 @@
   <p class="notice__ttl">新着情報</p>
   @foreach($notices as $notice)
   <div class="notice__contents">
-    <div class="notice__date">{{ $notice->created_at }}</div>
+    <div class="notice__date">{{ substr($notice->created_at, 0, 10) }}</div>
     <div class="notice__txt">{{ $notice->content}}</div>
   </div>
   @endforeach

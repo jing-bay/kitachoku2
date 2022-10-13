@@ -211,7 +211,7 @@
         <td class="shopadmin__reservation-item-name">{{ $reservation->user->name }}</td>
         <td class="shopadmin__reservation-item-date">{{ $reservation->reservation_date }} {{ $reservation->reservation_time }}</td>
         <td class="shopadmin__reservation-item-coupon">{{ $reservation->coupon->name }}</td>
-        <td class="shopadmin__reservation-item-reservation">{{ $reservation->updated_at }}</td>
+        <td class="shopadmin__reservation-item-reservation">{{ substr($reservation->updated_at, 0, 16) }}</td>
         <td class="shopadmin__reservation-item-btn">
           <form action="/reservation/destroy/{{ $reservation->id }}" method="post">
             @csrf

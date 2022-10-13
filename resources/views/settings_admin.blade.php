@@ -195,7 +195,7 @@
         <form method="post" action="/notice/destroy/{{ $notice->id }}">
           @csrf
           <td class="admin__notice-name">{{ $notice->content }}</td>
-          <td class="admin__notice-update">{{ $notice->created_at }}</td>
+          <td class="admin__notice-update">{{ substr($notice->created_at, 0, 16) }}</td>
           <td class="admin__notice-delete"><button type="submit">削除</button></td>
         </form>
       </tr>

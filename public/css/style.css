@@ -1007,7 +1007,7 @@ body {
 }
 
 .detail__review-comment {
-  font-size: clamp(12px, 1.5vw, 16px);
+  font-size: clamp(12px, 1.5vw, 14px);
   height: 70px;
   overflow: scroll;
 }
@@ -1045,12 +1045,18 @@ body {
 }
 
 .detail__coupon-table td {
-  padding: 15px 0px;
+  padding: 10px 0px;
 }
 
 .detail__table-ttl {
   width: 30%;
   font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.detail__reservation-error {
+  font-size: clamp(10px, 2vw, 14px);
+  color: #ff0000;
+  padding-bottom: 10px;
 }
 
 .detail__coupon-select {

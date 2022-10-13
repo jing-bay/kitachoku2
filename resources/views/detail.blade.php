@@ -97,7 +97,7 @@
               </div>
               <select name="coupon_id" class="detail__coupon-select">
                 @foreach($coupons as $coupon)
-                <option value="{{ $coupon->id }}">{{ $coupon->name }}</option>
+                <option value="{{ $coupon->id }}" @if(old('coupon_id') == $coupon->id) selected @endif>{{ $coupon->name }}</option>
                 @endforeach
               </select>
             </td>

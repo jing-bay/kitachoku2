@@ -94,7 +94,13 @@
   <div class="mypage__fav-content">
     @foreach($favorites as $favorite)
     <div class="mypage__fav-shop">
-      <div class="mypage__fav-img"><img src="{{ asset('storage/shopimg/'.$favorite->shop->shop_img) }}" alt="店舗画像"></div>
+      <div class="mypage__fav-img">
+        @if(app()->isLocal())
+        <img src="{{ asset('storage/shopimg/'.$favorite->shop->shop_img) }}" alt="店舗画像">
+        @else
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $favorite->shop->shop_img }}" alt="店舗画像">
+        @endif
+      </div>
       <div class="mypage__fav-inner">
         <h1>
           <a href="/detail/{{ $favorite->shop_id }}">{{ $favorite->shop->name }}</a>
@@ -152,7 +158,13 @@
   <div class="mypage__visited-content">
   @foreach($visited_reservations as $visited_reservation)
     <div class="mypage__visited-shop">
-      <div class="mypage__visited-img"><img src="{{ asset('storage/shopimg/'.$visited_reservation->coupon->shop->shop_img) }}" alt="店舗画像"></div>
+      <div class="mypage__visited-img">
+        @if(app()->isLocal())
+        <img src="{{ asset('storage/shopimg/'.$visited_reservation->coupon->shop->shop_img) }}" alt="店舗画像">
+        @else
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $visited_reservation->coupon->shop->shop_img }}" alt="店舗画像">
+        @endif
+      </div>
       <div class="mypage__visited-inner">
         <h1>
           <a href="/detail/{{ $visited_reservation->coupon->shop_id }}">
@@ -162,7 +174,13 @@
         <div class="mypage__visited-shopcontent">
           <div class="mypage__visited-content-left">
             <div>来店日：{{ $visited_reservation->reservation_date }}</div>
-            <div><a href="/evaluation/create/{{ $visited_reservation->id }}">レビューを書く</a></div>
+            <div>
+              @if(empty($visited_reservation->evaluation->id))
+              <a href="/evaluation/create/{{ $visited_reservation->id }}">レビューを書く</a>
+              @else
+              <a href="/evaluation/edit/{{ $visited_reservation->evaluation->id }}">レビューを編集する</a>
+              @endif
+            </div>
           </div>
           <div>
             @if ($visited_reservation->coupon->shop->is_liked_by_auth_user())
@@ -198,9 +216,9 @@
           <div class="mypage__review-star">
             @for ($l = 5; $l >= 1; $l--)
             @if($l == $evaluation->evaluation)
-            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" checked disabled>
+            <input id="star{{ $l }}" type="radio" value="{{ $l }}" checked disabled>
             @else
-            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" disabled>
+            <input id="star{{ $l }}" type="radio" value="{{ $l }}" disabled>
             @endif
             <label for="star{{ $l }}">★</label>
             @endfor

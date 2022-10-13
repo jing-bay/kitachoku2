@@ -405,7 +405,7 @@ body {
 
 .notice {
   padding: 40px 0px;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -417,18 +417,19 @@ body {
 .notice__contents {
   display: flex;
   width: 100%;
-  font-size: clamp(12px, 2.5vw, 18px);
+  font-size: clamp(12px, 2vw, 18px);
   padding-top: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #555555;
 }
 
 .notice__date {
-  width: 30%;
+  width: 40%;
 }
 
 .notice__txt {
-  width: 70%;
+  width: 50%;
+  padding-left: 10px;
 }
 
 .concept {
@@ -1413,11 +1414,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage__ttl-reservation {
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(18px, 2.5vw, 24px);
 }
 
 .mypage__txt-reservation {
-  font-size: clamp(12px, 2.5vw, 18px);
+  font-size: clamp(12px, 2vw, 18px);
   padding-left: 30px;
 }
 
@@ -1518,8 +1519,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage__fav-ttl {
-  font-size: clamp(18px, 3vw, 24px);
-  width: 30%;
+  font-size: clamp(18px, 2.5vw, 24px);
+  width: 25%;
 }
 
 .mypage__fav-search-name {
@@ -1784,7 +1785,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage__ttl-review {
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(18px, 2.5vw, 24px);
 }
 
 .mypage__txt-review {
@@ -1840,7 +1841,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-.mypage__review-star input:checked~label {
+.mypage__review-star input:checked ~ label {
   color: #ffcc00;
 }
 
@@ -1897,7 +1898,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 
   .mypage__fav-ttl {
-    font-size: clamp(18px, 3vw, 24px);
     width: 100%;
   }
 
@@ -1905,12 +1905,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
     padding-left: 0px;
     padding-top: 10px;
+    max-width: 400px;
   }
 
   .mypage__fav-search-area {
     width: 100%;
     padding-left: 0px;
     padding-top: 10px;
+    max-width: 400px;
   }
 
   .mypage__fav-search-btn {
@@ -2011,11 +2013,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 30%;
   padding-right: 10px;
   font-size: clamp(12px, 2vw, 18px);
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .evaluation__content-item {
   width: 70%;
+  font-size: clamp(12px, 2vw, 18px);
 }
 
 .evaluation__content-item input {
@@ -2025,6 +2028,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-left: none;
   border-bottom: 1px solid #000000;
   font-size: clamp(12px, 2vw, 18px);
+}
+
+.evaluation__content-form {
+  font-size: clamp(12px, 2vw, 14px);
 }
 
 .evaluation__btn {
@@ -2075,7 +2082,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: clamp(14px, 2vw, 20px);
 }
 
-.rate-form input:hover~label {
+.rate-form label:hover~label {
   color: #ffcc00;
 }
 
@@ -2179,7 +2186,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .shopadmin__admin-bottom {
   display: flex;
-  padding-top: 20px;
+  padding: 20px 0px;
   width: 400px;
   margin: 0 auto;
   justify-content: space-between;
@@ -2574,6 +2581,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: clamp(12px, 3vw, 16px);
   }
 
+  .shopadmin__shopsetting-input select {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
   .shopadmin__shopsetting-tag-heading {
     font-size: clamp(14px, 3vw, 16px);
   }
@@ -2606,7 +2617,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .admin__ttl-admin {
   padding-top: 80px;
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(18px, 2.3vw, 24px);
   padding-bottom: 20px;
 }
 
@@ -2728,7 +2739,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .admin__ttl-shop {
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(18px, 2.3vw, 24px);
   width: 15%;
 }
 
@@ -2739,6 +2750,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .admin__shop-searchbox {
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 2px #c6c6c6;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.admin__shop-searchbox--area {
   cursor: pointer;
   width: 100%;
   height: 25px;
@@ -2833,7 +2855,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .admin__ttl-shopadmin {
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(18px, 2.3vw, 24px);
   width: 25%;
 }
 
@@ -2953,16 +2975,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .admin__ttl-user {
-  padding-bottom: 20px;
-  width: 100%;
-  font-size: clamp(18px, 3vw, 24px);
+  width: 25%;
+  font-size: clamp(18px, 2.3vw, 24px);
 }
 
 .admin__user-top {
-  display: inherit;
-  max-width: 400px;
-  width: 100%;
-  padding-left: 0px;
+  display: flex;
 }
 
 .admin__user-left {
@@ -3076,12 +3094,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-shadow: 0px 2px 2px #c6c6c6;
 }
 
-.admin__ttl-coupon {
+.admin__ttl-notice {
   padding: 30px 0px;
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(18px, 2.3vw, 24px);
 }
 
-.admin__coupon-content {
+.admin__notice-content {
   max-width: 600px;
   background-color: #ffffff;
   border-radius: 5px;
@@ -3092,49 +3110,49 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 30px;
 }
 
-.admin__coupon-inner {
+.admin__notice-inner {
   table-layout: fixed;
   min-width: 100%;
 }
 
-.admin__coupon-item {
+.admin__notice-item {
   overflow: scroll;
   font-size: 12px;
 }
 
-.admin__coupon-item:not(:last-child) {
+.admin__notice-item:not(:last-child) {
   border-bottom: 1px solid #000000;
 }
 
-.admin__coupon-name {
+.admin__notice-name {
   width: 200px;
   min-width: 200px;
   overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
-.admin__coupon-name input {
+.admin__notice-name input {
   width: 100%;
   height: 25px;
   font-size: 12px;
   border: none;
 }
 
-.admin__coupon-update {
+.admin__notice-update {
   width: 150px;
   min-width: 150px;
   overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
-.admin__coupon-add {
+.admin__notice-add {
   width: 80px;
   min-width: 80px;
   overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
-.admin__coupon-add button {
+.admin__notice-add button {
   width: 80px;
   background-color: #87c957;
   color: #ffffff;
@@ -3147,14 +3165,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-shadow: 0px 2px 2px #c6c6c6;
 }
 
-.admin__coupon-delete {
+.admin__notice-delete {
   width: 100px;
   min-width: 100px;
   overflow: scroll;
   padding: 10px 10px 10px 0px;
 }
 
-.admin__coupon-delete button {
+.admin__notice-delete button {
   width: 80px;
   background-color: #ffffff;
   color: #000000;
@@ -3269,6 +3287,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: inherit;
   }
 
+  .admin__ttl-user {
+    padding-bottom: 20px;
+    width: 100%;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
   .admin__user-left {
     padding: 0px;
     margin: 0px;
@@ -3299,4 +3323,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   height: 150px;
+}
+
+/*店舗編集ページ*/
+.shopedit {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 80px;
 }

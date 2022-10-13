@@ -63,7 +63,7 @@
         @error('postal_code')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="postal_code" class="p-postal-code"  value="{{ !empty($shop) ? $shop->postal_code : '' }}">
+        <input type="text" name="postal_code" class="p-postal-code"  value="{{ !empty($shop) ? $shop->postal_code : '' }}" onblur="toHalfWidth(this)">
       </li>
       <li class="shopadmin__shopsetting-heading">住所</li>
       <li class="shopadmin__shopsetting-input">
@@ -122,7 +122,7 @@
         @error('tel_number')
         <p class="register__content-error">{{ $message }}</p>
         @enderror
-        <input type="text" name="tel_number" value="{{ !empty($shop) ? $shop->tel_number : ''}}">
+        <input type="text" name="tel_number" value="{{ !empty($shop) ? $shop->tel_number : ''}}" onblur=toHalfWidth(this)>
       </li>
       <li class="shopadmin__shopsetting-heading">メールアドレス</li>
       <li class="shopadmin__shopsetting-input">

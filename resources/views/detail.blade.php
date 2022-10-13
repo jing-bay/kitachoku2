@@ -69,9 +69,9 @@
           <p class="detail__review-star">
             @for ($l = 5; $l >= 1; $l--)
             @if($l == $evaluation->evaluation)
-            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" checked disabled>
+            <input id="star{{ $l }}" type="radio" value="{{ $l }}" checked disabled>
             @else
-            <input id="star{{ $l }}" type="radio" name="evaluation" value="{{ $l }}" disabled>
+            <input id="star{{ $l }}" type="radio" value="{{ $l }}" disabled>
             @endif
             <label for="star{{ $l }}">★</label>
             @endfor

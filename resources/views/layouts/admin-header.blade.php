@@ -40,12 +40,12 @@
         <ul class="header__list">
           @if(Auth::guard('admin')->check())
           <li class="header__ham-item">
-            <form action="/admin/logout" method="post" class="header__menu--right">
+            <form action="/admin/logout" method="post">
               @csrf
               <button type="submit" class="header__menu-logout">ログアウト</button>
             </form>
           </li>
-          <li class="header__ham-item"><a href="/settings-admin">管理ページ</a></li>
+          <li class="header__ham-item"><a href="/admin/settings">管理ページ</a></li>
           @else
           <li class="header__ham-item"><a href="/admin/register">新規登録</a></li>
           <li class="header__ham-item"><a href="/admin/login">ログイン</a></li>

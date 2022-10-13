@@ -26,7 +26,7 @@
       </select>
     </div>
     <div class="result__searchtab--keyword">
-      <input class="result__searchbox--keyword" type="text" name="search_keyword" placeholder= "{{ !empty($search_keyword) ? $search_keyword : '店名・住所で検索' }}">
+      <input class="result__searchbox--keyword" type="text" name="search_keyword" placeholder= "店名・住所で検索" value={{ !empty($search_keyword) ? $search_keyword : '' }}>
     </div>
     <div class="result__search-btn">
       <button type="submit" class="result__btn">検索</button>
@@ -48,7 +48,11 @@
     @foreach ($shops as $shop)
     <div class="result__shop">
       <div class="result__shop-img">
+        @if(app()->isLocal())
         <img src="{{ asset('storage/shopimg/'.$shop->shop_img) }}" alt="店舗画像">
+        @else
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img }}" alt="店舗画像">
+        @endif
       </div>
       <div class="result__shop-inner">
         <h1 class="result__shop-ttl">

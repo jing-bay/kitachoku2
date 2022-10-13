@@ -41,7 +41,7 @@
         <input class="admin__shop-searchbox" type="text" name="search_shop" placeholder= "{{ !empty($search_shop) ? '': '店舗名で検索' }}" value="{{ !empty($search_shop) ? $search_shop : '' }}">
       </div>
       <div class="admin__shop-area">
-        <select name="search_area" class="admin__shop-searchbox" onchange="changeColor(this)">
+        <select name="search_area" class="admin__shop-searchbox--area" onchange="changeColor(this)">
           <option value="">エリアを選択</option>
           @foreach ($areas as $area)
           <option value="{{ $area->id }}" {{ !empty($search_area)&&($area->id == $search_area) ? 'selected' : '' }}>{{ $area->name }}</option>
@@ -169,34 +169,34 @@
     </table>
   </div>
 
-  <div class="admin__ttl-coupon">新着情報</div>
-  <div class="admin__coupon-content">
-    <table class="admin__coupon-inner">
-      <tr class="admin__coupon-item">
-        <td class="admin__coupon-name">新着情報</td>
-        <td class="admin__coupon-update">更新日</td>
-        <td class="admin__coupon-add"></td>
+  <div class="admin__ttl-notice">新着情報</div>
+  <div class="admin__notice-content">
+    <table class="admin__notice-inner">
+      <tr class="admin__notice-item">
+        <td class="admin__notice-name">新着情報</td>
+        <td class="admin__notice-update">更新日</td>
+        <td class="admin__notice-add"></td>
       </tr>
-      <tr class="admin__coupon-item">
+      <tr class="admin__notice-item">
         <form action="/notice" method="post">
           @csrf
-          <td class="admin__coupon-name">
+          <td class="admin__notice-name">
             @error('content')
             <p class="register__content-error">{{ $message }}</p>
             @enderror
             <input type="text" name="content" placeholder= "新着情報を記入">
           </td>
-          <td class="admin__coupon-update"></td>
-          <td class="admin__coupon-add"><button type="submit">追加</button></td>
+          <td class="admin__notice-update"></td>
+          <td class="admin__notice-add"><button type="submit">追加</button></td>
         </form>
       </tr>
       @foreach($notices as $notice)
-      <tr class="admin__coupon-item">
+      <tr class="admin__notice-item">
         <form method="post" action="/notice/destroy/{{ $notice->id }}">
           @csrf
-          <td class="admin__coupon-name">{{ $notice->content }}</td>
-          <td class="admin__coupon-update">{{ $notice->created_at }}</td>
-          <td class="admin__coupon-delete"><button type="submit">削除</button></td>
+          <td class="admin__notice-name">{{ $notice->content }}</td>
+          <td class="admin__notice-update">{{ $notice->created_at }}</td>
+          <td class="admin__notice-delete"><button type="submit">削除</button></td>
         </form>
       </tr>
       @endforeach

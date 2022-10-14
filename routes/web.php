@@ -55,7 +55,6 @@ Route::middleware(['auth:shopadmin', 'verified'])->group(function (){
     Route::get('/shopadmin/settings', [SettingsShopAdminController::class, 'index']);
     Route::post('/shop', [ShopController::class, 'store']);
     Route::post('/coupon', [CouponController::class, 'store']);
-    Route::post('/coupon/update/{coupon_id}', [CouponController::class, 'update']);
     Route::post('/coupon/destroy/{coupon_id}', [CouponController::class, 'destroy']);
     Route::get('/reservation/search', [SearchReservationController::class, 'search']);
 });

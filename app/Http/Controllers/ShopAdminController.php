@@ -30,9 +30,7 @@ class ShopAdminController extends Controller
         } else {
             $id = $request->shopadmin_id;
         };
-
         ShopAdmin::find($id)->delete();
-
         return redirect('/shopadmin/destroy/withdraw');
     }
 

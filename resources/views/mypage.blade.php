@@ -9,6 +9,11 @@
   <div class="mypage__top-reservation">
     <div class="mypage__ttl-reservation">来店予約クーポン</div>
     <div class="mypage__txt-reservation">予定：{{ $unvisited_reservations->count() }}件</div>
+    <div class="mypage__content-error">
+      @error('reservation_date')
+      {{ $message }}
+      @enderror
+    </div>
   </div>
   <div class="mypage__reservation-content">
     @foreach($unvisited_reservations as $unvisited_reservation)
@@ -23,11 +28,6 @@
           <tr>
             <td class="mypage__reservation-table-ttl">クーポン名</td>
             <td class="mypage__reservation-table-content">
-              <div class="mypage__content-error">
-                @error('coupon_id')
-                {{ $message }}
-                @enderror
-              </div>
               <select name="coupon_id" class="mypage__reservation-select">
                 @foreach($unvisited_reservation->coupon->shop->coupons as $coupon)
                 <option value="{{ $coupon->id }}" {{ $unvisited_reservation->coupon_id == $coupon->id ? 'selected' : ''}}>{{ $coupon->name }}</option>
@@ -38,22 +38,12 @@
           <tr>
             <td class="mypage__reservation-table-ttl">来店日</td>
             <td class="mypage__reservation-table-content">
-              <div class="mypage__content-error">
-                @error('reservation_date')
-                {{ $message }}
-                @enderror
-              </div>
               <input type="date" name="reservation_date" id="tomorrow" class="mypage__reservation-date" value="{{ $unvisited_reservation->reservation_date }}">
             </td>
           </tr>
           <tr>
             <td class="mypage__reservation-table-ttl">来店時間</td>
             <td class="mypage__reservation-table-content">
-              <div class="mypage__content-error">
-                @error('reservation_time')
-                {{ $message }}
-                @enderror
-              </div>
               <select name="reservation_time" class="mypage__reservation-time">
                 @for ($i = 8; $i <= 20; $i++) 
                 <option value="{{ substr('0'.$i, -2) }}:00:00" {{ $unvisited_reservation->reservation_time == substr('0'.$i, -2).':00:00' ? 'selected' : ''}}>{{ substr('0'.$i, -2) }}:00</option>

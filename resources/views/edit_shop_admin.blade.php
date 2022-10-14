@@ -25,6 +25,7 @@
   <div class="shopadmin__admin-bottom">
     <div class="shopadmin__admin-bottomleft"><button type="submit" form="shopadmin-update" class="shopadmin__admin-changebtn">変更する</button></div>
     <form action="/shopadmin/destroy" method="post">
+      <input type="hidden" name="shopadmin_id" value="{{ $shop_admin->id }}">
       @csrf
       <button type="submit" class="shopadmin__admin-deletebtn">削除する</button>
     </form>

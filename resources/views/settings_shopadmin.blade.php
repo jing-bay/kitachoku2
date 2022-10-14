@@ -22,7 +22,9 @@
     </ul>
   </form>
   <div class="shopadmin__admin-bottom">
-    <div class="shopadmin__admin-bottomleft"><button type="submit" form="shopadmin-update" class="shopadmin__admin-changebtn">変更する</button></div>
+    <div class="shopadmin__admin-bottomleft">
+      <button type="submit" form="shopadmin-update" class="shopadmin__admin-changebtn">変更する</button>
+    </div>
     <form action="/shopadmin/destroy" method="post">
       @csrf
       <button type="submit" class="shopadmin__admin-deletebtn">削除する</button>
@@ -34,7 +36,7 @@
   @else
   <form class="shopadmin__shopsetting-content h-adr" id="shop-update" method="post" action="/shop/update/{{ $shop->id }}" enctype="multipart/form-data">
   @endif
-  @csrf
+    @csrf
     <span class="p-country-name" style="display:none;">Japan</span>
     <ul class="shopadmin__shopsetting-inner">
       <li class="shopadmin__shopsetting-heading">店舗名</li>
@@ -116,7 +118,7 @@
         <label class="shopadmin__shopsetting-file shopadmin__img">
           <input type="file" name="shop_img">ファイルを選択
         </label>
-          <p id="img_name" class="shopadmin__img-name">{{ !empty($shop) ? $shop->shop_img : '' }}</p>
+        <p id="img_name" class="shopadmin__img-name">{{ !empty($shop) ? $shop->shop_img : '' }}</p>
       </li>
       <li class="shopadmin__shopsetting-heading">電話番号</li>
       <li class="shopadmin__shopsetting-input">
@@ -160,7 +162,9 @@
   <div><button class="shopadmin__shop-btn" form="shop">登録する</button></div>
   @else
   <div class="shopadmin__admin-bottom">
-    <div class="shopadmin__admin-bottomleft"><button class="shopadmin__admin-changebtn" form="shop-update">変更する</button></div>
+    <div class="shopadmin__admin-bottomleft">
+      <button class="shopadmin__admin-changebtn" form="shop-update">変更する</button>
+    </div>
     <form action="/shop/destroy/{{ $shop->id }}" method="post">
       @csrf
       <button class="shopadmin__admin-deletebtn">削除する</button>
@@ -206,8 +210,8 @@
         <td class="shopadmin__reservation-item-reservation">予約日時</td>
         <td class="shopadmin__reservation-item-btn">削除</td>
       </tr>
-        @if(!empty($shop))
-        @foreach($reservations as $reservation)
+      @if(!empty($shop))
+      @foreach($reservations as $reservation)
       <tr class="shopadmin__reservation-item">
         <td class="shopadmin__reservation-item-name">{{ $reservation->user->name }}</td>
         <td class="shopadmin__reservation-item-date">{{ $reservation->reservation_date }} {{ substr($reservation->reservation_time, 0, 5) }}</td>

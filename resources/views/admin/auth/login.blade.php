@@ -1,5 +1,4 @@
 @extends ('layouts.admin-header')
-
 @section ('admin-header')
 <div class="register">
   <p class="register__ttl">ログイン</p>

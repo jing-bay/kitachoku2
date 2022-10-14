@@ -1,5 +1,4 @@
 @extends ('layouts.default')
-
 @section ('content')
 <div class="search">
   <div class="search__inner">

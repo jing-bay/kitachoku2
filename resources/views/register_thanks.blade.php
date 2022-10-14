@@ -1,5 +1,4 @@
 @extends ('layouts.default')
-
 @section ('content')
 <div class="thanks">
   <div class="thanks__inner--register">

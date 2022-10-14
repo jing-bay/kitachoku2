@@ -53,9 +53,9 @@
         </ul>
       </div>
       <div class="header__menubtn" id="menubtn">
-          <span></span>
-          <span></span>
-          <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </header>

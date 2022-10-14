@@ -1,5 +1,4 @@
 @extends ('layouts.default')
-
 @section ('content')
 <div class="detail">
   <p class="detail__back-btn">

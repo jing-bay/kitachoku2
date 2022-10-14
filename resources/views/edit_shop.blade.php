@@ -3,7 +3,7 @@
 <div class="shopedit">
   <div class="shopadmin__ttl-shopsetting">店舗設定</div>
   <form class="shopadmin__shopsetting-content h-adr" id="shop-update" method="post" action="/shop/update/{{ $shop->id }}" enctype="multipart/form-data">
-  @csrf
+    @csrf
     <span class="p-country-name" style="display:none;">Japan</span>
     <input type="hidden" name="shop_admin_id" value="{{ $shop->shop_admin_id }}">
     <ul class="shopadmin__shopsetting-inner">

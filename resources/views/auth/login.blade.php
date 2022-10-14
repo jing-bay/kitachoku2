@@ -1,5 +1,4 @@
 @extends ('layouts.default')
-
 @section ('content')
 <div class="register">
     <p class="register__ttl">ログイン</p>

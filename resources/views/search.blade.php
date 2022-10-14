@@ -1,6 +1,5 @@
 @extends('layouts.default')
 @section('content')
-
 <div class="result">
   <form action="/search" method="get" class="result__search">
     @csrf
@@ -9,12 +8,12 @@
         タグを選択
       </div>
       <ul class="result__tag-list" id="resultTag">
-      @foreach ($tags as $tag)
+        @foreach ($tags as $tag)
         <li class="result__tag">
           <input type="checkbox" class="result__searchbox--tag" name="search_tag[]" value="{{ $tag->id }}" id="{{ $tag->name }}" {{ is_array($search_tag)&&in_array($tag->id, $search_tag) ? 'checked' : '' }}>
           <label for="{{ $tag->name }}" class="result__tag-label">{{ $tag->name }}</label>
         </li>
-      @endforeach
+        @endforeach
       </ul>
     </div>
     <div class="result__searchtab--area">

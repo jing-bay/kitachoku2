@@ -26,7 +26,9 @@
     </ul>
   </form>
   <div class="admin__admin-bottom">
-    <div class="admin__admin-bottomleft"><button type="submit" form="admin-update" class="admin__admin-changebtn">変更する</button></div>
+    <div class="admin__admin-bottomleft">
+      <button type="submit" form="admin-update" class="admin__admin-changebtn">変更する</button>
+    </div>
     <form action="/admin/destroy" method="post">
       @csrf
       <button type="submit" class="admin__admin-deletebtn">削除する</button>
@@ -78,7 +80,6 @@
       @endforeach
     </table>
   </div>
-
   <form class="admin__top-item" action="/search/shopadmin" method="get">
     @csrf
     <div class="admin__shopadmin-top">
@@ -123,7 +124,6 @@
       @endforeach
     </table>
   </div>
-
   <form class="admin__top-item" action="/search/user" method="get">
     @csrf
     <div class="admin__user-top">
@@ -168,7 +168,6 @@
       @endforeach
     </table>
   </div>
-
   <div class="admin__ttl-notice">新着情報</div>
   <div class="admin__notice-content">
     <table class="admin__notice-inner">

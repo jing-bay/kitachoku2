@@ -19,17 +19,17 @@
     </div>
   </header>
   <div class="thanks">
-  <div class="thanks__inner">
-    <p class="thanks__txt">
-      ユーザーの削除が完了しました
-    </p>
-    @if(Auth::guard('admin')->check())
-    <button type="button" onclick="location.href='/admin/settings'" class="thanks__backbtn">戻る</button>
-    @else
-    <button type="button" onclick="location.href='/'" class="thanks__backbtn">戻る</button>
-    @endif
+    <div class="thanks__inner">
+      <p class="thanks__txt">
+        ユーザーの削除が完了しました
+      </p>
+      @if(Auth::guard('admin')->check())
+      <button type="button" onclick="location.href='/admin/settings'" class="thanks__backbtn">戻る</button>
+      @else
+      <button type="button" onclick="location.href='/'" class="thanks__backbtn">戻る</button>
+      @endif
+    </div>
   </div>
-</div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="{{ asset('js/main.js') }}"></script>
   @yield('add-js')

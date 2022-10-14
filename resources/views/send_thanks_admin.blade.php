@@ -1,5 +1,4 @@
 @extends ('layouts.admin-header')
-
 @section ('admin-header')
 <div class="thanks">
   <div class="thanks__inner">

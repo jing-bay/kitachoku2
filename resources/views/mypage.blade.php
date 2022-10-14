@@ -1,5 +1,4 @@
 @extends ('layouts.default')
-
 @section ('content')
 <div class="mypage">
   <div class="mypage__username">{{ $user->name }}様ログイン中</div>

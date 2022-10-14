@@ -27,11 +27,11 @@ class SearchShopController extends Controller
             $query->where('area_id', $search_area);
         }
 
-        $shops = $query->paginate(100);
+        $shops = $query->get();
         $admin = Auth::guard('admin')->user();
-        $shop_admins = ShopAdmin::paginate(100);
-        $users = User::paginate(100);
-        $notices = Notice::paginate(100);
+        $shop_admins = ShopAdmin::all();
+        $users = User::all();
+        $notices = Notice::all();
         $areas = Area::all();
 
         return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas','search_shop', 'search_area'));

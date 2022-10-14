@@ -20,7 +20,7 @@ class SettingsShopAdminController extends Controller
         if(!empty($shop)){
             $coupons = Coupon::where('shop_id', $shop->id)->get();
             $reservation_ids = $coupons->pluck('id')->toArray();
-            $reservations = Reservation::whereIn('coupon_id', $reservation_ids)->paginate(100);
+            $reservations = Reservation::whereIn('coupon_id', $reservation_ids)->get();
             $tagIds = $shop->tags()->pluck('tags.id')->toArray();
         } else {
             $coupons = '';

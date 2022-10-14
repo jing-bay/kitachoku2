@@ -16,10 +16,10 @@ class SettingsAdminController extends Controller
     public function index()
     {
         $admin = Auth::guard('admin')->user();
-        $shops = Shop::paginate(100);
-        $shop_admins = ShopAdmin::paginate(100);
-        $users = User::paginate(100);
-        $notices = Notice::paginate(100);
+        $shops = Shop::all();
+        $shop_admins = ShopAdmin::all();
+        $users = User::all();
+        $notices = Notice::all();
         $areas = Area::all();
 
         return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas'));

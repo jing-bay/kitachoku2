@@ -35,11 +35,11 @@ class SearchShopAdminController extends Controller
             $query->where('email', 'LIKE BINARY', '%'.$search_email.'%');
         }
 
-        $users = User::paginate(100);
+        $users = User::all();
         $admin = Auth::guard('admin')->user();
-        $shops = Shop::paginate(100);
-        $shop_admins = $query->paginate(100);
-        $notices = Notice::paginate(100);
+        $shops = Shop::all();
+        $shop_admins = $query->get();
+        $notices = Notice::all();
         $areas = Area::all();
 
         return view('settings_admin', compact('admin', 'shops', 'shop_admins', 'users', 'notices', 'areas', 'search_name', 'search_shop2', 'search_email'));

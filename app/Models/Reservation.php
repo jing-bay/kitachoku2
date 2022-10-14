@@ -9,11 +9,6 @@ class Reservation extends Model
 {
     protected $fillable = ['user_id', 'reservation_date', 'reservation_time', 'coupon_id'];
 
-    public function coupon()
-    {
-        return $this->belongsTo(Coupon::class)->withTrashed();
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);

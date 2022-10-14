@@ -10,6 +10,6 @@ class ShopAdminsTableSeeder extends Seeder
 {
     public function run()
     {
-        ShopAdmin::factory()->count(100)->create();
+        ShopAdmin::factory()->count(20)->create();
     }
 }

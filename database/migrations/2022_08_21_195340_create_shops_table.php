@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->string('address');
             $table->string('opening_hour');
             $table->string('holiday');
-            $table->string('tel_number');
+            $table->string('tel_number')->nullable();
             $table->string('email')->nullable();
             $table->text('overview');
             $table->string('shop_img');

@@ -55,51 +55,77 @@
 
 ## 6.環境構築手順
 1. GitHubよりダウンロード
+
 `$ git clone https://github.com/jing-bay/kitachoku.git`
+
 ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
+
 `$ git checkout main`
 
 2. composerをインストールする
+
 `$ composer install`
 
 3. .env を作る
+
 `$ cp .env.example .env `
 
 4. MySQLなどにログインしてDBを作る
+
 DB名：kitachoku
 
 5. .envのAPP_KEY を作る
+
 `$ php artisan key:generate`
 
 6. .envの中身を変更する
+
 - APP周り
+
 APP_NAME = キタチョク
+
 APP_URL=http://localhost:8000
 
 - DB周り
+
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=resedb
+
 DB_USERNAME=root
+
 DB_PASSWORD=root
 
 - メール認証周り（MailTrapのアカウントを持っていること）
+
 MAIL_MAILER=smtp
+
 MAIL_HOST=smtp.mailtrap.io
+
 MAIL_PORT=2525
+
 MAIL_USERNAME="mailtrapのユーザー名"
+
 MAIL_PASSWORD="mailtrapのパスワード"
+
 MAIL_ENCRYPTION=tls
 
 7. マイグレーション、シーディングを行う
+
 `$ php artisan migrate`
+
 `$ php artisan db:seed`
 
 8. storage>app>public直下にshopimgディレクトリを作り、以下の画像を`kitachokulogo.001-removebg-preview.jpg`の名前で保存する
+
 [kitachokulogo 001-removebg-preview](https://user-images.githubusercontent.com/95161114/195748199-4134fb1e-f409-4d94-8eea-08c8193eaa02.jpg)
 
 9. ファイルの中でサーバーを立ち上げる
+
 `$ php artisan serve`
 
 ## 7.機能一覧
@@ -144,6 +170,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 ### テーブル設定
 - usersテーブル
 ユーザーを管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | ユーザーを識別する ID                  |
@@ -158,6 +185,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - areasテーブル
 エリアを管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | エリアを識別する ID                  |
@@ -167,6 +195,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - tagsテーブル
 タグを管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | タグを識別する ID                  |
@@ -176,6 +205,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - noticesテーブル
 新着情報を管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 新着情報を識別する ID                  |
@@ -185,6 +215,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - shop_adminsテーブル
 店舗代表者を管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 店舗代表者を識別する ID                  |
@@ -198,6 +229,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - adminsテーブル
 管理者を管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 管理者を識別する ID                  |
@@ -211,6 +243,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - shopsテーブル
 店舗を管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 店舗を識別する ID                  |
@@ -233,6 +266,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - favoritesテーブル
 お気に入り登録を管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | お気に入りを識別する ID                  |
@@ -243,6 +277,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 
 - shop_tagテーブル
 shopsテーブルとtagsテーブルの中間テーブル（多対多リレーション）
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 中間テーブルのデータを識別するID          |
@@ -253,6 +288,7 @@ shopsテーブルとtagsテーブルの中間テーブル（多対多リレー�
 
 - couponsテーブル
 クーポンを管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | クーポンを識別する ID                  |
@@ -263,6 +299,7 @@ shopsテーブルとtagsテーブルの中間テーブル（多対多リレー�
 
 - reservationsテーブル
 予約情報を管理する。
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 予約情報を識別する ID                  |
@@ -275,6 +312,7 @@ shopsテーブルとtagsテーブルの中間テーブル（多対多リレー�
 
 - evaluationsテーブル
 評価を管理する。評価は予約した店舗に行った後のみ行える
+
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 評価を識別する ID                  |

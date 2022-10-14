@@ -251,7 +251,7 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 | shop_admin_id     | unsigned bigint/NOT NULL/FOREIGN KEY | 店舗代表者id                         |
 | area_id　　| unsigned bigint/NOT NULL/FOREIGN KEY         | エリアid                          |
 | postal_code          | char(7)/NOT NULL                | 郵便番号                            |
-| address    | varchar(255)                         | トークンを格納するために使用 |
+| address    | varchar(255)/NOT NULL                      | トークンを格納するために使用 |
 | opening_hour        | varchar(255)/NOT NULL      | 営業時間                            |
 | holiday        | varchar(255)/NOT NULL                    | 定休日                               |
 | tel_number        | varchar(255)/NULLABLE          | 電話番号                               |

@@ -87,8 +87,8 @@ class ShopTagTableSeeder extends Seeder
                 'shop_id' => '19',
             ],
             [
-                'shop_id' => '20',
                 'tag_id' => '5',
+                'shop_id' => '20',
             ],
         ]);
     }

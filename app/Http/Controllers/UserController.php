@@ -16,6 +16,7 @@ class UserController extends Controller
         } else {
             $id = $request->id;
         };
+
         $form = $request->all();
         unset($form['_token']);
 
@@ -31,7 +32,9 @@ class UserController extends Controller
         } else {
             $id = $request->user_id;
         };
+
         User::find($id)->delete();
+        
         return redirect('/user/destroy/withdraw');
     }
 

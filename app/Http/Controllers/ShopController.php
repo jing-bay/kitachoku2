@@ -118,9 +118,8 @@ class ShopController extends Controller
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
-
+            
         } else {
-
             if ( app()->isLocal() ) {
                 Storage::delete('public/shopimg/'.$old_shop_img);
             } else {

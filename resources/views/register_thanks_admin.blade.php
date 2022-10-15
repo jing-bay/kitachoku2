@@ -6,7 +6,7 @@
       会員登録が完了いたしました。<br>ご登録ありがとうございます。
     </p>
     <div class="thanks__bottom--register">
-      <a href="/admin/settings">店舗管理ページへ</a>
+      <a href="/admin/settings">管理者ページへ</a>
     </div>
   </div>
 </div>

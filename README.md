@@ -4,6 +4,23 @@
 ## 1.URL
 - AWSデプロイURL：http://kitachoku.net/
 
+ダミーアカウントを作成しました。
+- user
+  - 名前：user
+  - ニックネーム：user
+  - メールアドレス：user@email.com
+  - パスワード：testtesttest
+
+- shopadmin
+  - 名前：shopadmin
+  - メールアドレス：shopadmin@email.com
+  - パスワード：testtesttest
+
+- admin
+  - 名前：admin
+  - メールアドレス：admin@email.com
+  - パスワード：testtesttest
+
 ## 2.概要
 北海道の農産物直売所情報サイト
 

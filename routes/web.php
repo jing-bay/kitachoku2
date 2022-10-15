@@ -21,8 +21,6 @@ use App\Http\Controllers\SearchReservationController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\SearchFavoriteController;
 use App\Http\Controllers\SearchVisitedController;
-use App\Http\Controllers\ShopAdminThanksController;
-use App\Http\Controllers\AdminThanksController;
 
 Route::get('/', [SearchController::class, 'index']);
 Route::get('/search', [SearchController::class, 'search']);
@@ -30,8 +28,8 @@ Route::get('/detail/{shop_id}', [SearchController::class, 'show']);
 Route::get('/user/destroy/withdraw', [UserController::class, 'show']);
 Route::get('/shopadmin/destroy/withdraw', [ShopAdminController::class, 'show']);
 Route::get('/admin/destroy/withdraw', [AdminController::class, 'show']);
-Route::get('/shopadmin/send-thanks', [ShopAdminThanksController::class, 'showSend']);
-Route::get('/admin/send-thanks', [AdminThanksController::class, 'showSend']);
+Route::get('/shopadmin/send-thanks', [ShopAdminController::class, 'showSend']);
+Route::get('/admin/send-thanks', [AdminController::class, 'showSend']);
 
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/mypage', [MypageController::class, 'index']);
@@ -51,7 +49,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
 });
 
 Route::middleware(['auth:shopadmin', 'verified'])->group(function (){
-    Route::get('/shopadmin/register-thanks', [ShopAdminThanksController::class, 'showThanks']);
+    Route::get('/shopadmin/register-thanks', [ShopAdminController::class, 'showThanks']);
     Route::get('/shopadmin/settings', [SettingsShopAdminController::class, 'index']);
     Route::post('/shop', [ShopController::class, 'store']);
     Route::post('/coupon', [CouponController::class, 'store']);
@@ -60,7 +58,7 @@ Route::middleware(['auth:shopadmin', 'verified'])->group(function (){
 });
 
 Route::middleware(['auth:admin', 'verified'])->group(function (){
-    Route::get('/admin/register-thanks', [AdminThanksController::class, 'showThanks']);
+    Route::get('/admin/register-thanks', [AdminController::class, 'showThanks']);
     Route::get('/admin/settings', [SettingsAdminController::class, 'index']);
     Route::get('/admin/settings/shopdetail/{shop_id}', [SettingsAdminController::class, 'editShop']);
     Route::get('/admin/settings/shopadmin/{shop_admin_id}', [SettingsAdminController::class, 'editShopAdmin']);

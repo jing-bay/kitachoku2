@@ -36,4 +36,14 @@ class AdminController extends Controller
     {
         return view('admin_withdraw');
     }
+
+    public function showSend() 
+    {
+        return view('send_thanks_admin');
+    }
+
+    public function showThanks() 
+    {
+        return view('register_thanks_admin');
+    }
 }

@@ -39,4 +39,14 @@ class ShopAdminController extends Controller
     {
         return view('shopadmin_withdraw');
     }
+
+    public function showSend() 
+    {
+        return view('send_thanks_shopadmin');
+    }
+
+    public function showThanks() 
+    {
+        return view('register_thanks_shopadmin');
+    }
 }

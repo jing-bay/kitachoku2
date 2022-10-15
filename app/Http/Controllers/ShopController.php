@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Image;
-use App\Models\Area;
-use App\Models\Tag;
 use App\Models\Shop;
 use App\Http\Requests\ShopRequest;
 use App\Http\Requests\UpdateShopRequest;
@@ -118,7 +115,7 @@ class ShopController extends Controller
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
-            
+
         } else {
             if ( app()->isLocal() ) {
                 Storage::delete('public/shopimg/'.$old_shop_img);

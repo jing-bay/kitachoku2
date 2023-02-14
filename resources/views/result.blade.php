@@ -47,10 +47,18 @@
     @foreach ($shops as $shop)
     <div class="result__shop">
       <div class="result__shop-img">
+        @if(empty($shop->shop_img))
         @if(app()->isLocal())
-        <img src="{{ asset('storage/shopimg/'.$shop->shop_img) }}" alt="店舗画像">
+        <img src="{{ asset('storage/shopimg/kitachokulogo.001-removebg-preview.jpg') }}" alt="店舗画像">
         @else
-        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img }}" alt="店舗画像">
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/shopimg/kitachokulogo.001-removebg-preview.jpg" alt="店舗画像">
+        @endif
+        @else
+        @if(app()->isLocal())
+        <img src="{{ asset($shop->shop_img_rename) }}" alt="店舗画像">
+        @else
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img_rename }}" alt="店舗画像">
+        @endif
         @endif
       </div>
       <div class="result__shop-inner">

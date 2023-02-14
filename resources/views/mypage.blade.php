@@ -69,10 +69,18 @@
     @foreach($favorites as $favorite)
     <div class="mypage__fav-shop">
       <div class="mypage__fav-img">
+        @if(empty($shop->shop_img))
         @if(app()->isLocal())
-        <img src="{{ asset('storage/shopimg/'.$favorite->shop->shop_img) }}" alt="店舗画像">
+        <img src="{{ asset('storage/shopimg/kitachokulogo.001-removebg-preview.jpg') }}" alt="店舗画像">
         @else
-        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $favorite->shop->shop_img }}" alt="店舗画像">
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/shopimg/kitachokulogo.001-removebg-preview.jpg" alt="店舗画像">
+        @endif
+        @else
+        @if(app()->isLocal())
+        <img src="{{ asset($shop->shop_img_rename) }}" alt="店舗画像">
+        @else
+        <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img_rename }}" alt="店舗画像">
+        @endif
         @endif
       </div>
       <div class="mypage__fav-inner">

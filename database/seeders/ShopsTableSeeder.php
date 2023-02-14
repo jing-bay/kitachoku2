@@ -20,8 +20,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道札幌市豊平区月寒東２条１３丁目１−１２',
             'opening_hour' => '10時〜16時',
             'holiday' => '木曜日',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id1.jpg'
         ];
         Shop::create($param);
 
@@ -32,8 +30,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道札幌市西区西区小別沢39',
             'opening_hour' => '10時30分〜17時',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id2.jpg'
         ];
         Shop::create($param);
 
@@ -44,8 +40,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道函館市陣川町８２−１５４',
             'opening_hour' => '12時00分～18時30分',
             'holiday' => '火曜・金曜以外',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id3.jpg'
         ];
         Shop::create($param);
 
@@ -56,8 +50,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道檜山郡厚沢部町鶉町７１４',
             'opening_hour' => '9時00分～18時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id4.jpg'
         ];
         Shop::create($param);
 
@@ -68,8 +60,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道虻田郡留寿都村泉川６７−１４',
             'opening_hour' => '8時30分～17時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id5.jpg'
         ];
         Shop::create($param);
 
@@ -80,8 +70,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道虻田郡倶知安町南４条西１丁目２７',
             'opening_hour' => '8時30分～17時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id6.jpg'
         ];
         Shop::create($param);
 
@@ -92,8 +80,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道勇払郡むかわ町松風３丁目１−１',
             'opening_hour' => '10時00分～17時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id7.jpg'
         ];
         Shop::create($param);
 
@@ -104,8 +90,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道日高郡新ひだか町静内御幸町２丁目１−４０',
             'opening_hour' => '9時00分～19時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id8.jpg'
         ];
         Shop::create($param);
 
@@ -116,8 +100,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道岩見沢市毛陽町５３４',
             'opening_hour' => '9時00分～15時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id9.jpg'
         ];
         Shop::create($param);
 
@@ -128,8 +110,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道深川市音江町広里783ｰ1',
             'opening_hour' => '9時30分～17時00分',
             'holiday' => '水曜日',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id10.jpg'
         ];
         Shop::create($param);
 
@@ -140,8 +120,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道富良野市幸町１３',
             'opening_hour' => '10時00分～19時00分',
             'holiday' => '水曜日',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id11.jpg'
         ];
         Shop::create($param);
 
@@ -152,8 +130,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道富良野市東山５１３１−１',
             'opening_hour' => '8時30分～16時00分',
             'holiday' => '月〜木曜日',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id12.jpg'
         ];
         Shop::create($param);
 
@@ -164,8 +140,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道宗谷郡猿払村浜鬼志別９９２−３１',
             'opening_hour' => '9時00分～16時30分',
             'holiday' => '日曜日',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id13.jpg'
         ];
         Shop::create($param);
 
@@ -176,8 +150,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道天塩郡天塩町３６６９−２６',
             'opening_hour' => '10時00分～16時00分（土曜のみ12時まで）',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id14.jpg'
         ];
         Shop::create($param);
 
@@ -188,8 +160,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道網走市字 嘉多山267-4',
             'opening_hour' => '9時00分～16時00分',
             'holiday' => '火曜日',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id15.jpg'
         ];
         Shop::create($param);
 
@@ -200,8 +170,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道北見市端野町川向２４７',
             'opening_hour' => '8時30分～17時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id16.jpg'
         ];
         Shop::create($param);
 
@@ -212,8 +180,6 @@ class ShopsTableSeeder extends Seeder
             'address' => '北海道御影東７条５丁目2−２',
             'opening_hour' => '8時00分～17時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id17.jpg'
         ];
         Shop::create($param);
 
@@ -224,8 +190,6 @@ class ShopsTableSeeder extends Seeder
             'address' => ' 北海道中川郡幕別町千住２３５',
             'opening_hour' => '10時00分～16時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id18.jpg'
         ];
         Shop::create($param);
 
@@ -236,8 +200,6 @@ class ShopsTableSeeder extends Seeder
             'address' => ' 北海道標津郡中標津町桜ヶ丘３丁目１',
             'opening_hour' => '10時00分～17時00分',
             'holiday' => '不定休',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id19.jpg'
         ];
         Shop::create($param);
 
@@ -248,8 +210,6 @@ class ShopsTableSeeder extends Seeder
             'address' => ' 北海道阿寒郡鶴居村下雪裡',
             'opening_hour' => '9時30分～15時00分',
             'holiday' => '月・火・木・金',
-            'shop_img' => 'kitachokulogo.001-removebg-preview.jpg',
-            'shop_img_rename' => 'id20.jpg'
         ];
         Shop::create($param);
 

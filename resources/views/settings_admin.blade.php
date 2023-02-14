@@ -51,8 +51,8 @@
         </select>
       </div>
     </div>
-    <div class="mypage__visited-search-btn">
-      <button type="submit" class="mypage__visited-btn">検索</button>
+    <div class="admin__visited-search-btn">
+      <button type="submit" class="admin__visited-search-btn">検索</button>
     </div>
   </form>
   <div class="admin__shop-content">
@@ -61,62 +61,16 @@
         <td class="admin__shop-item-shop">店舗名</li>
         <td class="admin__shop-item-area">エリア</td>
         <td class="admin__shop-item-address">住所</td>
-        <td class="admin__shop-item-shopadmin">代表者名</td>
         <td class="admin__shop-item-btn">削除</td>
       </tr>
       @foreach($shops as $shop)
       <tr class="admin__shop-item">
-        <td class="admin__shop-item-shop"><a href="/admin/settings/shopdetail/{{ $shop->id }}">{{ $shop->name }} &gt;&gt;</a></td>
+        <td class="admin__shop-item-shop"><a href="/shop/edit/{{ $shop->id }}">{{ $shop->name }} &gt;&gt;</a></td>
         <td class="admin__shop-item-area">{{ $shop->area->name }}</td>
         <td class="admin__shop-item-address">{{ $shop->address }}</td>
-        <td class="admin__shop-item-shopadmin">{{ $shop->shopAdmin->name }}</td>
         <td class="admin__shop-item-btn">
           <form action="/shop/destroy/{{ $shop->id }}" method="post">
             @csrf
-            <button type="submit">削除</button>
-          </form>
-        </td>
-      </tr>
-      @endforeach
-    </table>
-  </div>
-  <form class="admin__top-item" action="/search/shopadmin" method="get">
-    @csrf
-    <div class="admin__shopadmin-top">
-      <div class="admin__ttl-shopadmin">店舗代表者検索</div>
-      <div class="admin__shopadmin-left">
-        <input class="admin__shopadmin-searchbox" type="text" name="search_name" placeholder= "{{ !empty($search_name) ? '': '代表者名で検索' }}" value="{{ !empty($search_name) ? $search_name : '' }}">
-        <input class="admin__shopadmin-searchbox" type="text" name="search_shop2" placeholder= "{{ !empty($search_shop2) ? '': '店舗名で検索' }}" value="{{ !empty($search_shop2) ? $search_shop2 : '' }}">
-      </div>
-      <div class="admin__shopadmin-right">
-        <input class="admin__shopadmin-searchbox" type="text" name="search_email" placeholder= "{{ !empty($search_email) ? '': 'メールアドレスで検索' }}" value="{{ !empty($search_email) ? $search_email : '' }}">
-      </div>  
-      <div class="mypage__visited-search-btn">
-        <button type="submit" class="mypage__visited-btn">検索</button>
-      </div>
-    </div>
-  </form>
-  <div class="admin__shopadmin-content">
-    <table class="admin__shopadmin-inner">
-      <tr class="admin__shopadmin-item">
-        <td class="admin__shopadmin-item-name">代表者名</li>
-        <td class="admin__shopadmin-item-shop">店舗名</td>
-        <td class="admin__shopadmin-item-email">メールアドレス</td>
-        <td class="admin__shopadmin-item-change">変更</td>
-        <td class="admin__shopadmin-item-btn">削除</td>
-      </tr>
-      @foreach($shop_admins as $shop_admin)
-      <tr class="admin__shopadmin-item">
-        <td class="admin__shopadmin-item-name">{{ $shop_admin->name }}</td>
-        <td class="admin__shopadmin-item-shop">{{ !empty($shop_admin->shop->name) ?  $shop_admin->shop->name : '' }}</td>
-        <td class="admin__shopadmin-item-email">{{ $shop_admin->email }}</td>
-        <td class="admin__shopadmin-item-change">
-          <a href="/admin/settings/shopadmin/{{ $shop_admin->id }}">変更</a>
-        </td>
-        <td class="admin__shopadmin-item-btn">
-          <form action="/shopadmin/destroy" method="post">
-            @csrf
-            <input type="hidden" value="{{ $shop_admin->id }}" name="shopadmin_id">
             <button type="submit">削除</button>
           </form>
         </td>
@@ -135,8 +89,8 @@
       <div class="admin__user-right">
         <input class="admin__user-searchbox" type="text" name="search_email2" placeholder= "{{ !empty($search_email2) ? '': 'メールアドレスで検索' }}" value="{{ !empty($search_email2) ? $search_email2 : '' }}">
       </div>
-      <div class="mypage__visited-search-btn">
-        <button type="submit" class="mypage__visited-btn">検索</button>
+      <div class="admin__visited-search-btn">
+        <button type="submit" class="admin__visited-search-btn">検索</button>
       </div>
     </div>
   </form>

@@ -33,7 +33,12 @@
       @endif
     </div>
     <div class="detail__shop-txt">
-      {{ $shop->overview }}
+      <p class="detail__address">
+        {{ $shop->address }}
+      </p>
+      <div class="detail__map">
+        <iframe src="http://maps.google.co.jp/maps?q={{ $shop->address }}&z=15&output=embed&iwloc=J&t=m"></iframe>
+      </div>
     </div>
   </div>
   <div class="detail__shop-info">
@@ -47,96 +52,45 @@
       <li class="detail__shop-item">FacebookURL：{{ $shop->facebook_url }}</li>
       <li class="detail__shop-item">TwitterURL：{{ $shop->twitter_url }}</li>
     </ul>
-    <p class="detail__address">
-      住所：{{ $shop->address }}
-    </p>
-    <div class="detail__map">
-      <iframe src="http://maps.google.co.jp/maps?q={{ $shop->address }}&z=15&output=embed&iwloc=J&t=m"></iframe>
-    </div>
   </div>
-  <div class="detail__middle">
-    <div class="detail__review">
-      <div class="detail__review-top">
-        <div class="detail__review-ttl">レビュー</div>
-        <div class="detail__review-top-txt">{{ $evaluations->count() }}件</div>
-      </div>
-      <div class="detail__review-content">
-        @foreach($evaluations as $evaluation)
-        <div class="detail__review-item">
-          <p class="detail__review-user">{{ $evaluation->reservation->user->nickname }}様</p>
-          <p class="detail__visited-date">来店日：{{ $evaluation->reservation->reservation_date }}</p>
-          <p class="detail__review-star">
-            @for ($l = 5; $l >= 1; $l--)
-            @if($l == $evaluation->evaluation)
-            <input id="star{{ $l }}" type="radio" value="{{ $l }}" checked disabled>
-            @else
-            <input id="star{{ $l }}" type="radio" value="{{ $l }}" disabled>
-            @endif
-            <label for="star{{ $l }}">★</label>
-            @endfor
-          </p>
-          <div class="detail__review-comment">{{ $evaluation->comment }}</div>
-          <p class="detail__review-date">{{ $evaluation->created_at }}</p>
+  <p class="detail__shop-edit">
+    <a href="/shop/edit/{{ $shop->id }}">店舗情報を変更する</a>
+  </p>
+  <div class="detail__top-calendar">
+    <div class="detail__ttl-calendar">みんなの旬カレンダー</div>
+    <div class="detail__txt-calendar"><a href="/calendar/{{ $shop->id }}">&plus;追加する</a></div>
+  </div>
+  <div class="detail__calendar-inner">
+    @foreach($calendars as $calendar)
+    <div class="detail__calendar-content">
+      <div class="detail__calendar-left">
+        <div class="detail__calendar-shopttl">{{ $calendar->name }}</div>
+        <div class="detail__calendar-date">
+          時期：
+          @if(($calendar->start_date) % 3 == 1)
+          {{ ceil(($calendar->start_date)/3) }}月上旬
+          @elseif(($calendar->start_date) % 3 == 2)
+          {{ ceil(($calendar->start_date)/3) }}月中旬
+          @else
+          {{ ceil(($calendar->start_date)/3) }}月下旬
+          @endif
+          〜
+          @if(($calendar->end_date) % 3 == 1)
+          {{ ceil(($calendar->end_date)/3) }}月上旬
+          @elseif(($calendar->end_date) % 3 == 2)
+          {{ ceil(($calendar->end_date)/3) }}月中旬
+          @else
+          {{ ceil(($calendar->end_date)/3) }}月下旬
+          @endif
         </div>
-        @endforeach
+        <div class="detail__calendar-date"><a href="/search/calendar/{{ $calendar->user_id }}">ユーザー名：{{ $calendar->user->nickname }}</a></div>
+        <div class="detail__calendar-date">追加日時：{{ $calendar->updated_at }}</div>
       </div>
-    </div>
-    <div class="detail__coupon">
-      <div class="detail__coupon-ttl">来店予約クーポン</div>
-      <form class="detail__coupon-content" method="post" action="/reservation">
-        @csrf
-        <table class="detail__coupon-table">
-          <tr>
-            <td class="detail__table-ttl">クーポン名</td>
-            <td>
-              <div class="detail__reservation-error">
-                @error('coupon_id')
-                {{ $message }}
-                @enderror
-              </div>
-              <select name="coupon_id" class="detail__coupon-select">
-                @foreach($coupons as $coupon)
-                <option value="{{ $coupon->id }}" {{ old('coupon_id') == $coupon->id ? 'selected' : '' }}>{{ $coupon->name }}</option>
-                @endforeach
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td class="detail__table-ttl">来店日</td>
-            <td class="detail__reservation-date">
-              <div class="detail__reservation-error">
-                @error('reservation_date')
-                {{ $message }}
-                @enderror
-              </div>
-              <input type="date" name="reservation_date" id="tomorrow">
-            </td>
-          </tr>
-          <tr>
-            <td class="detail__table-ttl">来店時間</td>
-            <td>
-              <div class="detail__reservation-error">
-                @error('reservation_time')
-                {{ $message }}
-                @enderror
-              </div>
-              <select name="reservation_time" class="detail__reservation-time">
-                @for ($i = 8; $i <= 20; $i++) 
-                <option value="{{ substr('0'.$i, -2) }}:00:00" {{ old('reservation_time') == substr('0'.$i, -2).':00:00' ? 'selected' : ''}}>{{ substr('0'.$i, -2) }}:00</option>
-                <option value="{{ substr('0'.$i, -2) }}:30:00" {{ old('reservation_time') == substr('0'.$i, -2).':30:00' ? 'selected' : ''}}>{{ substr('0'.$i, -2) }}:30</option>
-                @endfor
-              </select>
-            </td>
-          </tr>
-        </table>
-        <div class="detail__reservation-btn">
-          <button type="submit" class="detail__btn">予約</button>
-        </div>
-      </form>
-    </div>
+      <div class="detail__calendar-right">
+        <div class="detail__calendar-comment">{{ $calendar->comment }}</div>
+      </div>
+    </div>     
+    @endforeach
   </div>
 </div>
-@endsection
-@section ('add-js')
-<script src="{{ asset('js/reservation.js') }}"></script>
 @endsection

@@ -37,14 +37,14 @@
       </form>
     </table>
   </div>
-  <div class="settings__bottom">
-    <div class="settings__btn">
-      <button type="submit" form="update_{{ $user->id }}" class="settings__update">変更する</button>
+  <div class="mypage__bottom">
+    <div class="mypage__btn">
+      <button type="submit" form="update_{{ $user->id }}" class="mypage__update">変更する</button>
     </div>
-    <form action="/user/destroy" method="post" class="settings__btn">
+    <form action="/user/destroy" method="post" class="mypage__btn">
       @csrf
       <input type="hidden" name="user_id" value="{{ $user->id }}">
-      <button type="submit" class="settings__delete">退会する</button>
+      <button type="submit" class="mypage__delete">退会する</button>
     </form>
   </div>
 </div>

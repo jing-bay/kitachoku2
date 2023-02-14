@@ -7,6 +7,7 @@
   <title>キタチョク</title>
   <link rel="stylesheet" href="{{asset('css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 </head>
 <body>
   <header class="header">
@@ -17,6 +18,12 @@
         </div>
         <div class="header__menu--left">
           <a href="/#concept">キタチョクとは？</a>
+        </div>
+        <div class="header__menu--left">
+          <a href="/shop">店舗追加</a>
+        </div>
+        <div class="header__menu--left">
+          <a href="/search/calendar">旬カレンダー検索</a>
         </div>
       </div>
       <div class="header__right">
@@ -38,7 +45,6 @@
         </div>
         @endguest
       </div>
-
       <div class="header__ham-menu" id="js-ham">
         <ul class="header__list">
           @guest
@@ -54,6 +60,8 @@
             </form>
           </li>
           @endauth
+          <li class="header__ham-item"><a href="/shop">店舗追加</a></li>
+          <li class="header__ham-item"><a href="/search/calendar">旬カレンダー検索</a></li>
         </ul>
       </div>
       <div class="header__menubtn" id="menubtn">

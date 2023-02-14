@@ -34,15 +34,4 @@ class RegisteredUserController extends Controller
 
         return redirect('/send-thanks');
     }
-
-    public function showSend()
-    {
-        return view('send_thanks');
-    }
-
-    public function showThanks()
-    {
-        return view('register_thanks');
-    }
-
 }

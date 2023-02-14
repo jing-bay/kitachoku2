@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Area;
-use App\Models\Shop;
-use App\Models\ShopAdmin;
-use App\Models\User;
-use App\Models\Notice;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

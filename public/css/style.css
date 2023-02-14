@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  /*outline: 1px solid red !important;*/
 }
 
 *:focus {
@@ -29,7 +28,6 @@ body {
 }
 
 /*ヘッダー*/
-
 .header {
   background-color: #87c957;
   height: 50px;
@@ -53,7 +51,7 @@ body {
 }
 
 .header__middle {
-  font-size: 20px;
+  font-size: clamp(18px, 2vw, 20px);
 }
 
 .header__right {
@@ -73,20 +71,20 @@ body {
 }
 
 .header__menu--left {
-  font-size: clamp(16px, 2vw, 18px);
+  font-size: clamp(14px, 1.5vw, 18px);
   padding: 0px 10px;
 }
 
 .header__menu--right {
-  font-size: clamp(16px, 2vw, 18px);
+  font-size: clamp(14px, 1.5vw, 18px);
   text-align: right;
   padding: 0px 10px;
 }
 
 .header__menu-logout {
-  font-size: clamp(16px, 2vw, 18px);
+  font-size: clamp(14px, 1.5vw, 18px);
   border: none;
-  background-color: transparent;;
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -241,7 +239,7 @@ body {
   }
 }
 
-/*メイン画面*/
+/*トップ画面*/
 .search {
   background-color: #87c957;
 }
@@ -657,6 +655,7 @@ body {
   padding-right: 10px;
   cursor: pointer;
   position: relative;
+  font-size: clamp(14px, 2.5vw, 16px);
 }
 
 .result__tag-label::before {
@@ -904,7 +903,7 @@ body {
   flex-wrap: wrap;
   margin: 0 auto;
   font-size: clamp(12px, 1.5vw, 16px);
-  padding-top: 30px;
+  padding: 30px 0px;
 }
 
 .detail__shop-item {
@@ -914,14 +913,8 @@ body {
 }
 
 .detail__address {
-  width: 90%;
-  padding: 20px;
-  margin: 0 auto;
+  padding-bottom: 10px;
   font-size: clamp(12px, 1.5vw, 16px);
-}
-
-.detail__map {
-  margin: 0 auto;
 }
 
 .detail__map iframe {
@@ -932,179 +925,77 @@ body {
   border-bottom-right-radius: 5px;
 }
 
-.detail__middle {
-  display: flex;
-  padding: 30px 0px 30px;
-}
-
-.detail__review {
-  width: 50%;
-  padding-right: 20px;
-}
-
-.detail__review-top {
-  display: flex;
-  padding-bottom: 20px;
-  align-items: flex-end;
-}
-
-.detail__review-ttl {
-  font-size: clamp(16px, 1.5vw, 24px);
-}
-
-.detail__review-top-txt {
-  padding-left: 30px;
-  font-size: clamp(12px, 1.5vw, 18px);
-}
-
-.detail__review-content {
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 5px;
-  height: 230px;
-  overflow: scroll;
-}
-
-.detail__review-item {
-  width: 90%;
-  margin: 0 auto;
+.detail__shop-edit {
   padding: 20px 0px;
 }
 
-.detail__review-item:not(:last-child){
+.detail__shop-edit a {
   border-bottom: 1px solid #000000;
 }
 
-.detail__review-user {
-  font-size: clamp(16px, 1.5vw, 20px);
-  padding-bottom: 10px;
-}
-
-.detail__review-star{
+.detail__top-calendar {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  padding-bottom: 10px;
-}
-
-.detail__review-star input {
-  display: none;
-}
-
-.detail__review-star input:checked~label {
-  color: #ffcc00;
-}
-
-.detail__review-star label {
-  padding: 0 2px;
-  color: #eeeeee;
-  font-size: clamp(14px, 2vw, 20px);
-}
-
-.detail__visited-date {
-  font-size: 12px;
-  padding-bottom: 10px;
-}
-
-.detail__review-comment {
-  font-size: clamp(12px, 1.5vw, 14px);
-  height: 70px;
-  overflow: scroll;
-}
-
-.detail__review-date {
-  padding: 10px 0px;
-  font-size: 12px;
-
-}
-
-.detail__coupon {
-  width: 50%;
-}
-
-.detail__coupon-ttl {
-  font-size: clamp(16px, 1.5vw, 24px);
+  padding-top: 60px;
   padding-bottom: 20px;
+  align-items: flex-end;
+  width: 100%;
+  border-bottom: 3px solid #87c957;
 }
 
-.detail__coupon-content {
+.detail__ttl-calendar {
+  font-size: clamp(18px, 2.5vw, 24px);
+}
+
+.detail__txt-calendar {
+  padding-left: 30px;
+}
+
+.detail__calendar-inner {
+  margin: 20px 0px;
+  height: 400px;
   width: 100%;
+  overflow: scroll;
   background-color: #ffffff;
   border-radius: 5px;
-  height: 230px;
-  overflow: scroll;
 }
 
-.detail__coupon-table {
+.detail__calendar-content {
   width: 90%;
-  margin: 10px auto;
+  margin: 0 auto;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.detail__coupon-table tr:not(:last-child) {
+.detail__calendar-content:not(:last-child) {
   border-bottom: 1px solid #000000;
 }
 
-.detail__coupon-table td {
+.detail__calendar-left {
+  width: 40%;
+}
+
+.detail__calendar-shopttl {
+  font-size: clamp(14px, 3vw, 18px);
   padding: 10px 0px;
+  overflow: hidden;
 }
 
-.detail__table-ttl {
-  width: 30%;
-  font-size: clamp(12px, 1.5vw, 16px);
-}
-
-.detail__reservation-error {
+.detail__calendar-date {
+  padding-top: 5px;
   font-size: clamp(10px, 2vw, 14px);
-  color: #ff0000;
-  padding-bottom: 10px;
+  line-height: 120%;
 }
 
-.detail__coupon-select {
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  font-size: clamp(12px, 1.5vw, 16px);
+.detail__calendar-right {
+  width: 60%;
 }
 
-.detail__coupon-select select {
-  overflow-wrap: break-word;
-}
-
-.detail__reservation-date input {
-  cursor: pointer;
-  border: none;
-  font-size: clamp(12px, 1.5vw, 16px);
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-}
-
-.detail__reservation-time {
-  border: none;
-  cursor: pointer;
-  font-size: clamp(12px, 1.5vw, 16px);
-}
-
-.detail__reservation-btn {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 100px;
-  min-width: 70px;
-  width: 20%;
-}
-
-.detail__btn {
-  width: 100%;
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 35px;
-  font-size: clamp(12px, 1.5vw, 16px);
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
+.detail__calendar-comment {
+  font-size: clamp(10px, 2vw, 14px);
+  padding: 10px 0px;
+  height: 100px;
+  overflow: scroll;
 }
 
 @media screen and (max-width:768px) {
@@ -1121,12 +1012,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 90%;
   }
 
-  .detail__shop-txt {
-    width: 100%;
-    padding: 10px 0px 0px;
-    font-size: clamp(12px, 3vw, 14px);
-  }
-
   .detail__shop-table {
     display: inherit;
     padding-top: 15px;
@@ -1141,54 +1026,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .detail__address {
     padding: 15px;
     font-size: clamp(12px, 3vw, 14px);
-  }
-
-  .detail__middle {
-    display: inherit;
-    padding: 0px;
-  }
-
-  .detail__review {
-    width: 100%;
-    padding-right: 0px;
-    padding-top: 20px;
-  }
-
-  .detail__review-ttl {
-    font-size: clamp(16px, 3vw, 20px);
-  }
-
-  .detail__review-user {
-    font-size: clamp(16px, 3vw, 20px);
-  }
-
-  .detail__review-star label {
-    font-size: clamp(14px, 3vw, 20px);
-  }
-
-  .detail__coupon {
-    width: 100%;
-    padding: 20px 0px 20px;
-  }
-
-  .detail__coupon-ttl {
-    font-size: clamp(16px, 3vw, 20px);
-  }
-
-  .detail__table-ttl {
-    font-size: clamp(12px, 3vw, 16px);
-  }
-
-  .detail__coupon-select {
-    font-size: clamp(12px, 3vw, 16px);
-  }
-
-  .detail__reservation-date input {
-    font-size: clamp(12px, 3vw, 16px);
-  }
-
-  .detail__reservation-time {
-    font-size: clamp(12px, 3vw, 16px);
   }
 }
 
@@ -1208,6 +1045,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #ffffff;
   border-radius: 5px;
   padding: 20px 0px;
+  margin-top: 20px;
 }
 
 .register__inner {
@@ -1222,12 +1060,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .register__content-ttl {
   width: 30%;
   padding-right: 10px;
-  font-size: clamp(12px, 2vw, 18px);
+  font-size: clamp(12px, 2vw, 16px);
   vertical-align: middle;
 }
 
 .register__content-item {
   width: 70%;
+  font-size: clamp(12px, 2vw, 16px);
 }
 
 .register__content-item input {
@@ -1236,7 +1075,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-right: none;
   border-left: none;
   border-bottom: 1px solid #000000;
-  font-size: clamp(12px, 2vw, 18px);
+  font-size: clamp(12px, 2vw, 16px);
 }
 
 .register__btn {
@@ -1319,13 +1158,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: none;
   cursor: pointer;
   padding-left: 20px;
-}
-
-/*パスワードリセット送信画面*/
-.forgot-password__input {
-  width: 70%;
-  margin: 20px 0px;
-  height: 30px;
 }
 
 /*サンクス画面*/
@@ -1424,117 +1256,47 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-top: 80px;
 }
 
+.mypage__ttl {
+  font-size: clamp(18px, 2.5vw, 24px);
+  width: 25%;
+}
+
 .mypage__top {
   padding-top: 30px;
 }
 
-.mypage__top a {
-  border-bottom: 1px solid #000000;
-}
-
-.mypage__top-reservation {
+.mypage__bottom {
   display: flex;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  align-items:flex-end;
-  width: 100%;
-  border-bottom: 3px solid #87c957;
-}
-
-.mypage__ttl-reservation {
-  font-size: clamp(18px, 2.5vw, 24px);
-}
-
-.mypage__txt-reservation {
-  font-size: clamp(12px, 2vw, 18px);
-  padding-left: 30px;
-}
-
-.mypage__reservation-content {
-  display: flex;
+  justify-content: space-around;
   padding-top: 20px;
-  width: 100%;
-  overflow: scroll;
 }
 
-.mypage__reservation-card{
-  width: 300px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  height: 270px;
-  margin-right: 30px;
-  flex: 0 0 auto;
-}
-
-.mypage__reservation-table {
-  width: 80%;
-  margin: 10px auto;
-}
-
-.mypage__reservation-table tr {
-  border-bottom: 1px solid #000000;
-}
-
-.mypage__reservation-table-ttl {
+.mypage__btn {
   width: 30%;
-  font-size: 14px;
-  padding: 15px 0px;
+  max-width: 200px;
+  min-width: 80px;
 }
 
-.mypage__reservation-table-content {
-  width: 70%;
-  padding-left: 10px;
-  font-size: 14px;
-}
-
-.mypage__reservation-select {
-  width: 100%;
-  border: none;
-  cursor: pointer;
-}
-
-.mypage__reservation-date {
-  border: none;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.mypage__reservation-time {
-  border: none;
-  cursor: pointer;
-}
-
-.mypage__reservation-bottom {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-}
-
-.mypage__reservation-btn {
-  width: 40%;
-}
-
-.mypage__reservation-changebtn {
+.mypage__update {
   width: 100%;
   background-color: #87c957;
   color: #ffffff;
   border: 1px solid #87c957;
   border-radius: 5px;
   height: 35px;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: clamp(12px, 2.5vw, 16px);
   cursor: pointer;
 }
 
-.mypage__reservation-deletebtn {
+.mypage__delete {
   width: 100%;
   background-color: #ffffff;
   color: #000000;
   border: 3px solid #87c957;
   border-radius: 5px;
   height: 35px;
-  font-size: 16px;
+  font-size: clamp(12px, 2.5vw, 16px);
   cursor: pointer;
 }
 
@@ -1545,11 +1307,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: flex-end;
   width: 100%;
   border-bottom: 3px solid #87c957;
-}
-
-.mypage__fav-ttl {
-  font-size: clamp(18px, 2.5vw, 24px);
-  width: 25%;
 }
 
 .mypage__fav-search-name {
@@ -1651,282 +1408,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-top: 20px;
 }
 
-.mypage__top-visited {
-  display: flex;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  align-items: center;
-  width: 100%;
-  border-bottom: 3px solid #87c957;
-}
-
-.mypage__visited-ttl {
-  font-size: clamp(18px, 2.5vw, 24px);
-  width: 15%;
-}
-
-.mypage__visited-search-na {
-  width: 30%;
-  padding-left: 20px;
-}
-
-.mypage__visited-search-name {
-  width: 100%;
-  padding-bottom: 10px;
-}
-
-.mypage__visited-searchbox--name {
-  width: 100%;
-  height: 25px;
-  font-size: 14px;
-  border: none;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  border-radius: 5px;
+.mypage__calendar-editcell {
+  width: 3%;
+  min-width: 20px;
   padding-left: 10px;
+  text-align: center;
 }
 
-.mypage__visited-search-area {
-  width: 100%;
-}
-
-.mypage__visited-searchbox--area {
-  cursor: pointer;
-  width: 100%;
-  height: 25px;
-  font-size: 14px;
-  border: none;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  border-radius: 5px;
-  color: #777777;
-  padding-left: 10px;
-}
-
-.mypage__visited-search-date {
-  width: 35%;
-  padding-left: 10px;
-  text-align: right;
-}
-
-.mypage__visited-search-from {
-  font-size: 14px;
-  width: 100%;
-  padding-bottom: 10px;
-}
-
-.mypage__visited-search-from input {
-  width: 70%;
-  font-size: 14px;
-  height: 25px;
-  border: none;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  border-radius: 5px;
-  color: #777777;
-  padding-left: 10px;
-}
-
-.mypage__visited-search-to {
-  width: 100%;
-  font-size: 14px;
-}
-
-.mypage__visited-search-to input {
-  width: 70%;
-  font-size: 14px;
-  height: 25px;
-  border: none;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  border-radius: 5px;
-  color: #777777;
-  padding-left: 10px;
-}
-
-.mypage__visited-search-btn {
-  width: 130px;
-  padding-left: 45px;
-}
-
-.mypage__visited-btn {
-  width: 100%;
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 25px;
-  font-size: clamp(12px, 3.5vw, 14px);
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
-}
-
-.mypage__visited-content {
-  display: flex;
-  padding-top: 40px;
-  width: 100%;
-  overflow: scroll;
-  align-items: flex-start;
-}
-
-.mypage__visited-shop {
-  width: 260px;
-  height: 250px;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  margin-right: 30px;
-  flex: 0 0 auto;
-}
-
-.mypage__visited-img img {
-  width: 100%;
-  object-fit: cover;
-  height: 150px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-}
-
-.mypage__visited-inner {
-  padding: 10px;
-}
-
-.mypage__visited-shopcontent {
-  display: flex;
-  justify-content: space-between;
-}
-
-.mypage__visited-content-left {
-  font-size: 12px;
-  padding-top: 20px;
-  width: 70%;
-}
-
-.mypage__top-review {
-  display: flex;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  align-items: flex-end;
-  width: 100%;
-  border-bottom: 3px solid #87c957;
-}
-
-.mypage__ttl-review {
-  font-size: clamp(18px, 2.5vw, 24px);
-}
-
-.mypage__txt-review {
-  padding-left: 30px;
-}
-
-.mypage__review-inner {
-  margin: 20px 0px;
-  height: 400px;
-  width: 100%;
-  overflow: scroll;
-  background-color: #ffffff;
-  border-radius: 5px;
-}
-
-.mypage__review-content {
-  width: 90%;
-  margin: 0 auto;
-  padding: 20px 0px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.mypage__review-content:not(:last-child) {
-  border-bottom: 1px solid #000000;
-}
-
-.mypage__review-left {
+.mypage__calendar-edit--btn {
   width: 40%;
 }
 
-.mypage__review-shopttl {
-  font-size: clamp(14px, 3vw, 18px);
-  padding: 10px 0px;
-  overflow: hidden;
-}
-
-.mypage__review-star {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  padding-bottom: 10px;
-}
-
-.mypage__review-star label {
-  padding: 0 2px;
-  color: #eeeeee;
-  font-size: clamp(14px, 2vw, 24px);
-}
-
-.mypage__review-star input{
-  display: none;
-}
-
-.mypage__review-star input:checked ~ label {
-  color: #ffcc00;
-}
-
-.mypage__review-date {
-  padding-top: 5px;
-  font-size: clamp(10px, 2vw, 14px);
-  line-height: 120%;
-}
-
-.mypage__review-right {
-  width: 60%;
-}
-
-.mypage__review-comment {
-  font-size: clamp(10px, 2vw, 14px);
-  padding: 10px 0px;
-  height: 100px;
-  overflow: scroll;
-}
-
-.mypage__review-bottom {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 10px;
-}
-
-.mypage__review-update {
-  margin-right: 10px;
-  font-size: clamp(10px, 2vw, 14px);
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-}
-
-.mypage__review-delete button{
-  font-size: clamp(10px, 2vw, 14px);
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-}
-
-.mypage__content-error {
-  font-size: 10px;
-  color: #ff0000;
-  padding-left: 10px;
-}
-
 @media screen and (max-width:768px) {
-  .mypage__top-reservation {
-    padding-top: 30px;
+  .mypage {
+    width: 90%;
   }
 
   .mypage__top-fav {
     display: inherit;
   }
 
-  .mypage__fav-ttl {
+  .mypage__ttl {
     width: 100%;
   }
 
@@ -1949,279 +1451,41 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-top: 10px;
   }
 
-  .mypage__top-visited {
-    display: inherit;
-    padding-top: 30px;
-  }
-
-  .mypage__visited-ttl {
-    width: 100%;
-    padding-bottom: 20px;
-  }
-
-  .mypage__visited-search-na {
-    width: 60%;
-    min-width: 250px;
-    padding-left: 0px;
-    padding-bottom: 10px;
-  }
-
-  .mypage__visited-search-date {
-    width: 60%;
-    min-width: 250px;
-    padding-left: 0px;
-    text-align: start;
-    line-height: 150%;
-  }
-
-  .mypage__visited-search-from {
-    font-size: 14px;
-    width: 100%;
-    padding-bottom: 0px;
-  }
-
-  .mypage__review-content {
+  .detail__calendar-content {
     display: inherit;
   }
 
-  .mypage__visited-search-from input {
+  .detail__calendar-left {
     width: 100%;
   }
 
-  .mypage__visited-search-to input {
+  .detail__calendar-right {
     width: 100%;
   }
 
-  .mypage__visited-search-btn {
-    padding-left: 0px;
-    padding-top: 10px;
-    width: 100px;
-  }
-
-  .mypage__review-left {
-    width: 100%;
-  }
-
-  .mypage__review-right {
-    width: 100%;
-  }
-
-  .mypage__review-comment {
+  .detail__calendar-comment {
     height: 100%;
   }
 }
 
-/*レビュー作成画面*/
-.evaluation {
-  width: 60%;
-  padding-top: 100px;
-  margin: 0 auto;
-}
-
-.evaluation__ttl {
-  font-size: clamp(18px, 3vw, 24px);
-  padding-bottom: 30px;
-}
-
-.evaluation__content {
-  background-color: #ffffff;
-  border-radius: 5px;
-  padding: 20px 0px;
-}
-
-.evaluation__inner {
-  margin: 0 auto;
-  width: 90%;
-}
-
-.evaluation__inner td {
-  padding: 10px 0px 10px;
-}
-
-.evaluation__content-ttl {
-  width: 30%;
-  padding-right: 10px;
-  font-size: clamp(12px, 2vw, 18px);
-  vertical-align: top;
-}
-
-.evaluation__content-item {
-  width: 70%;
-  font-size: clamp(12px, 2vw, 18px);
-}
-
-.evaluation__content-item input {
-  width: 100%;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: 1px solid #000000;
-  font-size: clamp(12px, 2vw, 18px);
-}
-
-.evaluation__content-form {
-  font-size: clamp(12px, 2vw, 14px);
-}
-
-.evaluation__btn {
-  width: 100%;
-  padding: 30px 0px;
-}
-
-.evaluation__btn-form {
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 35px;
-  width: 150px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 0 auto;
-  display: block;
-}
-
-.evaluation__content-error {
-  font-size: clamp(10px, 2vw, 14px);
-  color: #ff0000;
-  padding-bottom: 10px;
-}
-
-.evaluation__content-form {
-  width: 100%;
-  height: 100px;
-  resize: none;
-}
-
-.rate-form {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
-
-.rate-form input {
-  display: none;
-}
-
-.rate-form label {
-  padding: 0 2px;
-  color: #eeeeee;
-  cursor: pointer;
-  font-size: clamp(14px, 2vw, 20px);
-}
-
-.rate-form label:hover~label {
-  color: #ffcc00;
-}
-
-.rate-form input:checked~label {
-  color: #ffcc00;
-}
-
-@media screen and (max-width:768px) {
-  .evaluation {
-    width: 90%;
-  }
-
-  .evaluation__content-ttl {
-    width: 35%;
-  }
-
-  .evaluation__content-item {
-    width: 65%;
-  }
-
-  .evaluation__ttl {
-    padding-bottom: 20px;
-  }
-}
-
-/*ユーザー情報変更・削除*/
-.settings__bottom {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 20px;
-}
-
-.settings__btn {
-  width: 100px;
-}
-
-.settings__update {
-  width: 100%;
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 5px;
-  height: 35px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.settings__delete {
-  width: 100%;
-  background-color: #ffffff;
-  color: #000000;
-  border: 3px solid #87c957;
-  border-radius: 5px;
-  height: 35px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/*店舗管理ページ*/
-.shopadmin {
+/*店舗作成(編集)ページ*/
+.shopedit {
   width: 80%;
   margin: 0 auto;
 }
 
-.shopadmin__ttl-admin {
-  padding-top: 80px;
-  font-size: clamp(18px, 3vw, 24px);
-  padding-bottom: 20px;
-}
-
-.shopadmin__content-admin {
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 2px #c6c6c6;
-}
-
-.shopadmin__admin-inner {
-  width: 90%;
-  margin: 0 auto;
-  padding: 20px 0px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.shopadmin__admin-item {
-  width: 50%;
-  font-size: clamp(12px, 1.8vw, 18px);
-  display: flex;
-}
-
-.shopadmin__admin-item input{
-  width: 60%;
-  font-size: clamp(12px, 1.8vw, 18px);
-  border-bottom: 1px solid #000000;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  margin-left: 10px;
-}
-
-.shopadmin__admin-bottom {
-  display: flex;
+.shopedit__admin-bottom {
   padding: 20px 0px;
   width: 400px;
   margin: 0 auto;
   justify-content: space-between;
 }
 
-.shopadmin__admin-changebtn {
+.shopedit__admin-bottomleft {
+  padding-bottom: 20px;
+}
+
+.shopedit__admin-changebtn {
   background-color: #87c957;
   color: #ffffff;
   border: 1px solid #87c957;
@@ -2235,7 +1499,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: block;
 }
 
-.shopadmin__admin-deletebtn {
+.shopedit__admin-deletebtn {
   width: 150px;
   background-color: #ffffff;
   color: #000000;
@@ -2248,12 +1512,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: block;
 }
 
-.shopadmin__ttl-shopsetting {
+.shopedit__ttl-shopsetting {
   font-size: clamp(18px, 3vw, 24px);
   padding: 20px 0px;
 }
 
-.shopadmin__shopsetting-content {
+.shopedit__shopsetting-content {
   width: 100%;
   background-color: #ffffff;
   border-radius: 5px;
@@ -2261,7 +1525,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-shadow: 0px 2px 2px #c6c6c6;
 }
 
-.shopadmin__shopsetting-inner {
+.shopedit__shopsetting-inner {
   margin: 0 auto;
   width: 90%;
   font-size: clamp(12px, 1.5vw, 18px);
@@ -2269,18 +1533,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-wrap: wrap;
 }
 
-.shopadmin__shopsetting-heading {
+.shopedit__shopsetting-heading {
   width: 15%;
   padding-top: 20px;
 }
 
-.shopadmin__shopsetting-input {
+.shopedit__shopsetting-input {
   width: 35%;
   padding-left: 10px;
   padding-top: 20px;
 }
 
-.shopadmin__shopsetting-input input {
+.shopedit__shopsetting-input input {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -2289,7 +1553,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: clamp(12px, 1.5vw, 16px);
 }
 
-.shopadmin__shopsetting-input select {
+.shopedit__shopsetting-input select {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -2299,7 +1563,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: clamp(12px, 1.5vw, 16px);
 }
 
-.shopadmin__shopsetting-file {
+.shopedit__shopsetting-file {
   background-color: #87c957;
   color: #ffffff;
   font-weight: bold;
@@ -2308,335 +1572,63 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: clamp(12px, 1.8vw, 14px);
 }
 
-.shopadmin__shopsetting-file input {
+.shopedit__shopsetting-file input {
   display: none;
 }
 
-.shopadmin__img-name {
+.shopedit__img-name {
   color: #000000;
   padding-top: 10px;
   font-size: clamp(12px, 1.8vw, 14px);
   word-break: break-all
 }
 
-.shopadmin__shopsetting-tag-heading {
+.shopedit__shopsetting-tag-heading {
   padding: 20px 0px;
 }
 
-.shopadmin__shopsetting-tags {
+.shopedit__shopsetting-tags {
   margin: 0 auto;
   width: 90%;
-}
-
-.shopadmin__shopsetting-overview {
-  margin: 0 auto;
-  width: 90%;
-  display: flex;
-  align-items: baseline;
-  font-size: clamp(12px, 1.5vw, 16px);
-  padding-top: 20px;
-}
-
-.shopadmin__shopsetting-overview label {
-  width: 15%;
-  padding-bottom: 10px;
-  display: block;
-}
-
-.shopadmin__shopsetting-overview textarea {
-  width: 85%;
-  resize: none;
-  height: 100px;
-}
-
-.shopadmin__shop-btn {
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 35px;
-  width: 150px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 20px auto;
-  display: block;
-}
-
-.shopadmin__shop-bottom {
-  display: flex;
-  padding-top: 20px;
-  width: 400px;
-  margin: 0 auto;
-  justify-content: space-between;
-}
-
-.shopadmin__shop-btn--update {
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 35px;
-  width: 150px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 0 auto;
-  display: block;
-}
-
-.shopadmin__shop-btn--delete {
-  width: 150px;
-  background-color: #ffffff;
-  color: #000000;
-  border: 3px solid #87c957;
-  border-radius: 10px;
-  height: 35px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.shopadmin__top-reservation {
-  display: flex;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  align-items: center;
-  width: 100%;
-}
-
-.shopadmin__ttl-reservation {
-  font-size: clamp(18px, 2.5vw, 24px);
-  width: 15%;
-}
-
-.shopadmin__reservation-content {
-  max-width: 100%;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  height: 400px;
-  overflow: scroll;
-  padding: 20px;
-}
-
-.shopadmin__reservation-inner {
-  table-layout: fixed;
-  min-width: 100%;
-}
-
-.shopadmin__reservation-item {
-  overflow: scroll;
-  font-size: 14px;
-}
-
-.shopadmin__reservation-item:not(:last-child) {
-  border-bottom: 1px solid #000000;
-}
-
-.shopadmin__reservation-item-name {
-  width: 150px;
-  min-width: 150px;
-  overflow: scroll;
-  padding: 10px 10px 10px 0px;
-}
-
-.shopadmin__reservation-item-date {
-  width: 250px;
-  min-width: 250px;
-  overflow: scroll;
-  padding-right: 10px;
-}
-
-.shopadmin__reservation-item-coupon {
-  width: 300px;
-  min-width: 300px;
-  overflow: scroll;
-  padding-right: 10px;
-}
-
-.shopadmin__reservation-item-reservation {
-  width: 250px;
-  min-width: 250px;
-  overflow: scroll;
-  padding-right: 10px;
-}
-
-.shopadmin__reservation-item-btn {
-  width: 100px;
-  min-width: 100px;
-  overflow: scroll;
-}
-
-.shopadmin__reservation-item-btn button {
-  width: 80px;
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 25px;
-  font-size: clamp(12px, 3.5vw, 14px);
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
-}
-
-.shopadmin__ttl-coupon {
-  padding: 30px 0px;
-  font-size: clamp(18px, 3vw, 24px);
-}
-
-.shopadmin__coupon-content {
-  min-width: 40%;
-  max-width: 400px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  padding: 20px;
-  height: 300px;
-  overflow: scroll;
-  margin-bottom: 30px;
-}
-
-.shopadmin__coupon-inner {
-  table-layout: fixed;
-  min-width: 100%;
-}
-
-.shopadmin__coupon-item {
-  overflow: scroll;
-  font-size: 12px;
-}
-
-.shopadmin__coupon-item:not(:last-child) {
-  border-bottom: 1px solid #000000;
-}
-
-.shopadmin__coupon-name {
-  width: 300px;
-  min-width: 300px;
-  overflow: scroll;
-  padding: 10px 10px 10px 0px;
-}
-
-.shopadmin__coupon-name input {
-  width: 100%;
-  height: 25px;
-  font-size: 12px;
-  border: none;
-}
-
-.shopadmin__coupon-add {
-  width: 100px;
-  min-width: 100px;
-  overflow: scroll;
-  padding: 10px 10px 10px 0px;
-}
-
-.shopadmin__coupon-add button {
-  width: 80px;
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 25px;
-  font-size: clamp(12px, 3.5vw, 14px);
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
-}
-
-.shopadmin__coupon-delete {
-  width: 100px;
-  min-width: 100px;
-  overflow: scroll;
-  padding: 10px 10px 10px 0px;
-}
-
-.shopadmin__coupon-delete button{
-  width: 80px;
-  background-color: #ffffff;
-  color: #000000;
-  border: 3px solid #87c957;
-  border-radius: 10px;
-  height: 25px;
-  font-size: clamp(12px, 3.5vw, 14px);
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  padding-bottom: 20px;
 }
 
 @media screen and (max-width:768px) {
-  .shopadmin {
+  .shopedit {
     width: 90%;
   }
 
-  .shopadmin__admin-inner {
-    display: inherit;
-  }
-
-  .shopadmin__admin-item {
-    padding: 10px 0px;
-    width: 90%;
-  }
-
-  .shopadmin__admin-heading {
+  .shopedit__admin-heading {
     width: 40%;
   }
-  .shopadmin__admin-item input {
-    width: 60%;
-  }
 
-  .shopadmin__admin-bottom {
+  .shopedit__admin-bottom {
     display: inherit;
     width: inherit;
   }
 
-  .shopadmin__admin-bottomleft {
-    padding-bottom: 20px;
-  }
-
-  .shopadmin__shopsetting-inner {
+  .shopedit__shopsetting-inner {
     display: inherit;
     font-size: clamp(14px, 3vw, 16px);
   }
 
-  .shopadmin__shopsetting-heading {
+  .shopedit__shopsetting-heading {
     width: 100%;
   }
     
-  .shopadmin__shopsetting-input {
+  .shopedit__shopsetting-input {
     width: 100%;
   }
 
-  .shopadmin__shopsetting-input input {
+  .shopedit__shopsetting-input input {
     font-size: clamp(12px, 3vw, 16px);
   }
 
-  .shopadmin__shopsetting-input select {
+  .shopedit__shopsetting-input select {
     font-size: clamp(12px, 3vw, 16px);
   }
 
-  .shopadmin__shopsetting-tag-heading {
+  .shopedit__shopsetting-tag-heading {
     font-size: clamp(14px, 3vw, 16px);
-  }
-
-  .shopadmin__shopsetting-overview {
-    font-size: clamp(14px, 3vw, 16px);
-    display: inherit;
-  }
-
-  .shopadmin__shopsetting-overview textarea {
-    width: 90%;
-    margin-top: 10px;
-  }
-
-  .shopadmin__top-reservation {
-    display: inherit;
-  }
-
-  .shopadmin__ttl-reservation {
-    padding-bottom: 10px;
-    width: 100%;
   }
 }
 
@@ -2737,28 +1729,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   margin: 0 auto;
   display: block;
-}
-
-.admin__shop-btn {
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 35px;
-  width: 150px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 20px auto;
-  display: block;
-}
-
-.admin__shop-bottom {
-  display: flex;
-  padding-top: 20px;
-  width: 400px;
-  margin: 0 auto;
-  justify-content: space-between;
 }
 
 .admin__top-item {
@@ -2872,122 +1842,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .admin__shop-item-btn button {
-  width: 80px;
-  background-color: #87c957;
-  color: #ffffff;
-  border: 1px solid #87c957;
-  border-radius: 10px;
-  height: 25px;
-  font-size: clamp(12px, 3.5vw, 14px);
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
-}
-
-.admin__ttl-shopadmin {
-  font-size: clamp(18px, 2.3vw, 24px);
-  width: 25%;
-}
-
-.admin__shopadmin-left {
-  margin-left: 20px;
-  width: 30%;
-}
-
-.admin__shopadmin-right {
-  width: 30%;
-  margin-left: 20px;
-}
-
-.admin__shopadmin-searchbox {
-  width: 100%;
-  height: 25px;
-  font-size: 14px;
-  border: none;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  border-radius: 5px;
-  padding-left: 10px;
-  margin-bottom: 10px;
-}
-
-.admin__shopadmin-top {
-  display: flex;
-}
-
-.admin__shopadmin-content {
-  max-width: 100%;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  height: 400px;
-  overflow: scroll;
-  padding: 20px;
-}
-
-.admin__shopadmin-inner {
-  table-layout: fixed;
-  min-width: 100%;
-}
-
-.admin__shopadmin-item {
-  overflow: scroll;
-  font-size: 14px;
-  height: 100%;
-}
-
-.admin__shopadmin-item:not(:last-child) {
-  border-bottom: 1px solid #000000;
-}
-
-.admin__shopadmin-item-name {
-  width: 150px;
-  min-width: 150px;
-  padding: 10px 10px 10px 0px;
-}
-
-.admin__shopadmin-item-shop {
-  width: 250px;
-  min-width: 250px;
-  padding: 10px 10px 10px 0px;
-}
-
-.admin__shopadmin-item-email {
-  width: 250px;
-  min-width: 250px;
-  padding: 10px 10px 10px 0px;
-}
-
-.admin__shopadmin-item-change {
-  width: 100px;
-  min-width: 100px;
-  padding: 10px 10px 10px 0px;
-}
-
-.admin__shopadmin-item-change a{
-  display: block;
-  width: 80px;
-  background-color: #ffffff;
-  color: #000000;
-  border: 3px solid #87c957;
-  border-radius: 10px;
-  height: 25px;
-  font-size: clamp(12px, 3.5vw, 14px);
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px #c6c6c6;
-  text-align: center;
-  padding-top: 2px;
-}
-
-.admin__shopadmin-item-btn {
-  width: 100px;
-  min-width: 100px;
-  overflow: scroll;
-  padding: 10px 10px 10px 0px;
-}
-
-.admin__shopadmin-item-btn button{
   width: 80px;
   background-color: #87c957;
   color: #ffffff;
@@ -3202,6 +2056,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-bottom: 20px;
 }
 
+.admin__visited-search-btn {
+  width: 100%;
+  padding-left: 45px;
+  background-color: #87c957;
+  color: #ffffff;
+  border: 1px solid #87c957;
+  border-radius: 10px;
+  height: 25px;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #c6c6c6;
+}
+
 @media screen and (max-width:768px) {
   .admin {
     width: 90%;
@@ -3258,12 +2126,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: clamp(18px, 3vw, 24px);
   }
 
-  .admin__ttl-shopadmin {
-    padding-bottom: 20px;
-    width: 100%;
-    font-size: clamp(18px, 3vw, 24px);
-  }
-
   .admin__shop-top {
     display: inherit;
     max-width: 400px;
@@ -3279,25 +2141,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .admin__shop-area {
     padding: 0px;
     padding-bottom: 10px;
-  }
-
-  .admin__shopadmin-top {
-    display: inherit;
-    max-width: 400px;
-    width: 100%;
-    padding-left: 0px;
-  }
-
-  .admin__shopadmin-left {
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-  }
-
-  .admin__shopadmin-right {
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
   }
 
   .admin__user-top {
@@ -3321,18 +2164,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0px;
     width: 100%;
   }
+
+  .admin__visited-search-btn {
+    padding-left: 0px;
+    padding-top: 10px;
+    width: 100px;
+  }
 }
 
 /*評価編集ページ*/
-.review__edit-inner {
-  height: 200px;
-  width: 80%;
-  overflow: scroll;
-  background-color: #ffffff;
-  border-radius: 5px;
-  margin: 100px auto;
-}
-
 .review__edit-content {
   width: 90%;
   margin: 0 auto;
@@ -3342,9 +2182,76 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 150px;
 }
 
-/*店舗編集ページ*/
-.shopedit {
-  width: 90%;
+/*旬カレンダー表示ページ*/
+.calendar {
+  width: 80%;
   margin: 0 auto;
   padding-top: 80px;
+}
+
+.calendar__ttl {
+  font-size: clamp(18px, 2vw, 24px);
+  display: flex;
+  padding-bottom: 20px;
+  align-items: flex-end;
+  width: 100%;
+  border-bottom: 3px solid #87c957;
+}
+
+.calendar__content {
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.calendar__inner {
+  background-color: #ffffff;
+  border-radius: 5px;
+  height: 100%;
+  padding: 20px 0px;
+  overflow: auto
+}
+
+.calendar__table{
+  width: 500%;
+  max-width: 2000px;
+  font-size: clamp(12px, 2vw, 16px)
+}
+
+.calendar__table tr {
+  height: clamp(20px, 2vw, 25px);
+}
+
+.calendar__headcell {
+  padding-left: 20px;
+  width: clamp(30px, 30vw, 300px);
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow: scroll;
+}
+
+.calendar__colored {
+  background-color: #87c957;
+}
+
+.calendar__colored2 {
+  background-color: #DAEECB;
+}
+
+/*カレンダー追加・編集ページ*/
+.register__content-item select {
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+.calendar__comment-ttl {
+  vertical-align: top;
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+.register__content-comment {
+  resize: none;
+  width: 100%;
+  height: 100px;
+  font-size: clamp(12px, 2vw, 16px);
 }

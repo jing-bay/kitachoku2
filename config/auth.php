@@ -45,11 +45,6 @@ return [
             'driver' => 'session',
             'provider' => 'admin',
         ],
-
-        'shopadmin' => [
-            'driver' => 'session',
-            'provider' => 'shopadmin',
-        ],
     ],
 
     /*
@@ -79,12 +74,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-
-        'shopadmin' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\ShopAdmin::class,
-        ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -116,13 +105,6 @@ return [
 
         'admin' => [
             'provider' => 'admin',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-
-        'shopadmin' => [
-            'provider' => 'shopadmin',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -10,26 +10,16 @@ class Shop extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'shop_admin_id', 'area_id', 'postal_code', 'address', 'opening_hour', 'holiday', 'tel_number', 'email', 'overview', 'shop_img', 'shop_url', 'twitter_url', 'facebook_url'];
+    protected $fillable = ['name', 'shop_admin_id', 'area_id', 'postal_code', 'address', 'opening_hour', 'holiday', 'tel_number', 'email', 'shop_img', 'shop_url', 'twitter_url', 'facebook_url'];
 
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }
 
-    public function shopAdmin()
+    public function calendars()
     {
-        return $this->belongsTo(ShopAdmin::class);
-    }
-
-    public function evaluations()
-    {
-        return $this->hasMany(Evaluation::class);
-    }
-
-    public function coupons()
-    {
-        return $this->hasMany(Coupon::class);
+        return $this->hasMany(Calendar::class);
     }
 
     public function area()

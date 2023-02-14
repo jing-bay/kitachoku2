@@ -33,13 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Favorite::class);
     }
 
-    public function evaluations()
+    public function calendars()
     {
-        return $this->hasMany(Evaluation::class);
-    }
-
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Calendar::class);
     }
 }

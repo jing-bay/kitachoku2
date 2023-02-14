@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
+use App\Models\Area;
+use App\Models\Tag;
 use App\Http\Requests\ShopRequest;
 use App\Http\Requests\UpdateShopRequest;
 use Illuminate\Support\Facades\Storage;
@@ -11,18 +13,30 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
+    public function create()
+    {   
+        $areas = Area::all();
+        $tags = Tag::all();
+
+        return view('create_shop', compact('areas', 'tags'));
+    }
+
     public function store(ShopRequest $request)
     {
-        if ( app()->isLocal() ) {
-            $file_path = $request->file('shop_img')->getClientOriginalName();
-            Storage::putFileAs('public/shopimg', $request->file('shop_img'), $file_path);
-        } else {
-            $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+        $s = new Shop;
+
+        if(isset($request->shop_img)) {
+            $file_name = $request->file('shop_img')->getClientOriginalName();
+
+            if ( app()->isLocal() ) {
+                $file_path = Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s->id.'.'.$request->shop_img->extention());
+            } else {
+                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $request->file('shop_img'), $s->id.'.'.$request->shop_img->extention(), 'public');
+            }
         }
 
         $shop = Shop::create([
             'name' => $request->name2,
-            'shop_admin_id' => Auth::guard('shopadmin')->id(),
             'area_id' => $request->area_id,
             'postal_code' => $request->postal_code,
             'address' => $request->address,
@@ -30,29 +44,38 @@ class ShopController extends Controller
             'holiday' => $request->holiday,
             'tel_number' => $request->tel_number,
             'email' => $request->email2,
-            'overview' => $request->overview,
-            'shop_img' => $file_path,
+            'shop_img' => $file_name,
+            'shop_img_rename' => $file_path,
             'shop_url' => $request->shop_url,
             'facebook_url' => $request->facebook_url,
             'twitter_url' => $request->twitter_url,
         ]);
 
         $shop->tags()->attach($request->tag_ids);
-        
+
         return redirect('/shop/done');
+
+    }
+
+    public function edit($shop_id)
+    {
+        $shop = Shop::find($shop_id);
+        $tagIds = $shop->tags()->pluck('tags.id')->toArray();
+        $areas = Area::all();
+        $tags = Tag::all();
+
+        return view('edit_shop', compact('shop', 'areas', 'tags', 'tagIds'));
     }
 
     public function update($shop_id, UpdateShopRequest $request)
     {
-        $form = $request->all();
-        unset($form['_token']);
         $shop = Shop::find($shop_id);
         $old_shop_img = $shop->shop_img;
+        $old_shop_img_rename = $shop->shop_img_rename;
         
-        if(empty($request->file('shop_img')) && empty($request->shop_admin_id)) {
+        if(empty($request->file('shop_img')) ){
             $shop->update([
                 'name' => $request->name2,
-                'shop_admin_id' => Auth::guard('shopadmin')->id(),
                 'area_id' => $request->area_id,
                 'postal_code' => $request->postal_code,
                 'address' => $request->address,
@@ -60,62 +83,11 @@ class ShopController extends Controller
                 'holiday' => $request->holiday,
                 'tel_number' => $request->tel_number,
                 'email' => $request->email2,
-                'overview' => $request->overview,
                 'shop_img' => $old_shop_img,
                 'shop_url' => $request->shop_url,
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
-
-        } else if (empty($request->file('shop_img')) && !empty($request->shop_admin_id)) {
-            $shop->update([
-                'name' => $request->name2,
-                'shop_admin_id' => $request->shop_admin_id,
-                'area_id' => $request->area_id,
-                'postal_code' => $request->postal_code,
-                'address' => $request->address,
-                'opening_hour' => $request->opening_hour,
-                'holiday' => $request->holiday,
-                'tel_number' => $request->tel_number,
-                'email' => $request->email2,
-                'overview' => $request->overview,
-                'shop_img' => $old_shop_img,
-                'shop_url' => $request->shop_url,
-                'facebook_url' => $request->facebook_url,
-                'twitter_url' => $request->twitter_url,
-            ]);
-
-        } else if (!empty($request->file('shop_img')) && empty($request->shop_admin_id)) {
-            if ( app()->isLocal() ) {
-                Storage::delete('public/shopimg/'.$old_shop_img);
-            } else {
-                Storage::disk('s3')->delete($old_shop_img);
-            }
-
-            if ( app()->isLocal() ) {
-                $file_path = $request->file('shop_img')->getClientOriginalName();
-                Storage::putFileAs('public/shopimg', $request->file('shop_img'), $file_path);
-            } else {
-                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
-            }
-
-            $shop->update([
-                'name' => $request->name2,
-                'shop_admin_id' => Auth::guard('shopadmin')->id(),
-                'area_id' => $request->area_id,
-                'postal_code' => $request->postal_code,
-                'address' => $request->address,
-                'opening_hour' => $request->opening_hour,
-                'holiday' => $request->holiday,
-                'tel_number' => $request->tel_number,
-                'email' => $request->email2,
-                'overview' => $request->overview,
-                'shop_img' => $file_path,
-                'shop_url' => $request->shop_url,
-                'facebook_url' => $request->facebook_url,
-                'twitter_url' => $request->twitter_url,
-            ]);
-
         } else {
             if ( app()->isLocal() ) {
                 Storage::delete('public/shopimg/'.$old_shop_img);
@@ -132,7 +104,6 @@ class ShopController extends Controller
 
             $shop->update([
                 'name' => $request->name2,
-                'shop_admin_id' => $request->shop_admin_id,
                 'area_id' => $request->area_id,
                 'postal_code' => $request->postal_code,
                 'address' => $request->address,
@@ -140,14 +111,13 @@ class ShopController extends Controller
                 'holiday' => $request->holiday,
                 'tel_number' => $request->tel_number,
                 'email' => $request->email2,
-                'overview' => $request->overview,
                 'shop_img' => $file_path,
                 'shop_url' => $request->shop_url,
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
-        };
-        
+        }
+
         $shop->tags()->sync($request->tag_ids);
 
         return redirect('/shop/done');

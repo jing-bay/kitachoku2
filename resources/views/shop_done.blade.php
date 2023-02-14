@@ -23,10 +23,10 @@
       <p class="thanks__txt">
         完了しました
       </p>
-      @if(Auth::guard('shopadmin')->check())
-      <button type="button" onclick="location.href='/shopadmin/settings'" class="thanks__backbtn">戻る</button>
-      @elseif(Auth::guard('admin')->check())
+      @if(Auth::guard('admin')->check())
       <button type="button" onclick="location.href='/admin/settings'" class="thanks__backbtn">戻る</button>
+      @elseif(Auth::guard('web')->check())
+      <button type="button" onclick="location.href='/search'" class="thanks__backbtn">戻る</button>
       @endif
     </div>
   </div>

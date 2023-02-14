@@ -11,16 +11,15 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('shop_admin_id')->constrained()->cascadeOnDelete();
             $table->foreignId('area_id')->constrained();
             $table->char('postal_code', 7);
             $table->string('address');
-            $table->string('opening_hour');
-            $table->string('holiday');
+            $table->string('opening_hour')->nullable();
+            $table->string('holiday')->nullable();
             $table->string('tel_number')->nullable();
             $table->string('email')->nullable();
-            $table->text('overview');
-            $table->string('shop_img');
+            $table->string('shop_img')->nullable();
+            $table->string('shop_img_rename')->nullable();
             $table->string('shop_url')->nullable();
             $table->string('facebook_url')->nullable();
             $table->string('twitter_url')->nullable();

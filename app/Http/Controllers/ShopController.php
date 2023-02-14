@@ -33,6 +33,9 @@ class ShopController extends Controller
             } else {
                 $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $request->file('shop_img'), $s->id.'.'.$request->shop_img->extention(), 'public');
             }
+        } else { 
+            $file_name = NULL;
+            $file_path = NULL;
         }
 
         $shop = Shop::create([
@@ -84,6 +87,7 @@ class ShopController extends Controller
                 'tel_number' => $request->tel_number,
                 'email' => $request->email2,
                 'shop_img' => $old_shop_img,
+                'shop_img_rename' => $old_shop_img_rename,
                 'shop_url' => $request->shop_url,
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,

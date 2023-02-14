@@ -94,17 +94,18 @@ class ShopController extends Controller
             ]);
         } else {
             if ( app()->isLocal() ) {
-                Storage::delete('public/shopimg/'.$old_shop_img);
+                Storage::delete($old_shop_img_rename);
             } else {
-                Storage::disk('s3')->delete($old_shop_img);
+                Storage::disk('s3')->delete($old_shop_img_rename);
             }
 
             if ( app()->isLocal() ) {
-                $file_path = $request->file('shop_img')->getClientOriginalName();
-                Storage::putFileAs('public/shopimg', $request->file('shop_img'), $file_path);
+                $file_path = Storage::putFileAs('public/shopimg', $request->file('shop_img'), $shop_id.'.'.$request->shop_img->extention());
             } else {
-                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
+                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $request->file('shop_img'), $shop_id.'.'.$request->shop_img->extention(), 'public');
             }
+
+            $file_name = $request->file('shop_img')->getClientOriginalName();
 
             $shop->update([
                 'name' => $request->name2,
@@ -115,7 +116,8 @@ class ShopController extends Controller
                 'holiday' => $request->holiday,
                 'tel_number' => $request->tel_number,
                 'email' => $request->email2,
-                'shop_img' => $file_path,
+                'shop_img' => $file_name,
+                'shop_img_rename' => $file_path,
                 'shop_url' => $request->shop_url,
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
@@ -134,12 +136,12 @@ class ShopController extends Controller
 
     public function destroy($shop_id)
     {
-        $shop_img =Shop::find($shop_id)->shop_img;
+        $file_path = Shop::find($shop_id)->shop_img_rename;
         
         if ( app()->isLocal() ) {
-            Storage::delete('public/shopimg/'.$shop_img);
+            Storage::delete($file_path);
         } else {
-            Storage::disk('s3')->delete($shop_img);
+            Storage::disk('s3')->delete($file_path);
         }
 
         Shop::find($shop_id)->delete();

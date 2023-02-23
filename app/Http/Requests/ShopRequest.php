@@ -22,7 +22,7 @@ class ShopRequest extends FormRequest
             'holiday' => 'nullable|string|max:100',
             'tel_number' => 'nullable|string|between:10,11',
             'email2' => 'nullable|email',
-            'shop_img' => 'nullable|file',
+            'shop_img' => 'nullable|file|mimes:jpg,jpeg,png',
             'shop_url' => 'nullable|url',
             'facebook_url' => 'nullable|url',
             'twitter_url' => 'nullable|url',
@@ -44,6 +44,7 @@ class ShopRequest extends FormRequest
             'holiday.max' => '100字以内で入力してください',
             'tel_number.between' => 'ハイフンなしの番号を半角で入力してください',
             'email2.email' => '有効なメールアドレスを入力してください',
+            'shop_img.mimes' => '画像ファイル（png,jpeg,jpg）で保存してください',
             'facebook_url.url' => 'FacebookのURLを入力してください',
             'twitter_url.url' =>'TwitterのURLを入力してください'
         ];

@@ -45,7 +45,7 @@
         {{ $shop->address }}
       </p>
       <div class="detail__map">
-        <iframe src="http://maps.google.co.jp/maps?q={{ $shop->address }}&z=15&output=embed&iwloc=J&t=m"></iframe>
+        <iframe src="https://maps.google.co.jp/maps?q={{ $shop->address }}&z=15&output=embed&iwloc=J&t=m"></iframe>
       </div>
     </div>
   </div>

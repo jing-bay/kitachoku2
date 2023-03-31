@@ -51,7 +51,7 @@
         </select>
       </div>
     </div>
-    <div class="admin__visited-search-btn">
+    <div>
       <button type="submit" class="admin__visited-search-btn">検索</button>
     </div>
   </form>
@@ -89,7 +89,7 @@
       <div class="admin__user-right">
         <input class="admin__user-searchbox" type="text" name="search_email2" placeholder= "{{ !empty($search_email2) ? '': 'メールアドレスで検索' }}" value="{{ !empty($search_email2) ? $search_email2 : '' }}">
       </div>
-      <div class="admin__visited-search-btn">
+      <div>
         <button type="submit" class="admin__visited-search-btn">検索</button>
       </div>
     </div>

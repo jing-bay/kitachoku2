@@ -2056,9 +2056,11 @@ body {
   padding-bottom: 20px;
 }
 
+
+
 .admin__visited-search-btn {
-  width: 100%;
-  padding-left: 45px;
+  margin-left: 10px;
+  width: 80px;
   background-color: #87c957;
   color: #ffffff;
   border: 1px solid #87c957;
@@ -2166,8 +2168,7 @@ body {
   }
 
   .admin__visited-search-btn {
-    padding-left: 0px;
-    padding-top: 10px;
+    margin-left: 0px;
     width: 100px;
   }
 }

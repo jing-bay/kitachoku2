@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateShopRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ShopController extends Controller
 {
@@ -23,15 +24,16 @@ class ShopController extends Controller
 
     public function store(ShopRequest $request)
     {
-        $s = new Shop;
+        $s = Str::uuid();
 
         if(isset($request->shop_img)) {
             $file_name = $request->file('shop_img')->getClientOriginalName();
 
             if ( app()->isLocal() ) {
-                $file_path = Storage::putFileAs('public/storage/shopimg', $request->file('shop_img'), $s->id.'.'.$request->shop_img->extension());
+                Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
+                $file_path = $s.'.'.$request->shop_img->extension();
             } else {
-                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $request->file('shop_img'), $s->id.'.'.$request->shop_img->extension(), 'public');
+                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension(), 'public');
             }
         } else { 
             $file_name = NULL;
@@ -99,10 +101,13 @@ class ShopController extends Controller
                 Storage::disk('s3')->delete($old_shop_img_rename);
             }
 
+            $s = Str::uuid();
+
             if ( app()->isLocal() ) {
-                $file_path = Storage::putFileAs('public/storage/shopimg', $request->file('shop_img'), $shop_id.'.'.$request->shop_img->extension());
+                Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
+                $file_path = 'storage/shopimg/'.$s.'.'.$request->shop_img->extension();
             } else {
-                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $request->file('shop_img'), $shop_id.'.'.$request->shop_img->extension(), 'public');
+                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension(), 'public');
             }
 
             $file_name = $request->file('shop_img')->getClientOriginalName();

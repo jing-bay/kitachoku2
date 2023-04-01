@@ -34,7 +34,7 @@
       @endif
       @else
       @if(app()->isLocal())
-      <img src="{{ asset($shop->shop_img_rename) }}" alt="店舗画像">
+      <img src="{{ asset('storage/shopimg/'.$shop->shop_img_rename) }}" alt="店舗画像">
       @else
       <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img_rename }}" alt="店舗画像">
       @endif

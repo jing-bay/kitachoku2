@@ -96,7 +96,7 @@ class ShopController extends Controller
             ]);
         } else {
             if ( app()->isLocal() ) {
-                Storage::delete($old_shop_img_rename);
+                Storage::delete('public/shopimg/'.$old_shop_img_rename);
             } else {
                 Storage::disk('s3')->delete($old_shop_img_rename);
             }
@@ -105,7 +105,7 @@ class ShopController extends Controller
 
             if ( app()->isLocal() ) {
                 Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
-                $file_path = 'storage/shopimg/'.$s.'.'.$request->shop_img->extension();
+                $file_path = $s.'.'.$request->shop_img->extension();
             } else {
                 $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension(), 'public');
             }
@@ -144,7 +144,7 @@ class ShopController extends Controller
         $file_path = Shop::find($shop_id)->shop_img_rename;
         
         if ( app()->isLocal() ) {
-            Storage::delete($file_path);
+            Storage::delete('public/shopimg/'.$file_path);
         } else {
             Storage::disk('s3')->delete($file_path);
         }

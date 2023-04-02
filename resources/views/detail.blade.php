@@ -30,13 +30,13 @@
       @if(app()->isLocal())
       <img src="{{ asset('storage/shopimg/kitachokulogo.001-removebg-preview.jpg') }}" alt="店舗画像">
       @else
-      <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/shopimg/kitachokulogo.001-removebg-preview.jpg" alt="店舗画像">
+      <img src="https://kitachoku2.s3.ap-northeast-1.amazonaws.com/shopimg/kitachokulogo.001-removebg-preview.jpg" alt="店舗画像">
       @endif
       @else
       @if(app()->isLocal())
       <img src="{{ asset('storage/shopimg/'.$shop->shop_img_rename) }}" alt="店舗画像">
       @else
-      <img src="https://jing-bay-infra-storage.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img_rename }}" alt="店舗画像">
+      <img src="https://kitachoku2.s3.ap-northeast-1.amazonaws.com/{{ $shop->shop_img_rename }}" alt="店舗画像">
       @endif
       @endif
     </div>

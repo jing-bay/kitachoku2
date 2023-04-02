@@ -33,7 +33,7 @@ class ShopController extends Controller
                 Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
                 $file_path = $s.'.'.$request->shop_img->extension();
             } else {
-                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension(), 'public');
+                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
             }
         } else { 
             $file_name = NULL;
@@ -107,7 +107,7 @@ class ShopController extends Controller
                 Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
                 $file_path = $s.'.'.$request->shop_img->extension();
             } else {
-                $file_path = Storage::disk('s3')->putFileAs('shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension(), 'public');
+                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
             }
 
             $file_name = $request->file('shop_img')->getClientOriginalName();

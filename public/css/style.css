@@ -1005,7 +1005,11 @@ body {
 
   .detail__shop-top {
     display: inherit;
+  }
 
+  .detail__shop-txt {
+    width: 100%;
+    padding-left: 0px;
   }
 
   .detail__shop-img {
@@ -1024,7 +1028,7 @@ body {
   }
 
   .detail__address {
-    padding: 15px;
+    padding: 15px 0px;
     font-size: clamp(12px, 3vw, 14px);
   }
 }

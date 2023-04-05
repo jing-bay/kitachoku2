@@ -145,7 +145,7 @@
         <label class="shopedit__shopsetting-file shopedit__img">
           <input type="file" name="shop_img">ファイルを選択
         </label>
-          <p id="img_name" class="shopedit__img-name">{{ !empty($shop) ? $shop->shop_img : old('shop_img') }}</p>
+          <p id="img_name" class="shopedit__img-name">{{ !empty($shop) ? $shop->shop_img : '' }}</p>
       </li>
       <li class="shopedit__shopsetting-heading">電話番号</li>
       <li class="shopedit__shopsetting-input">

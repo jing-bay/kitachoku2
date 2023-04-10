@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Months extends Model
+class fav_calendar extends Model
 {
-    use HasFactory;
+    protected $fillable = ['user_id', 'calendar_id'];
+
+    
 }

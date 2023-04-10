@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Calendar extends Model
 {
@@ -17,5 +18,26 @@ class Calendar extends Model
     public function shop()
     {
         return $this->belongsTo(Shop::class);
+    }
+
+    public function fav_calendar()
+    {
+        return $this->hasMany(Fav_calendar::class);
+    }
+
+    public function is_liked_calendar_by_auth_user()
+    {
+        $id = Auth::id();
+        $fav_users = array();
+        
+        foreach($this->fav_calendars as $fav_calendar) {
+            array_push($fav_users, $fav_calendar->user_id);
+        }
+
+        if (in_array($id, $fav_users)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

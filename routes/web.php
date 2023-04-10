@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\FavCalendarController;
 use App\Http\Controllers\NoticeController;
 
 Route::get('/', [IndexController::class, 'index']);
@@ -27,6 +28,8 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/mypage', [MypageController::class, 'index']);
     Route::post('/favorite', [FavoriteController::class, 'store']);
     Route::post('/favorite/destroy/{favorite_id}', [FavoriteController::class, 'destroy']);
+    Route::post('/fav_calendar', [FavCalendarController::class, 'store']);
+    Route::post('/fav_calendar/destroy/{fav_calendar_id}', [FavCalendarController::class, 'destroy']);
     Route::get('/search/favorite', [FavoriteController::class, 'search']);
     Route::get('/register-thanks', [UserController::class, 'showThanks']);
     Route::post('/calendar', [CalendarController::class, 'store']);

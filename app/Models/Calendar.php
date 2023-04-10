@@ -22,7 +22,7 @@ class Calendar extends Model
 
     public function fav_calendar()
     {
-        return $this->hasMany(Fav_calendar::class);
+        return $this->hasMany(FavCalendar::class);
     }
 
     public function is_liked_calendar_by_auth_user()

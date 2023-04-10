@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Favorite;
+use App\Models\FavCalendar;
 use App\Models\Calendar;
 use App\Models\Area;
 use App\Models\User;
@@ -65,8 +66,9 @@ class SearchShopController extends Controller
         $id = Auth::id();
         $favorites = Favorite::where('user_id', $id)->get();
         $calendars = Calendar::where('shop_id', $shop_id)->get();
+        $fav_calendars = FavCalendar::where('user_id',$id)->get();
 
-        return view('detail', compact('shop', 'favorites', 'calendars'));
+        return view('detail', compact('shop', 'favorites', 'calendars', 'fav_calendars'));
     }
 
     public function searchAdmin(Request $request)

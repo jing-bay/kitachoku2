@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\FavCaendar;
+use App\Models\FavCalendar;
 
 class FavCalendarController extends Controller
 {
     public function store(Request $request)
     {
-        FavCaendar::create([
+        FavCalendar::create([
             'calendar_id' => $request->calendar_id,
             'user_id' => Auth::id(),
         ]);
@@ -18,9 +18,9 @@ class FavCalendarController extends Controller
         return back();
     }
 
-    public function destroy($favCaendar_id)
+    public function destroy($fav_calendar_id)
     {
-        FavCaendar::find($favCaendar_id)->delete();
+        FavCalendar::find($fav_calendar_id)->delete();
         
         return back();
     }

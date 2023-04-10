@@ -6,24 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFavCalendarsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('fav_calendars', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();;
+            $table->foreignId('calendar_id')->constrained()->cascadeOnDelete();;
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('fav_calendars');

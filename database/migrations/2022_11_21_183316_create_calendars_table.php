@@ -15,7 +15,7 @@ class CreateCalendarsTable extends Migration
             $table->string('name');
             $table->unsignedTinyInteger('start_date');
             $table->unsignedTinyInteger('end_date');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

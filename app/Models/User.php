@@ -38,7 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Calendar::class);
     }
 
-    public function fav_calendar()
+    public function fav_calendars()
     {
         return $this->hasMany(FavCalendar::class);
     }

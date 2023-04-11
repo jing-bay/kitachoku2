@@ -72,7 +72,26 @@
     @foreach($calendars as $calendar)
     <div class="detail__calendar-content">
       <div class="detail__calendar-left">
-        <div class="detail__calendar-shopttl">{{ $calendar->name }}</div>
+        <div class="detail__calendar-shopheader">
+          <div class="detail__calendar-shopttl">{{ $calendar->name }}</div>
+          <div>
+            @if ($calendar->is_liked_calendar_by_auth_user())
+            @foreach ($fav_calendars as $fav_calendar)
+            @if ($fav_calendar->calendar_id == $calendar->id)
+            <form action="/fav_calendar/destroy/{{ $fav_calendar->id }}" method="post">
+              @csrf
+              <input type="image" src="{{ asset('images/fav.jpg') }}" class="detail__fav--btn">
+            @endif
+            @endforeach
+            @else
+            <form action="/fav_calendar" method="post">
+              @csrf
+              <input type="hidden" value="{{ $calendar->id }}" name="calendar_id">
+              <input type="image" src="{{ asset('images/unfav.jpg') }}" class="detail__fav--btn">
+              @endif
+            </form>
+          </div>
+        </div>
         <div class="detail__calendar-date">
           時期：
           @if(($calendar->start_date) % 3 == 1)

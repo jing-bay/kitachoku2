@@ -20,7 +20,7 @@ class Calendar extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function fav_calendar()
+    public function fav_calendars()
     {
         return $this->hasMany(FavCalendar::class);
     }

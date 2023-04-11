@@ -972,7 +972,11 @@ body {
 }
 
 .detail__calendar-left {
-  width: 40%;
+  width: 50%;
+}
+
+.detail__calendar-shopheader {
+  display: flex;
 }
 
 .detail__calendar-shopttl {

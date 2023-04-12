@@ -133,20 +133,29 @@
             @endforeach
             @endfor
           </tr>
-          @foreach($calendars as $calendar)
+          @foreach($fav_calendars as $fav_calendar)
           <tr>
-            <td class="mypage__calendar-editcell"><a href="/calendar/update/{{ $calendar->id }}"><input type="image" src="{{ asset('images/edit.jpg') }}" alt="編集" class="mypage__calendar-edit--btn"></a></td>
             <td class="mypage__calendar-editcell">
-              <form method="POST" action="/calendar/destroy/{{ $calendar->id }}">
+              @if ($fav_calendar->calendar->user_id == $id)
+              <a href="/calendar/update/{{ $fav_calendar->calendar->id }}"><input type="image" src="{{ asset('images/edit.jpg') }}" alt="編集" class="mypage__calendar-edit--btn"></a>
+              @else
+              @endif
+            </td>
+            <td class="mypage__calendar-editcell">
+              @if ($fav_calendar->calendar->user_id == $id)
+              <form method="POST" action="/calendar/destroy/{{ $fav_calendar->calendar->id }}">
+              @else
+              <form method="POST" action="/fav_calendar/destroy/{{ $fav_calendar->id }}">
+              @endif
                 @csrf
                 <input type="image" src="{{ asset('images/delete.jpg') }}" alt="編集" class="mypage__calendar-edit--btn">
               </form>
             </td>
-            <td class="calendar__headcell">{{ $calendar->shop->name }}/{{ $calendar->name }}</td>
+            <td class="calendar__headcell">{{ $fav_calendar->calendar->shop->name }}/{{ $fav_calendar->calendar->name }}</td>
             @for($k = 1; $k <= 36; $k++)
-            @if($calendar->start_date <= $k && $calendar->end_date >= $k && $loop->iteration % 2 == 1)
+            @if($fav_calendar->calendar->start_date <= $k && $fav_calendar->calendar->end_date >= $k && $loop->iteration % 2 == 1)
             <td class="calendar__cell calendar__colored"></td>
-            @elseif($calendar->start_date <= $k && $calendar->end_date >= $k && $loop->iteration % 2 == 0)
+            @elseif($fav_calendar->calendar->start_date <= $k && $fav_calendar->calendar->end_date >= $k && $loop->iteration % 2 == 0)
             <td class="calendar__cell calendar__colored2"></td>
             @else
             <td class="calendar__cell"></td>

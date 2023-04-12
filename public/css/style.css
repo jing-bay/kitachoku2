@@ -977,12 +977,20 @@ body {
 
 .detail__calendar-shopheader {
   display: flex;
+  align-items: center;
 }
 
 .detail__calendar-shopttl {
   font-size: clamp(14px, 3vw, 18px);
   padding: 10px 0px;
   overflow: hidden;
+}
+
+.calendar__fav--btn {
+  max-width: 25px;
+  min-width: 18px;
+  width: 4vw;
+  margin-left: 10px;
 }
 
 .detail__calendar-date {

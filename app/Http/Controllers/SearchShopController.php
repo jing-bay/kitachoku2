@@ -68,7 +68,7 @@ class SearchShopController extends Controller
         $calendars = Calendar::where('shop_id', $shop_id)->get();
         $fav_calendars = FavCalendar::where('user_id', $id)->get();
 
-        return view('detail', compact('shop', 'favorites', 'calendars', 'fav_calendars'));
+        return view('detail', compact('shop', 'favorites', 'calendars', 'fav_calendars', 'id'));
     }
 
     public function searchAdmin(Request $request)

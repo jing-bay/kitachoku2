@@ -20,6 +20,6 @@ class MypageController extends Controller
         $fav_calendars = FavCalendar::where('user_id',$id)->get();
         $calendars = Calendar::where('user_id', $id)->get();
 
-        return view('mypage', compact('user', 'favorites', 'fav_calendars', 'areas', 'seasons', 'calendars'));
+        return view('mypage', compact('user', 'id', 'favorites', 'fav_calendars', 'areas', 'seasons', 'calendars'));
     }
 }

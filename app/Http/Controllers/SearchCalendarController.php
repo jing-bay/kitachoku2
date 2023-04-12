@@ -40,16 +40,15 @@ class SearchCalendarController extends Controller
 
         $calendars = $query->paginate(20)->withQueryString();
 
-        return view('search_calendar', compact('calendars', 'fav_calendars','search_shop', 'search_item', 'search_date'));
+        return view('search_calendar', compact('calendars', 'id', 'fav_calendars','search_shop', 'search_item', 'search_date'));
     }
 
     public function show($user_id)
     {
         $calendars = Calendar::where('user_id', $user_id)->get();
-        $fav_calendars = FavCalendar::where('user_id',$user_id)->get();
         $user = User::find($user_id);
         $seasons = ['上旬', '中旬', '下旬'];
 
-        return view('calendar', compact('calendars', 'fav_calendars', 'user', 'seasons'));
+        return view('calendar', compact('calendars', 'user', 'seasons'));
     }
 }

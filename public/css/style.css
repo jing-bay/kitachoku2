@@ -1319,10 +1319,6 @@ body {
 .mypage__top-fav {
   display: flex;
   padding-top: 60px;
-  padding-bottom: 20px;
-  align-items: flex-end;
-  width: 100%;
-  border-bottom: 3px solid #87c957;
 }
 
 .mypage__fav-search-name {
@@ -1433,6 +1429,14 @@ body {
 
 .mypage__calendar-edit--btn {
   width: 40%;
+}
+
+.mypage__calendar__text {
+  font-size: clamp(10px, 2.5vw, 16px);
+  align-items: flex-end;
+  width: 100%;
+  border-bottom: 3px solid #87c957;
+  padding: 10px 0px;
 }
 
 @media screen and (max-width:768px) {

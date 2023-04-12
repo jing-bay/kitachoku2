@@ -110,7 +110,8 @@
     </div>
     @endforeach
   </div>
-  <div class="mypage__ttl mypage__top-fav">あなたの旬カレンダー</div>
+  <div class="mypage__ttl mypage__top-fav">旬カレンダー</div>
+  <p class="mypage__calendar__text">いいねしたカレンダーとご自分が追加したカレンダーが表示されます</p>
   <div>
     <div class="calendar__content">
       <div class="calendar__inner">

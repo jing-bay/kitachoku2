@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\Calendar;
+use App\Models\FavCalendar;
 use Illuminate\Http\Request;
 use App\Http\Requests\CalendarRequest;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,20 @@ class CalendarController extends Controller
 
   public function store(CalendarRequest $request)
   {
-    Calendar::create([
+    $calendar = Calendar::create([
       'user_id' => Auth::id(),
       'shop_id' => $request->shop_id,
       'name' => $request->name,
       'start_date' => $request->start_date,
       'end_date' => $request->end_date,
       'comment' => $request->comment
+    ]);
+
+    $id = $calendar->id;
+
+    FavCalendar::create([
+      'calendar_id' => $id,
+      'user_id' => Auth::id(),
     ]);
 
     return redirect(route('detail.show', [

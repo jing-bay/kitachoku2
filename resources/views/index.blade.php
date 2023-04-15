@@ -60,13 +60,106 @@
   <div class="concept__inner">
     <div class="concept__content">
       <p class="concept__content-ttl">キタチョクとは？</p>
-      <p class="concept__content-txt">キタチョクとは、北海道の農産物直売所ポータルサイトです。</p>
-      <p class="concept__content-txt">北海道にはとても美味しい農産物がたくさんあります。</p>
-      <p class="concept__content-txt">直売所には、そんな現地でしか食べられない農産物がたくさん売っています。</p>
-      <p class="concept__content-txt">中には農家さんが直営しているような、知られていないけれど
-      <p class="concept__content-txt">とても美味しい農産物が売っている小規模な直売所もあります。</p>
-      <p class="concept__content-txt">そんな直売所に、ぜひ足を運んでほしいという思いでこのサイトを作成しました。</p>
-      <p class="concept__content-txt">ぜひ、全道さまざまな旬を味わいに直売所を訪れていただけたら嬉しいです。</p>
+      <p class="concept__content-txt">北海道の農産物直売所ポータルサイトです。</p>
+      <p class="concept__content-txt">北海道には美味しい農産物がたくさんあります。</p>
+      <p class="concept__content-txt">直売所にはそんな農産物がたくさん売っています。</p>
+      <p class="concept__content-txt">そんな直売所に、ぜひ足を運んでほしいと思い</p>
+      <p class="concept__content-txt">このサイトを作成しました。</p>
+      <p class="concept__content-txt">ぜひ、全道さまざまな旬を味わいに</p>
+      <p class="concept__content-txt">直売所を訪れていただけたら嬉しいです。</p>
+    </div>
+  </div>
+</div>
+<div class="howtouse">
+  <div class="howtouse__ttl">
+    <p class="howtouse__ttl-text">キタチョクでできること</p>
+    <div class="howtouse__ttl-block"></div>
+  </div>
+  <div class="howtouse__content">
+    <div class="howtouse__left">
+      <div class="howtouse__left-ttl">北海道の直売所を検索！</div>
+      <div class="howtouse__left-ttl-block"></div>
+      <div class="howtouse__left-text">
+        <p>トップ画面から北海道の直売所などを検索できます。</p>
+        <p>エリア、キーワード、特徴などから検索できます。</p>
+      </div>
+    </div>
+    <div class="howtouse__right">
+      <img src="{{ asset('images/howto_search.png') }}" alt="キタチョク">
+    </div>
+  </div>
+  <div class="howtouse__content">
+    <div class="howtouse__left">
+      <div class="howtouse__left-ttl">北海道の旬な作物を検索！</div>
+      <div class="howtouse__left-ttl-block"></div>
+      <div class="howtouse__left-text">
+        <p>ユーザーの皆様が作成した「旬カレンダー」を元に、</p>
+        <p>今が旬な農産物を検索できます。</p>
+        <p>農産物の旬は逃すと来年まで待たなければいけない</p>
+        <p>ことが大半です。</p>
+        <p>ぜひ検索して、美味しいものの旬を</p>
+        <p>逃さずゲットしてください。</p>
+      </div>
+    </div>
+    <div class="howtouse__right">
+      <img src="{{ asset('images/howto_calendar-search.png') }}" alt="キタチョク">
+    </div>
+  </div>
+  <div class="howtouse__content">
+    <div class="howtouse__left">
+      <div class="howtouse__left-ttl">好きな店舗をお気に入り登録！</div>
+      <div class="howtouse__left-ttl-block"></div>
+      <div class="howtouse__left-text">
+        <p>※会員登録・ログインが必要です。</p>
+        <p>好きな店舗をお気に入り登録できます</p>
+        <p>お気に入り登録した店舗はマイページで確認できます。</p>
+      </div>
+    </div>
+    <div class="howtouse__right">
+      <img src="{{ asset('images/howto_fav.png') }}" alt="キタチョク">
+    </div>
+  </div>
+  <div class="howtouse__content">
+    <div class="howtouse__left">
+      <div class="howtouse__left-ttl">旬カレンダーを作って共有！</div>
+      <div class="howtouse__left-ttl-block"></div>
+      <div class="howtouse__left-text">
+        <p>※会員登録・ログインが必要です。</p>
+        <p>販売されている農産物と、販売期間を追加すると</p>
+        <p>マイページのカレンダー上に表示されます！</p>
+        <p>他のユーザーが作った旬カレンダーをいいねしても</p>
+        <p>自分のカレンダーに追加されます。</p>
+        <p>お好きな農産物の旬の情報を集めて</p>
+        <p>自分だけの「旬カレンダー」をつくりましょう！</p>
+      </div>
+    </div>
+    <div class="howtouse__right">
+      <img src="{{ asset('images/howto_favcalendar1.png') }}" alt="キタチョク">
+      <p>別のユーザーの旬カレンダーにはいいねボタンが出ます</p>
+      <img src="{{ asset('images/howto_favcalendar2.png') }}" alt="キタチョク">
+      <p>マイページで自分が登録した旬カレンダーと</p>
+      <p>いいねした旬カレンダーが表示されます。</p>
+      <p>自分が登録したものに関しては、</p>
+      <p>カレンダー自体の「編集」と「削除」ができます。</p>
+      <p>いいねした旬カレンダーは</p>
+      <p>「いいね」の取り消しだけができます。</p>
+    </div>
+  </div>
+  <div class="howtouse__content">
+    <div class="howtouse__left">
+      <div class="howtouse__left-ttl">店舗の情報を追加・更新！</div>
+      <div class="howtouse__left-ttl-block"></div>
+      <div class="howtouse__left-text">
+        <p>※会員登録・ログインが必要です。</p>
+        <p>みなさんが知っている店舗の情報を追加してください。</p>
+        <p>みなさんで情報共有して作っていければと思います。</p>
+      </div>
+    </div>
+    <div class="howtouse__right">
+      <img src="{{ asset('images/howto_shopedit1.png') }}" alt="キタチョク">
+      <p>上部の「店舗追加」から追加が、</p>
+      <p>店舗ページの「情報を追加する」から編集ができます。</p>
+      <img src="{{ asset('images/howto_shopedit2.png') }}" alt="キタチョク">
     </div>
   </div>
 </div>

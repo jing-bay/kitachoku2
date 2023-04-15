@@ -145,11 +145,13 @@
             <td class="mypage__calendar-editcell">
               @if ($fav_calendar->calendar->user_id == $id)
               <form method="POST" action="/calendar/destroy/{{ $fav_calendar->calendar->id }}">
-              @else
-              <form method="POST" action="/fav_calendar/destroy/{{ $fav_calendar->id }}">
-              @endif
                 @csrf
                 <input type="image" src="{{ asset('images/delete.jpg') }}" alt="編集" class="mypage__calendar-edit--btn">
+              @else
+              <form method="POST" action="/fav_calendar/destroy/{{ $fav_calendar->id }}">
+                @csrf
+                <input type="image" src="{{ asset('images/fav.jpg') }}" alt="編集" class="mypage__calendar-fav--btn">
+              @endif
               </form>
             </td>
             <td class="calendar__headcell">{{ $fav_calendar->calendar->shop->name }}/{{ $fav_calendar->calendar->name }}</td>

@@ -182,6 +182,17 @@ protected function buildMailMessage($url)
 
 の`  ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))`の部分を `['count' => config('auth.passwords.admin.expire')]` に変更する。
 
+また
+
+```
+$url = url(route('password.reset', [
+    'token' => $this->token,
+    'email' => $notifiable->getEmailForPasswordReset(),
+], false));
+```
+
+を `$url = url(route('admin.password.reset',`に変更する
+
 11. ファイルの中でサーバーを立ち上げる
 
 `$ php artisan serve`

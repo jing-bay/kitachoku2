@@ -116,7 +116,7 @@ DB_HOST=127.0.0.1
 
 DB_PORT=3306
 
-DB_DATABASE=resedb
+DB_DATABASE=kitachoku2
 
 DB_USERNAME=root
 

@@ -4,13 +4,13 @@
   <form action="/search/calendar" method="get" class="result__search">
     @csrf
     <div class="result__searchtab--keyword">
-      <input class="result__searchbox--keyword" type="text" name="search_shop" placeholder= "店名検索" value={{ !empty($search_shop) ? $search_shop : '' }}>
+      <input class="result__searchbox--keyword" type="text" name="search_shop" placeholder= "店名検索" onchange="submit(this.form)" value={{ !empty($search_shop) ? $search_shop : '' }}>
     </div>
     <div class="result__searchtab--keyword">
-      <input class="result__searchbox--keyword" type="text" name="search_item" placeholder= "商品名で検索" value={{ !empty($search_item) ? $search_item : '' }}>
+      <input class="result__searchbox--keyword" type="text" name="search_item" onchange="submit(this.form)" placeholder= "商品名で検索" value={{ !empty($search_item) ? $search_item : '' }}>
     </div>
     <div class="result__searchtab--area">
-      <select name="search_date" class="result__searchbox--area" onchange="changeColor(this)">
+      <select name="search_date" class="result__searchbox--area" onchange="submit(this.form)" onchange="changeColor(this)">
         <option value="">時期を選択</option>
         @for($i = 1; $i <= 12; $i++)
         <option value="{{ $i*3-2 }}" {{ $search_date == ($i*3-2) ? 'selected' : '' }}>{{ $i }}月上旬</option>

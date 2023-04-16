@@ -37,25 +37,26 @@
 <img width="1440" alt="kitachoku2_top3" src="https://user-images.githubusercontent.com/95161114/232266315-32f87d53-6f95-4ce1-b225-3d5e27867966.png">
 
 ### 会員登録ページ 
-
+<img width="1440" alt="kitachoku2_register" src="https://user-images.githubusercontent.com/95161114/232278033-6c5298aa-760b-4d13-9cac-a6f5090d87d4.png">
 
 ### ログインページ
-
+<img width="1440" alt="kitachoku2_login" src="https://user-images.githubusercontent.com/95161114/232278048-c034ab92-4fb5-48b8-a5b0-ae8b2ddf9ae7.png">
 
 ### 店舗検索結果画面
-
+<img width="1440" alt="kitachoku2_search" src="https://user-images.githubusercontent.com/95161114/232278054-f5775c4f-9439-4b19-867b-3cc799f7ad7b.png">
 
 ### 旬カレンダー検索結果画面
-
+<img width="1440" alt="kitachoku2_search-calendar" src="https://user-images.githubusercontent.com/95161114/232278063-33d438fe-958d-41b0-a7f6-5ec3a3438d5b.png">
 
 ### マイページ
-
+<img width="1440" alt="kitachoku2_mypage1" src="https://user-images.githubusercontent.com/95161114/232278067-24fb0de8-f772-4778-9534-86789f6bab35.png">
+<img width="1440" alt="kitachoku2_mypage2" src="https://user-images.githubusercontent.com/95161114/232278071-1ec777ab-4383-470c-9d7c-8ccce0ddde6b.png">
 
 ### 店舗追加、編集ページ
-
+<img width="1440" alt="kitachoku2_shopedit" src="https://user-images.githubusercontent.com/95161114/232278077-05c422e1-8285-47ea-8e1a-25fc9b31e756.png">
 
 ### 旬カレンダー追加、編集ページ
-
+<img width="1440" alt="kitachoku2_calendaredit" src="https://user-images.githubusercontent.com/95161114/232278078-448fc533-218e-415e-8b10-c91ec656f862.png">
 
 
 ## 5.使用技術、バージョン
@@ -77,7 +78,7 @@
 ## 6.環境構築手順
 1. GitHubよりダウンロード
 
-`$ git clone https://github.com/jing-bay/kitachoku.git`
+`$ git clone https://github.com/jing-bay/kitachoku2.git`
 
 ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
 

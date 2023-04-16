@@ -92,9 +92,9 @@
 
 `$ cp .env.example .env `
 
-4. MySQLなどにログインしてDBを作る
+4. MySQLにログインしてDBを作る
 
-DB名：kitachoku
+DB名：kitachoku2
 
 5. .envのAPP_KEY を作る
 
@@ -146,7 +146,43 @@ MAIL_ENCRYPTION=tls
 
 [kitachokulogo 001-removebg-preview](https://user-images.githubusercontent.com/95161114/195748199-4134fb1e-f409-4d94-8eea-08c8193eaa02.jpg)
 
-9. ファイルの中でサーバーを立ち上げる
+9. vendor>laravel>framework>src>Illuminate>Auth>Notifications>ResetPassword.php内の
+
+```
+protected function buildMailMessage($url)
+{
+    return (new MailMessage)
+        ->subject(Lang::get('Reset Password Notification'))
+        ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
+        ->action(Lang::get('Reset Password'), $url)
+        ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+        ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+}
+```
+
+の `This password reset link will expire in :count minutes.`　を
+
+`このパスワードは :count 分後に期限切れとなります。`　に変更する。
+
+10. ResetPassword.phpを同じディレクトリ内にコピーし、 `AdminResetPassword.php` に名称変更。
+
+`class ResetPassword extends Notification` を　`class AdminResetPassword extends Notification`に変更し、
+
+```
+protected function buildMailMessage($url)
+{
+    return (new MailMessage)
+        ->subject(Lang::get('Reset Password Notification'))
+        ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
+        ->action(Lang::get('Reset Password'), $url)
+        ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+        ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+}
+```
+
+の`  ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))`の部分を `['count' => config('auth.passwords.admin.expire')]` に変更する。
+
+11. ファイルの中でサーバーを立ち上げる
 
 `$ php artisan serve`
 

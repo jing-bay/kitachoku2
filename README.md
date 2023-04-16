@@ -1,8 +1,8 @@
 # キタチョク
-![kitachoku1](https://user-images.githubusercontent.com/95161114/195733162-51de283a-3670-4865-9564-8c2866d9e78d.gif)
+![kitachoku2](https://user-images.githubusercontent.com/95161114/232188186-7dbf8f23-1b90-42da-a6d2-11811fc4e267.gif)
 
 ## 1.URL
-- AWSデプロイURL：http://kitachoku.net/
+- AWSデプロイURL：http://kitachoku2.com/
 
 ダミーアカウントを作成しました。
 - user
@@ -11,9 +11,10 @@
   - メールアドレス：user@email.com
   - パスワード：testtesttest
 
-- shopadmin
-  - 名前：shopadmin
-  - メールアドレス：shopadmin@email.com
+- user2
+  - 名前：user2
+  - ニックネーム：user2
+  - メールアドレス：user2@email.com
   - パスワード：testtesttest
 
 - admin
@@ -31,28 +32,31 @@
 
 ## 4.使用画面のイメージ
 ### トップページ
-<img width="1440" alt="kitachoku index" src="https://user-images.githubusercontent.com/95161114/195735713-8f928687-5711-49f6-b2c8-2ab322467d78.png">
+<img width="1440" alt="kitachoku2_top1" src="https://user-images.githubusercontent.com/95161114/232266296-003c1441-8773-4a35-af35-8c3057fab979.png">
+<img width="1440" alt="kitachoku2_top2" src="https://user-images.githubusercontent.com/95161114/232266304-5bda2d4b-92d7-40d2-adeb-0d1b1d901162.png">
+<img width="1440" alt="kitachoku2_top3" src="https://user-images.githubusercontent.com/95161114/232266315-32f87d53-6f95-4ce1-b225-3d5e27867966.png">
 
 ### 会員登録ページ 
-<img width="1439" alt="kitachoku register" src="https://user-images.githubusercontent.com/95161114/195735736-eb1bc861-4c31-49ba-b553-eeda48ee4317.png">
+
 
 ### ログインページ
-<img width="1439" alt="kitachoku login" src="https://user-images.githubusercontent.com/95161114/195735895-36a5be53-6a8b-439a-817a-0329518fec3b.png">
 
-### 検索結果画面
-<img width="1432" alt="kitachoku search-1" src="https://user-images.githubusercontent.com/95161114/195735900-22ac630e-1530-4bb3-b201-a2f8ca1d87ce.png">
-<img width="1438" alt="kitachoku search-2" src="https://user-images.githubusercontent.com/95161114/195735902-f08dd6f5-c29b-4380-8846-73cd75c08d23.png">
+
+### 店舗検索結果画面
+
+
+### 旬カレンダー検索結果画面
+
 
 ### マイページ
-<img width="1440" alt="kitachoku mypage-1" src="https://user-images.githubusercontent.com/95161114/195735915-4aa64143-4002-4ff6-a65c-30488d2deb50.png">
-<img width="1438" alt="kitachoku mypage-2" src="https://user-images.githubusercontent.com/95161114/195735918-1f9fe619-5b7e-461d-ad0f-0af8f37152da.png">
-<img width="1434" alt="kitachoku mypage-3" src="https://user-images.githubusercontent.com/95161114/195735921-fe2d9544-d1f4-4e80-8070-53f4aab3943a.png">
 
-### ユーザー設定変更ページ
-<img width="1440" alt="kitachoku settings-edit" src="https://user-images.githubusercontent.com/95161114/195735926-5979640a-2a7b-4098-8bd0-0c28608d3804.png">
 
-### 口コミレビュー編集ページ
-<img width="1438" alt="kitachoku review-edit" src="https://user-images.githubusercontent.com/95161114/195735930-9b15a48b-3b0b-4027-9a13-26034f7115c9.png">
+### 店舗追加、編集ページ
+
+
+### 旬カレンダー追加、編集ページ
+
+
 
 ## 5.使用技術、バージョン
 - フロントエンド
@@ -180,7 +184,13 @@ MAIL_ENCRYPTION=tls
 - S3へのバケットへ画像ファイル保存：保存ができなかったり、保存ができても削除ができなかったり、保存したはずの画像が表示されないこともありました。
 Herokuの無料プランが終了するため、AWSへのデプロイは覚えておいてよかったです。
 
-## 9.DB設計
+## 9.実際に運用する際の課題
+- もし実際に運用するならhttpsにしたほうがいいが、そうなるとサーバーを冗長化する必要がある。冗長化するとAWSの無料枠を大幅に超えてしまいサーバー代がかかるため、その回収をどうしようか。
+- ユーザーを集めるためにSNSなどでの告知が必要。また、ユーザーになりそうなコミュニティに実際に使ってもらうなどする必要がある。
+- 実際に運用する際はMailTrapではなくAWSのメール認証サービスに差し替える必要あり。
+- デスクトップの幅ありきで作成してしまったため、カレンダーなどスマホの幅だと見にくいコンテンツがある。もう少しスマホでも見やすい見た目にしたほうが良いかもしれない。（もし実際に使うとしたらスマホでの使用が多くなることが考えられるため。）
+
+## 10.DB設計
 ### ER図
 ![](kitachoku.drawio.png)
 
@@ -230,19 +240,6 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 | created_at        | timestamp                            | 作成日時                               |
 | updated_at        | timestamp                            | 更新日時                               |
 
-- shop_adminsテーブル
-店舗代表者を管理する。
-
-| カラム名          | 属性                                 | 役割                                   |
-| ----------------- | ------------------------------------ | -------------------------------------- |
-| id                | unsigned bigint/PRIMARY KEY/NOT NULL | 店舗代表者を識別する ID                  |
-| name              | varchar(255)/NOT NULL                | 店舗代表者名                             |
-| email             | varchar(255)/UNIQUE KEY/NOT NULL     | メールアドレス                         |
-| email_verified_at | timestamp                            | メール認証用                           |
-| password          | varchar(255)/NOT NULL                | パスワード                             |
-| remember_token    | varchar(100)                         | トークンを格納するために使用 |
-| created_at        | timestamp                            | 作成日時                               |
-| updated_at        | timestamp                            | 更新日時                               |
 
 - adminsテーブル
 管理者を管理する。
@@ -265,16 +262,15 @@ Herokuの無料プランが終了するため、AWSへのデプロイは覚え�
 | ----------------- | ------------------------------------ | -------------------------------------- |
 | id                | unsigned bigint/PRIMARY KEY/NOT NULL | 店舗を識別する ID                  |
 | name              | varchar(255)/NOT NULL                | 店舗名                             |
-| shop_admin_id     | unsigned bigint/NOT NULL/FOREIGN KEY | 店舗代表者id                         |
 | area_id　　| unsigned bigint/NOT NULL/FOREIGN KEY         | エリアid                          |
 | postal_code          | char(7)/NOT NULL                | 郵便番号                            |
 | address    | varchar(255)/NOT NULL                      | トークンを格納するために使用 |
-| opening_hour        | varchar(255)/NOT NULL      | 営業時間                            |
-| holiday        | varchar(255)/NOT NULL                    | 定休日                               |
+| opening_hour        | varchar(255)/NULLABLE      | 営業時間                            |
+| holiday        | varchar(255)/NULLABLE                    | 定休日                               |
 | tel_number        | varchar(255)/NULLABLE          | 電話番号                               |
 | email        | varchar(255)/NULLABLE             | メールアドレス                               |
-| overview        | text/NOT NULL                        | 店舗説明                               |
-| shop_img        | varchar(255)/NOT NULL               | 店舗画像                               |
+| shop_img        | varchar(255)/NULLABLE               | 店舗画像                               |
+| shop_img_rename        | varchar(255)/NULLABLE               | 店舗画像（保存時の名前）      |
 | shop_url        | varchar(255)/NULLABLE         | 店舗サイトURL                               |
 | facebook_url        | varchar(255)/NULLABLE             | FacebookURL                               |
 | twitter_url        | varchar(255)/NULLABLE        | TwitterURL                               |
@@ -303,42 +299,33 @@ shopsテーブルとtagsテーブルの中間テーブル（多対多リレー�
 | created_at        | timestamp                            | 作成日時                               |
 | updated_at        | timestamp                            | 更新日時                               |
 
-- couponsテーブル
-クーポンを管理する。
+- calendarsテーブル
+旬カレンダーを管理する。
 
 | カラム名          | 属性                                 | 役割                                   |
 | ----------------- | ------------------------------------ | -------------------------------------- |
-| id                | unsigned bigint/PRIMARY KEY/NOT NULL | クーポンを識別する ID                  |
-| shop_id           | unsigned bigint/NOT NULL/FOREIGN KEY | 店舗id                           |
-| name              | varchar(255)/NOT NULL                | クーポン名                           |
-| created_at        | timestamp                            | 作成日時                               |
-| updated_at        | timestamp                            | 更新日時                               |
-
-- reservationsテーブル
-予約情報を管理する。
-
-| カラム名          | 属性                                 | 役割                                   |
-| ----------------- | ------------------------------------ | -------------------------------------- |
-| id                | unsigned bigint/PRIMARY KEY/NOT NULL | 予約情報を識別する ID                  |
-| user_id           | unsigned bigint/NOT NULL/FOREIGN KEY | ユーザーid                           |
-| reservation_date  | date/NOT NULL                        | 予約日                          |
-| reservation_time  | time/NOT NULL                        | 予約時間                          |
-| coupon_id         | unsigned bigint/NOT NULL/FOREIGN KEY | クーポンid                           |
-| created_at        | timestamp                            | 作成日時                               |
-| updated_at        | timestamp                            | 更新日時                               |
-
-- evaluationsテーブル
-評価を管理する。評価は予約した店舗に行った後のみ行える
-
-| カラム名          | 属性                                 | 役割                                   |
-| ----------------- | ------------------------------------ | -------------------------------------- |
-| id                | unsigned bigint/PRIMARY KEY/NOT NULL | 評価を識別する ID                  |
-| reservation_id    | unsigned bigint/NOT NULL/FOREIGN KEY | ユーザーid                           |
-| evaluation        | unsigned tinyint/NOT NULL            | 評価                          |
-| comment           | text/NOT NULL                        | コメント                          |
+| id                | unsigned bigint/PRIMARY KEY/NOT NULL | カレンダーを識別する ID                  |
+| user_id           | unsigned bigint/FOREIGN KEY/NOT NULL | カレンダーを作成したユーザーID             |
+| shop_id           | unsigned bigint/FOREIGN KEY /NOT NULL | カレンダーを作成した店舗ID                  |
+| name              | varchar(255)/NOT NULL                | 農作物名                             |
+| email             | varchar(255)/UNIQUE KEY/NOT NULL     | メールアドレス                         |
+| start_date　　　　 | unsigned tinyint/NOT NULL             | 販売開始時期                           |
+| end_date          | unsigned tinyint/NOT NULL            | 販売終了時期                             |
+| comment           | varchar(255)                         | コメント |
 | created_at        | timestamp                            | 作成日時                               |
 | updated_at        | timestamp                            | 更新日時                               |
 
 
-## 10.インフラ構成図
+- fav_calendarsテーブル
+いいねした旬カレンダーを管理する。
+
+| カラム名          | 属性                                 | 役割                                   |
+| ----------------- | ------------------------------------ | -------------------------------------- |
+| id                | unsigned bigint/PRIMARY KEY/NOT NULL | いいねしたカレンダーを識別するID              |
+| calendar_id       | unsigned bigint/NOT NULL/FOREIGN KEY | いいねされたカレンダーid                           |
+| user_id           | unsigned bigint/NOT NULL/FOREIGN KEY | いいねしたユーザーid                        |
+| created_at        | timestamp                            | 作成日時                               |
+| updated_at        | timestamp                            | 更新日時                               |
+
+## 11.インフラ構成図
 ![](infra.drawio.png)

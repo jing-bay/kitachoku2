@@ -10,14 +10,14 @@
       <ul class="result__tag-list" id="resultTag">
         @foreach ($tags as $tag)
         <li class="result__tag">
-          <input type="checkbox" class="result__searchbox--tag" name="search_tag[]" value="{{ $tag->id }}" id="{{ $tag->name }}" {{ is_array($search_tag)&&in_array($tag->id, $search_tag) ? 'checked' : '' }}>
+          <input type="checkbox" onchange="submit(this.form)" class="result__searchbox--tag" name="search_tag[]" value="{{ $tag->id }}" id="{{ $tag->name }}" {{ is_array($search_tag)&&in_array($tag->id, $search_tag) ? 'checked' : '' }}>
           <label for="{{ $tag->name }}" class="result__tag-label">{{ $tag->name }}</label>
         </li>
         @endforeach
       </ul>
     </div>
     <div class="result__searchtab--area">
-      <select name="search_area" class="result__searchbox--area" onchange="changeColor(this)">
+      <select name="search_area" class="result__searchbox--area" onchange="submit(this.form)" onchange="changeColor(this)">
         <option value="">エリアを選択</option>
         @foreach ($areas as $area)
         <option value="{{ $area->id }}" {{ !empty($search_area)&&($area->id == $search_area) ? 'selected' : ''}}>{{ $area->name }}</option>
@@ -25,7 +25,7 @@
       </select>
     </div>
     <div class="result__searchtab--keyword">
-      <input class="result__searchbox--keyword" type="text" name="search_keyword" placeholder= "店名・住所で検索" value={{ !empty($search_keyword) ? $search_keyword : '' }}>
+      <input class="result__searchbox--keyword" type="text" name="search_keyword" onchange="submit(this.form)" placeholder= "店名・住所で検索" value={{ !empty($search_keyword) ? $search_keyword : '' }}>
     </div>
     <div class="result__search-btn">
       <button type="submit" class="result__btn">検索</button>

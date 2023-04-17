@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Yu Gothic', 'Yu Gothic Medium', 'メイリオ', 'MS ゴシック', '游ゴシック Medium', sans-serif;
 }
 
 /*ヘッダー*/

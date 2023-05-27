@@ -28,13 +28,8 @@ class ShopController extends Controller
 
         if(isset($request->shop_img)) {
             $file_name = $request->file('shop_img')->getClientOriginalName();
-
-            if ( app()->isLocal() ) {
-                Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
-                $file_path = $s.'.'.$request->shop_img->extension();
-            } else {
-                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
-            }
+            Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
+            $file_path = $s.'.'.$request->shop_img->extension();
         } else { 
             $file_name = NULL;
             $file_path = NULL;
@@ -94,21 +89,14 @@ class ShopController extends Controller
                 'facebook_url' => $request->facebook_url,
                 'twitter_url' => $request->twitter_url,
             ]);
-        } else {
-            if ( app()->isLocal() ) {
-                Storage::delete('public/shopimg/'.$old_shop_img_rename);
-            } else {
-                Storage::disk('s3')->delete($old_shop_img_rename);
-            }
 
+        } else {
+
+            Storage::delete('public/shopimg/'.$old_shop_img_rename);
             $s = Str::uuid();
 
-            if ( app()->isLocal() ) {
-                Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
-                $file_path = $s.'.'.$request->shop_img->extension();
-            } else {
-                $file_path = Storage::disk('s3')->putFile('shopimg', $request->file('shop_img'), 'public');
-            }
+            Storage::putFileAs('public/shopimg', $request->file('shop_img'), $s.'.'.$request->shop_img->extension());
+            $file_path = $s.'.'.$request->shop_img->extension();
 
             $file_name = $request->file('shop_img')->getClientOriginalName();
 
@@ -142,13 +130,7 @@ class ShopController extends Controller
     public function destroy($shop_id)
     {
         $file_path = Shop::find($shop_id)->shop_img_rename;
-        
-        if ( app()->isLocal() ) {
-            Storage::delete('public/shopimg/'.$file_path);
-        } else {
-            Storage::disk('s3')->delete($file_path);
-        }
-
+        Storage::delete('public/shopimg/'.$file_path);
         Shop::find($shop_id)->delete();
 
         return redirect('/shop/done');

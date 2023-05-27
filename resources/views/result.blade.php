@@ -48,7 +48,7 @@
     <div class="result__shop">
       <div class="result__shop-img">
         @if(empty($shop->shop_img))
-        <img src="{{ asset('storage/shopimg/kitachokulogo.001-removebg-preview.jpg') }}" alt="店舗画像">
+        <img src="{{ asset('images/kitachokulogo.001-removebg-preview.jpg') }}" alt="店舗画像">
         @else
         <img src="{{ asset('storage/shopimg/'.$shop->shop_img_rename) }}" alt="店舗画像">
         @endif

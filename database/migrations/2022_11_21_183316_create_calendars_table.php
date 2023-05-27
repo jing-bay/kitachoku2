@@ -10,8 +10,8 @@ class CreateCalendarsTable extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('shop_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();;
+            $table->foreignId('shop_id')->constrained()->cascadeOnDelete();;
             $table->string('name');
             $table->unsignedTinyInteger('start_date');
             $table->unsignedTinyInteger('end_date');

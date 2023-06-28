@@ -50,6 +50,6 @@ class FavoriteController extends Controller
         $user = Auth::user();
         $areas = Area::all();
 
-        return view('mypage', compact('user', 'favorites', 'areas', 'search_name', 'search_area'));
+        return view('mypage', compact('user', 'favorites', 'areas', 'search_name', 'search_area', 'seasons'));
     }
 }

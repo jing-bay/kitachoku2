@@ -52,6 +52,6 @@ class FavoriteController extends Controller
         $areas = Area::all();
         $fav_calendars = FavCalendar::where('user_id', $id)->get();
 
-        return view('mypage', compact('user', 'favorites', 'areas', 'search_name', 'search_area', 'seasons'));
+        return view('mypage', compact('id', 'user', 'favorites', 'areas', 'search_name', 'search_area', 'seasons', 'fav_calendars'));
     }
 }

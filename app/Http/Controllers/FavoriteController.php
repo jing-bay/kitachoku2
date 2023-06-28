@@ -46,7 +46,7 @@ class FavoriteController extends Controller
         }
 
         $favorites = $query->get();
-
+        $seasons = ['上旬', '中旬', '下旬'];
         $user = Auth::user();
         $areas = Area::all();
 

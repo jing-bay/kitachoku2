@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Favorite;
 use App\Models\Shop;
+use App\Models\FavCalendar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,6 +50,7 @@ class FavoriteController extends Controller
         $seasons = ['上旬', '中旬', '下旬'];
         $user = Auth::user();
         $areas = Area::all();
+        $fav_calendars = FavCalendar::where('user_id', $id)->get();
 
         return view('mypage', compact('user', 'favorites', 'areas', 'search_name', 'search_area', 'seasons'));
     }
